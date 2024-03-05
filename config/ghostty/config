@@ -1,0 +1,9 @@
+theme = GruvboxDarkHard 
+
+font-family = Hack Nerd Font
+font-family-bold = Hack Nerd Font
+font-family-italic = Hack Nerd Font
+font-family-bold-italic = Hack Nerd Font
+font-size = 12
+
+clipboard-paste-protection = false
