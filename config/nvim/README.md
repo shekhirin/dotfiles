@@ -1,3 +1,3 @@
 # Neovim configuration
 
-Always a WIP. Forked from [Adib Hanna's Neovim config](github.com/adibhanna/nvim).
+Forked from [Clabby's Neovim config](https://github.com/clabby/dots/tree/main/config/nvim).
