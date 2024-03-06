@@ -26,6 +26,9 @@ plugins {
     compact-bar { path "compact-bar"; }
 }
 
+// Disable session serialization (and thus also resurrection)
+session_serialization false
+
 // Toggle between having pane frames around the panes
 // Options:
 //   - true (default)
