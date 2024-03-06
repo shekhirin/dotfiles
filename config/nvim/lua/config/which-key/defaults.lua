@@ -124,7 +124,7 @@ return {
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     o = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
-    w = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+    w = { "<cmd>Telescope live_grep_args<cr>", "Live Grep" },
     v = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current file" },
     W = { "<cmd>Telescope grep_string<cr>", "Grep String" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },

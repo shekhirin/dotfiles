@@ -12,6 +12,7 @@ return {
       "nvim-telescope/telescope-ui-select.nvim",
       "kkharji/sqlite.lua",
       "nvim-telescope/telescope-frecency.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
       -- {
       --   "nvim-telescope/telescope-file-browser.nvim",
       --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
@@ -196,6 +197,7 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("zoxide")
       telescope.load_extension("frecency")
+      telescope.load_extension("live_grep_args")
       -- telescope.load_extension("file_browser")
     end,
   },
