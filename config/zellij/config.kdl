@@ -105,6 +105,9 @@ keybinds {
         bind "Ctrl o" { SwitchToMode "Normal"; }
         bind "Ctrl s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
+
+        // Conflicts with vim
+        unbind "Ctrl o"
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
@@ -156,6 +159,8 @@ keybinds {
     }
     shared_except "session" "locked" {
         bind "Ctrl o" { SwitchToMode "Session"; }
+        // Conflicts with vim
+        unbind "Ctrl o"
     }
     shared_except "tab" "locked" {
         bind "Ctrl t" { SwitchToMode "Tab"; }

@@ -7,3 +7,5 @@ font-family-bold-italic = Hack Nerd Font
 font-size = 12
 
 clipboard-paste-protection = false
+
+command = "/bin/zsh -l -c 'zellij attach || zellij'"

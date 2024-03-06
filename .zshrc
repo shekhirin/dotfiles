@@ -82,6 +82,3 @@ export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 # ghostty word jumps
 bindkey "\e[1;3D" backward-word
 bindkey "\e[1;3C" forward-word
-
-# zellij autostart
-eval "$(zellij setup --generate-auto-start zsh)"
