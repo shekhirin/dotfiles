@@ -8,4 +8,6 @@ font-size = 12
 
 clipboard-paste-protection = false
 
+fullscreen = true
+
 command = "/bin/zsh -l -c 'zellij attach || zellij'"
