@@ -29,6 +29,11 @@ return {
           settings = {
             -- rust-analyzer language server configuration
             ["rust-analyzer"] = {
+              cargo = {
+                -- This prevents rust-analyzer’s cargo check and initial build-script and proc-macro building from
+                -- locking the Cargo.lock at the expense of duplicating build artifacts.
+                targetDir = true,
+              },
               check = {
                 command = "clippy",
               },
