@@ -7,6 +7,9 @@ keybinds {
         // Conflicts with zsh word jump keybinds
         unbind "Alt Left"
         unbind "Alt Right"
+
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt l" { MoveFocusOrTab "Right"; }
     }
     shared_except "session" "locked" {
         // Conflicts with vim
