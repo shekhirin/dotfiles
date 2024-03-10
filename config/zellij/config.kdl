@@ -35,10 +35,7 @@ session_serialization false
 //   - false
 pane_frames false
 
-// Toggle enabling the mouse mode 
-mouse_mode false
-
-// Choose the theme that is specified in the themes section
+// Choose the theme that is specified in the themes section.
 // Default: default
 //
 theme "gruvbox-dark"
