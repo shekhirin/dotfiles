@@ -12,4 +12,8 @@ clipboard-paste-protection = false
 mouse-hide-while-typing = true
 fullscreen = true
 
-command = "/bin/zsh -l -c 'zellij attach || zellij'"
+# No accidental quit
+keybind = ctrl+q=ignore
+keybind = cmd+q=ignore
+
+command = "/bin/zsh -l -c 'zellij attach main || zellij -s main'"
