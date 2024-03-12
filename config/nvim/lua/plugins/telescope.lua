@@ -61,6 +61,9 @@ return {
               preview_cutoff = 120,
             },
           },
+          oldfiles = {
+            cwd_only = true,
+          },
           git_files = {
             previewer = true,
             layout_config = {
