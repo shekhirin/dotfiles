@@ -79,3 +79,8 @@ eval "$(zoxide init zsh)"
 # ghostty word jumps
 bindkey "\e[1;3D" backward-word
 bindkey "\e[1;3C" forward-word
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
