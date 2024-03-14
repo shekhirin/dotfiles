@@ -34,8 +34,10 @@ return {
                 -- locking the Cargo.lock at the expense of duplicating build artifacts.
                 targetDir = true,
               },
-              check = {
+              checkOnSave = {
+                allFeatures = true,
                 command = "clippy",
+                extraArgs = { "--no-deps" },
               },
               -- rustfmt = {
               --   extraArgs = { "+nightly " },
