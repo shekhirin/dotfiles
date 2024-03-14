@@ -22,7 +22,6 @@ return {
   v = "Go to definition in a split",
   s = "Swap next param",
   S = "Swap previous param",
-  U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   o = { ":Telescope buffers<CR>", "Open Buffer" },
   u = {
     name = "UI",
