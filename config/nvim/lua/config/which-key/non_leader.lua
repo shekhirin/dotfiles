@@ -5,5 +5,4 @@ return {
   gl = "Goto float diagnostics",
   go = "Goto type definition",
   gr = "Goto references",
-  gS = "Workspace symbols",
 }

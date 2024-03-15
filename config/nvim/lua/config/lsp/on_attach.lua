@@ -12,7 +12,6 @@ M.on_attach = function(_, bufnr)
   nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
   nmap("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
   nmap("go", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-  nmap("gS", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
   nmap("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
 

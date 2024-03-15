@@ -105,7 +105,6 @@ return {
     i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
     o = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
     R = { "<cmd>Telescope lsp_references<cr>", "References" },
-    s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
     f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
     K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
@@ -113,6 +112,7 @@ return {
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
     h = { "<cmd>lua require('config.utils').toggle_inlay_hints()<cr>", "Toggle Inlay Hints" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
   },
   f = {
