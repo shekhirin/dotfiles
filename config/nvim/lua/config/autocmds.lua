@@ -17,7 +17,7 @@ api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 --- Format on save with LSP
 api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rs",
+  pattern = { "*.rs", "*.zig" },
   callback = function()
     vim.lsp.buf.format()
   end,
