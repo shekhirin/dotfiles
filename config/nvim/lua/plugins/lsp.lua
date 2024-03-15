@@ -36,6 +36,7 @@ return {
         require("lspconfig")[server_name].setup({
           capabilities = capabilities,
           on_attach = require("config.lsp.on_attach").on_attach,
+          cmd = (require("config.lsp.servers")[server_name] or {}).cmd,
           settings = require("config.lsp.servers")[server_name],
           filetypes = (require("config.lsp.servers")[server_name] or {}).filetypes,
         })

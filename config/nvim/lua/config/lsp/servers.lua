@@ -8,8 +8,7 @@ return {
     },
   },
   terraformls = {
-    cmd = { "terraform-ls" },
-    arg = { "server" },
+    cmd = { "terraform-ls", "server" },
     filetypes = { "terraform", "tf", "terraform-vars" },
   },
   lua_ls = {
@@ -39,5 +38,8 @@ return {
   yamlls = {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml" },
+  },
+  zls = {
+    cmd = { vim.fn.expand("$HOME/.zvm/bin/zls") },
   },
 }
