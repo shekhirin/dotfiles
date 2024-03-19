@@ -17,7 +17,7 @@ return {
   },
   w = { ":w!<CR>", "Save" },
   q = { ":confirm q<CR>", "Quit" },
-  c = { ":bp<bar>bd#<CR>", "Close Buffer" },
+  c = { ":b#<bar>bd#<CR>", "Close Buffer" },
   p = { "<cmd>Telescope treesitter<CR>", "List Symbols" },
   v = "Go to definition in a split",
   s = "Swap next param",
