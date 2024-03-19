@@ -24,7 +24,7 @@ return {
           --   cmd = function()
           --     return { "rustup", "run", "nightly", "rust-analyzer", "--log-file", "/tmp/rust-analyzer.log" }
           --   end,
-          on_attach = require("config.lsp.on_attach").on_attach,
+          on_attach = require("config.lsp.on_attach"),
           -- standalone = false,
           settings = {
             -- rust-analyzer language server configuration

@@ -1,5 +1,4 @@
-M = {}
-M.on_attach = function(_, bufnr)
+return function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = "LSP: " .. desc
@@ -20,5 +19,3 @@ M.on_attach = function(_, bufnr)
 
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 end
-
-return M

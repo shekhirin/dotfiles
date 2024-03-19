@@ -89,6 +89,7 @@ return {
           neotest = true,
           telescope = {
             enabled = true,
+
             style = "nvchad",
           },
         },
