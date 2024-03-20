@@ -16,7 +16,7 @@ keybinds {
         unbind "Ctrl o"
     }
     unbind "Ctrl b"
-
+    unbind "Ctrl q"
 }
 
 plugins {
