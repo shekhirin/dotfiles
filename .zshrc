@@ -4,7 +4,7 @@ source ~/zsh-snap/znap.zsh
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="gozilla"
+ZSH_THEME="robbyrussell"
 
 plugins=(
     git
