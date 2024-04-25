@@ -35,18 +35,6 @@ export GPG_TTY=$(tty)
 
 export GOPATH="$HOME/go"
 
-export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$PATH:$HOME/.foundry/bin"
-export PATH="/opt/homebrew/opt/llvm@13/bin:$PATH"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/zls:$PATH"
-export PATH=$PATH:$HOME/.zokrates/bin
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -82,5 +70,20 @@ bindkey "\e[1;3C" forward-word
 
 # ZVM
 export ZVM_INSTALL="$HOME/.zvm/self"
+
+# PATH
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
+export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$PATH:$HOME/.foundry/bin"
+export PATH="/opt/homebrew/opt/llvm@13/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/zls:$PATH"
+export PATH=$PATH:$HOME/.zokrates/bin
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/llvm@17/bin:$PATH"
