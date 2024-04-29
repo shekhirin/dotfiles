@@ -29,7 +29,7 @@ return {
         },
       },
       sections = {
-        lualine_a = {},
+        lualine_a = { "mode" },
         lualine_b = {
           "fancy_branch",
         },
@@ -52,7 +52,7 @@ return {
           "progress",
         },
         lualine_y = {},
-        lualine_z = {},
+        lualine_z = { "location" },
       },
       inactive_sections = {
         lualine_a = {},
