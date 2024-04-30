@@ -17,10 +17,10 @@ source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_NO_ENV_HINTS=yes
 
-alias l='exa'
-alias la='exa -a'
-alias ll='exa -lah'
-alias ls='exa --color=auto'
+alias l='eza'
+alias la='eza -a'
+alias ll='eza -lah'
+alias ls='eza --color=auto'
 
 alias cat='bat --paging=never'
 
