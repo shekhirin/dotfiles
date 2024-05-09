@@ -13,7 +13,7 @@ mouse-hide-while-typing = true
 fullscreen = true
 
 # No accidental quit
-keybind = ctrl+q=ignore
+keybind = ctrl+q=esc:q
 keybind = cmd+q=ignore
 
 command = "/bin/zsh -l -c 'zellij attach main || zellij -s main'"
