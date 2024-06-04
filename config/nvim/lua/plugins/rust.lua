@@ -39,9 +39,9 @@ return {
                 command = "clippy",
                 extraArgs = { "--no-deps" },
               },
-              -- rustfmt = {
-              --   extraArgs = { "+nightly " },
-              -- },
+              rustfmt = {
+                extraArgs = { "+nightly" },
+              },
             },
           },
         },
