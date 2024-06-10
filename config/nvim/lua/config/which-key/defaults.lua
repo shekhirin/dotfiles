@@ -55,6 +55,7 @@ return {
       "<cmd>BufferLineCloseRight<cr>",
       "Close all to the right",
     },
+    o = { "<cmd>BufferLineCloseOthers<cr>", "Close all other buffers" },
     D = {
       "<cmd>BufferLineSortByDirectory<cr>",
       "Sort by directory",
