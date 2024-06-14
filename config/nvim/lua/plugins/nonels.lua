@@ -6,7 +6,7 @@ return {
       "jay-babu/mason-null-ls.nvim",
       "nvim-lua/plenary.nvim",
       "nvimtools/none-ls-extras.nvim",
-      "gbprod/none-ls-shellcheck.nvim"
+      "gbprod/none-ls-shellcheck.nvim",
     },
     config = function()
       local mason_null_ls = require("mason-null-ls")
@@ -70,6 +70,11 @@ return {
               group = augroup,
               buffer = bufnr,
               callback = function()
+                -- Markdown lists are cooked https://github.com/prettier/prettier/issues/5019
+                if vim.bo.filetype == "markdown" then
+                  return
+                end
+
                 vim.lsp.buf.format({
                   filter = function(client)
                     --  only use null-ls for formatting instead of lsp server
