@@ -59,7 +59,6 @@ return {
           diagnostics.terraform_validate,
           require("none-ls-shellcheck.diagnostics"),
           diagnostics.yamllint,
-
           code_actions.gitsigns,
         },
         -- configure format on save

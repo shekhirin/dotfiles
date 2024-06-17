@@ -42,4 +42,7 @@ return {
   zls = {
     cmd = { vim.fn.expand("$HOME/.zvm/bin/zls") },
   },
+  clangd = {
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+  },
 }
