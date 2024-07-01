@@ -7,6 +7,7 @@ return {
         clear_suggestion = "<C-]>",
         accept_word = "<C-j>",
       },
+      log_level = "off",
     })
   end,
 }
