@@ -10,7 +10,8 @@ font-size = 12
 
 clipboard-paste-protection = false
 mouse-hide-while-typing = true
-fullscreen = true
+window-decoration = false
+macos-titlebar-style = tabs
 
 # No accidental quit
 keybind = ctrl+q=esc:q
