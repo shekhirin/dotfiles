@@ -31,6 +31,60 @@ complete -F __start_kubectl k
 
 alias speed='npx speed-cloudflare-cli'
 
+sugoi () {
+    yabai --start-service
+    # Hide all windows
+    osascript <<END
+activate application "Finder"
+tell application "System Events"
+  set visible of processes where name is not "Finder" to false
+end tell
+tell application "Finder" to set collapsed of windows to true
+END
+    # Laptop
+    yabai -m query --windows | jq -e '.[] | select(.app == "Discord")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Discord").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai -m query --windows | jq -e '.[] | select(.app == "Telegram")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai -m query --windows | jq -e '.[] | select(.app == "Discord")."is-visible" | not' && open /Applications/Discord.app
+    yabai -m query --windows | jq -e '.[] | select(.app == "Telegram")."is-visible" | not' && open /Applications/Telegram.localized/Telegram.app
+    yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."is-visible" | not' && open /System/Applications/Messages.app
+    yabai -m query --windows | jq '.[] | select(.app == "Discord").id' | xargs -I{} yabai -m window {} --display east --warp west
+    yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --display east --warp east
+    yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --display east --warp east
+    yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --resize bottom:0:$(yabai -m query --windows | jq '.[] | 562 - select(.app == "Telegram").frame.h')
+    yabai -m query --windows | jq '.[] | select(.app == "Discord").id' | xargs -I{} yabai -m window {} --resize right:$(yabai -m query --windows | jq '.[] | 1200 - select(.app == "Discord").frame.w'):0
+    yabai -m query --windows | jq -e '.[] | select(.app == "Discord")."split-type" == "horizontal"' && yabai -m query --windows | jq '.[] | select(.app == "Discord").id' | xargs -I{} yabai -m window {} --toggle split
+    # Main monitor
+    yabai -m query --windows | jq -e '.[] | select(.app == "Arc")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Arc").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."split-type" == "vertical"' && yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --toggle split
+    yabai -m query --windows | jq -e '.[] | select(.app == "Arc")."is-visible" | not' && open /Applications/Arc.app
+    yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."is-visible" | not' && open /Applications/Ghostty.app
+    yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."split-type" == "horizontal"' && yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --toggle split
+    yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --display west --warp east
+    yabai -m query --windows | jq '.[] | select(.app == "Arc").id' | xargs -I{} yabai -m window {} --display west --warp west
+    yabai -m query --windows | jq '.[] | select(.app == "Ghostty") | .space' | xargs -I{} yabai -m space {} --balance
+}
+kirei () {
+    yabai --start-service
+    # Hide all windows
+    osascript <<END
+activate application "Finder"
+tell application "System Events"
+  set visible of processes where name is not "Finder" to false
+end tell
+tell application "Finder" to set collapsed of windows to true
+END
+    # Open Arc and Ghostty if they are not visible
+    yabai -m query --windows | jq -e '.[] | select(.app == "Arc")."is-visible" | not' && open /Applications/Arc.app
+    yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."is-visible" | not' && open /Applications/Ghostty.app
+    # Make Arc fullscreen first, so it goes further down the list of spaces
+    yabai -m query --windows | jq '.[] | select(.app == "Arc")."is-native-fullscreen" | not' && (yabai -m query --windows | jq '.[] | select(.app == "Arc").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    # Then, make Ghostty fullscreen
+    yabai -m query --windows | jq '.[] | select(.app == "Ghostty")."is-native-fullscreen" | not' && (yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
+    yabai --stop-service
+}
+
 export GPG_TTY=$(tty)
 
 export GOPATH="$HOME/go"
