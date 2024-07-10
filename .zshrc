@@ -126,7 +126,7 @@ bindkey "\e[1;3C" forward-word
 export ZVM_INSTALL="$HOME/.zvm/self"
 
 # Kurtosis
-eval "$(kurtosis completion zsh)"
+# eval "$(kurtosis completion zsh)"
 
 # PATH
 export PATH="$PATH:$HOME/.zvm/bin"
