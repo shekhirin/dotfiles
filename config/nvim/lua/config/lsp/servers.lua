@@ -47,4 +47,6 @@ return {
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   },
+  glsl_analyzer = {},
+  glslls = {},
 }
