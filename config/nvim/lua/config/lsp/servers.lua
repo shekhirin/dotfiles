@@ -40,7 +40,9 @@ return {
     filetypes = { "yaml" },
   },
   zls = {
+    mason = false,
     cmd = { vim.fn.expand("$HOME/.zvm/bin/zls") },
+    filetypes = { "zig" },
   },
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
