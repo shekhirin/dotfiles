@@ -1,4 +1,8 @@
 keybinds {
+    tab {
+        bind "i" { MoveTab "Left"; }
+        bind "o" { MoveTab "Right"; }
+    }
     session {
         // Conflicts with vim
         unbind "Ctrl o"
