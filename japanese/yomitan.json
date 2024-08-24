@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2024-08-24 19:51:26",
+    "date": "2024-08-24 21:16:37",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -228,7 +228,7 @@
                         "delay": 0,
                         "length": 10,
                         "deepDomScan": false,
-                        "popupNestingMaxDepth": 0,
+                        "popupNestingMaxDepth": 4,
                         "enablePopupSearch": false,
                         "enableOnPopupExpressions": true,
                         "enableOnSearchPage": true,
