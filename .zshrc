@@ -125,6 +125,9 @@ bindkey "\e[1;3C" forward-word
 # ZVM
 export ZVM_INSTALL="$HOME/.zvm/self"
 
+# jj completions
+source <(jj util completion zsh)
+
 # Kurtosis
 # eval "$(kurtosis completion zsh)"
 
@@ -145,3 +148,5 @@ export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/llvm@17/bin:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+. "$HOME/.cargo/env"
