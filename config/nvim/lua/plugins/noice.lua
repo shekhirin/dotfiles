@@ -43,6 +43,11 @@ return {
                     col = "50%",
                 },
             },
+            views = {
+                mini = {
+                    position = { row = -2 }
+                }
+            }
         })
         require("notify").setup({
             background_colour = "#000000",
