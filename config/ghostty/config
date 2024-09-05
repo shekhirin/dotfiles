@@ -1,6 +1,6 @@
 # https://github.com/mitchellh/ghostty/blob/main/src/config/Config.zig
 
-theme = GruvboxDarkHard
+theme = catppuccin-mocha
 
 font-family = JetBrains Mono
 font-family-bold = JetBrains Mono
