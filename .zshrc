@@ -150,3 +150,5 @@ export PATH="/opt/homebrew/opt/llvm@17/bin:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 . "$HOME/.cargo/env"
+
+eval "$(starship init zsh)"

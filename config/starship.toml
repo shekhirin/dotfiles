@@ -1,0 +1,10 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[docker_context]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
