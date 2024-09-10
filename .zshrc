@@ -151,4 +151,6 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 . "$HOME/.cargo/env"
 
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
 eval "$(starship init zsh)"
