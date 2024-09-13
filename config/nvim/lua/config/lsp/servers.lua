@@ -1,12 +1,5 @@
 return {
-  jsonls = {
-    settings = {
-      json = {
-        schema = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
-    },
-  },
+  jsonls = {},
   terraformls = {
     cmd = { "terraform-ls", "server" },
     filetypes = { "terraform", "tf", "terraform-vars" },
@@ -49,4 +42,9 @@ return {
   },
   glsl_analyzer = {},
   glslls = {},
+  verible = {
+    root_dir = function()
+      return vim.loop.cwd()
+    end,
+  },
 }
