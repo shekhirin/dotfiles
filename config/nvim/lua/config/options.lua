@@ -40,7 +40,13 @@ local options = {
   title = true,                            -- set the title of window to the value of the titlestring
   confirm = true,                          -- confirm to save changes before exiting modified buffer
   fillchars = { eob = " " },               -- change the character at the end of buffer
-  -- cursorlineopt = "number",                -- set the cursorline
+  -- cursorlineopt = "number",             -- set the cursorline
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldcolumn = "0",
+  foldtext = "",
+  foldlevel = 99,
+  foldlevelstart = 99,
 }
 
 vim.g.mapleader = ' '
