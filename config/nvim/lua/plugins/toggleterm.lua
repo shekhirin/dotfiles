@@ -20,6 +20,7 @@ return {
           border = "#151819",
           background = "#151819",
         },
+        zindex = 500
       },
       highlights = {
         FloatBorder = {
