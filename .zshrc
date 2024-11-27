@@ -153,4 +153,12 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
+mptb() {
+    cast from-rlp "$1" | \
+        jq '.[0:17] |
+        to_entries |
+        map({key: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","value"][.key], value: .value}) |
+    from_entries'
+}
+
 eval "$(starship init zsh)"
