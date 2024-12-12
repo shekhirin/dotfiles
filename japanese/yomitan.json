@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2024-08-24 21:16:37",
+    "date": "2024-12-12 12:35:57",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -66,7 +66,7 @@
             "sandbox": "sandbox allow-scripts; default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'unsafe-inline'"
         },
         "description": "Japanese dictionary with Anki integration",
-        "differential_fingerprint": "1.a3557b2cc28f3d7947760e8a25279fd0e28040e43fa2d12b0ea36971125d7518",
+        "differential_fingerprint": "1.db73ae92f067da2264ebd9f7f6b5790effce1c9789ae430d5b417be4bb4e7a1e",
         "host_permissions": [
             "<all_urls>"
         ],
@@ -106,7 +106,7 @@
             ]
         },
         "update_url": "https://clients2.google.com/service/update2/crx",
-        "version": "24.8.12.1",
+        "version": "24.11.23.0",
         "web_accessible_resources": [
             {
                 "matches": [
@@ -126,7 +126,7 @@
             "os": "mac"
         }
     },
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
     "permissions": {
         "origins": [
             "<all_urls>",
@@ -137,6 +137,7 @@
         "permissions": [
             "clipboardWrite",
             "contextMenus",
+            "nativeMessaging",
             "storage",
             "unlimitedStorage",
             "declarativeNetRequest",
@@ -324,8 +325,8 @@
                         "hidePopupOnCursorExit": false,
                         "hidePopupOnCursorExitDelay": 100,
                         "normalizeCssZoom": true,
-                        "scanAltText": true,
-                        "scanWithoutMousemove": true
+                        "scanWithoutMousemove": true,
+                        "scanResolution": "character"
                     },
                     "dictionaries": [
                         {
@@ -518,12 +519,12 @@
                         "duplicateScope": "collection",
                         "checkForDuplicates": true,
                         "suspendNewCards": false,
-                        "displayTags": "never",
                         "duplicateScopeCheckAllModels": false,
                         "noteGuiMode": "browse",
                         "apiKey": "",
                         "downloadTimeout": 0,
-                        "duplicateBehavior": "new"
+                        "duplicateBehavior": "new",
+                        "displayTagsAndFlags": "never"
                     },
                     "parsing": {
                         "enableScanningParser": true,
@@ -983,7 +984,8 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "id": "profile-0"
             },
             {
                 "name": "Mining LNs",
@@ -1163,14 +1165,25 @@
                         "hidePopupOnCursorExit": false,
                         "hidePopupOnCursorExitDelay": 100,
                         "normalizeCssZoom": true,
-                        "scanAltText": true,
-                        "scanWithoutMousemove": true
+                        "scanWithoutMousemove": true,
+                        "scanResolution": "character"
                     },
                     "dictionaries": [
                         {
-                            "name": "日本語文法辞典(全集)",
+                            "name": "Jitendex.org [2024-08-11]",
+                            "alias": "Jitendex.org [2024-08-11]",
                             "priority": 0,
                             "enabled": true,
+                            "allowSecondarySearches": false,
+                            "definitionsCollapsible": "not-collapsible",
+                            "partsOfSpeechFilter": true,
+                            "useDeinflections": true,
+                            "styles": ""
+                        },
+                        {
+                            "name": "日本語文法辞典(全集)",
+                            "priority": 0,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1180,7 +1193,7 @@
                         {
                             "name": "三省堂国語辞典　第八版",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1190,7 +1203,7 @@
                         {
                             "name": "大辞林　第四版",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1200,7 +1213,7 @@
                         {
                             "name": "デジタル大辞泉",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1210,7 +1223,7 @@
                         {
                             "name": "実用日本語表現辞典",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1220,7 +1233,7 @@
                         {
                             "name": "漢字ペディア同訓異義",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1230,7 +1243,7 @@
                         {
                             "name": "漢字辞典オンライン",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1240,7 +1253,7 @@
                         {
                             "name": "NHK",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -1256,17 +1269,6 @@
                             "partsOfSpeechFilter": true,
                             "useDeinflections": true,
                             "alias": "JPDB"
-                        },
-                        {
-                            "name": "Jitendex.org [2024-08-11]",
-                            "alias": "Jitendex.org [2024-08-11]",
-                            "priority": 0,
-                            "enabled": false,
-                            "allowSecondarySearches": false,
-                            "definitionsCollapsible": "not-collapsible",
-                            "partsOfSpeechFilter": true,
-                            "useDeinflections": true,
-                            "styles": ""
                         },
                         {
                             "name": "JMdict",
@@ -1357,12 +1359,12 @@
                         "duplicateScope": "collection",
                         "checkForDuplicates": true,
                         "suspendNewCards": false,
-                        "displayTags": "never",
                         "duplicateScopeCheckAllModels": false,
                         "noteGuiMode": "browse",
                         "apiKey": "",
                         "downloadTimeout": 0,
-                        "duplicateBehavior": "new"
+                        "duplicateBehavior": "new",
+                        "displayTagsAndFlags": "never"
                     },
                     "parsing": {
                         "enableScanningParser": true,
@@ -1822,11 +1824,12 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "id": "profile-1"
             }
         ],
         "profileCurrent": 0,
-        "version": 50,
+        "version": 54,
         "global": {
             "database": {
                 "prefixWildcardsSupported": true
