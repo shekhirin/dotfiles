@@ -162,3 +162,9 @@ mptb() {
 }
 
 eval "$(starship init zsh)"
+
+export NARGO_HOME="/Users/shekhirin/.nargo"
+
+export PATH="$PATH:$NARGO_HOME/bin"
+export PATH="${HOME}/.bb:${PATH}"
+export PATH="/Users/shekhirin/.bb:$PATH"
