@@ -168,3 +168,6 @@ export NARGO_HOME="/Users/shekhirin/.nargo"
 export PATH="$PATH:$NARGO_HOME/bin"
 export PATH="${HOME}/.bb:${PATH}"
 export PATH="/Users/shekhirin/.bb:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/shekhirin/.cache/lm-studio/bin"
