@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2024-12-30 15:06:43",
+    "date": "2024-12-30 18:20:01",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -461,7 +461,7 @@
                                 "SentenceFurigana": "{sentence-bolded-furigana-plain}",
                                 "SentenceAudio": "",
                                 "Picture": "",
-                                "Glossary": "{glossary}",
+                                "Glossary": "",
                                 "Hint": "",
                                 "IsHintCard": "x",
                                 "IsClickCard": "",
