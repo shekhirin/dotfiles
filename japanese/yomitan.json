@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2024-12-30 18:20:01",
+    "date": "2025-01-04 23:52:08",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -226,7 +226,7 @@
                         "delay": 0,
                         "length": 10,
                         "deepDomScan": false,
-                        "popupNestingMaxDepth": 0,
+                        "popupNestingMaxDepth": 1,
                         "enablePopupSearch": false,
                         "enableOnPopupExpressions": true,
                         "enableOnSearchPage": true,
@@ -337,7 +337,7 @@
                         },
                         {
                             "name": "日本語文法辞典(全集)",
-                            "enabled": false,
+                            "enabled": true,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible",
                             "partsOfSpeechFilter": true,
@@ -684,7 +684,7 @@
                                 "includeCharacterAtEnd": true
                             }
                         ],
-                        "terminationCharacterMode": "custom"
+                        "terminationCharacterMode": "newlines"
                     },
                     "inputs": {
                         "hotkeys": [
