@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2025-01-04 23:52:08",
+    "date": "2025-01-05 12:07:50",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -187,7 +187,7 @@
                         "popupActionBarLocation": "top",
                         "frequencyDisplayMode": "split-tags-grouped",
                         "termDisplayMode": "ruby",
-                        "sortFrequencyDictionary": "CC100",
+                        "sortFrequencyDictionary": "JPDB",
                         "sortFrequencyDictionaryOrder": "ascending",
                         "language": "ja",
                         "enableContextMenuScanSelected": true,
@@ -468,8 +468,8 @@
                                 "IsSentenceCard": "",
                                 "PitchPosition": "{pitch-accent-positions}",
                                 "Frequency": "{frequencies}",
-                                "FreqSort": "{frequency-harmonic-rank}",
-                                "MiscInfo": ""
+                                "FreqSort": "{frequency-harmonic-occurrence}",
+                                "MiscInfo": "{url}"
                             }
                         },
                         "kanji": {
