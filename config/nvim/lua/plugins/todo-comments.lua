@@ -27,7 +27,7 @@ return {
         before = "", -- "fg" or "bg" or empty
         keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty.
         after = "fg", -- "fg" or "bg" or empty
-        pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
+        pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]], -- pattern or table of patterns, used for highlighting (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
         exclude = {}, -- list of file types to exclude highlighting
