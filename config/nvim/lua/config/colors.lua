@@ -6,7 +6,6 @@ local colors = {
   bg = "#252829",
 }
 
-
 -- local colors = {
 --   fg = "#958272",
 --   bg = "#212121",

@@ -1,8 +1,8 @@
 return {
-  'akinsho/toggleterm.nvim',
+  "akinsho/toggleterm.nvim",
   version = "*",
   config = function()
-    require("toggleterm").setup {
+    require("toggleterm").setup({
       size = 20,
       open_mapping = [[<C-\>]],
       shade_filetypes = {},
@@ -20,13 +20,13 @@ return {
           border = "#151819",
           background = "#151819",
         },
-        zindex = 500
+        zindex = 500,
       },
       highlights = {
         FloatBorder = {
           guifg = "#4B4F51",
-        }
-      }
-    }
+        },
+      },
+    })
   end,
 }

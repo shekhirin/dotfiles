@@ -77,27 +77,27 @@ return {
       },
       duplicate = {
         fg = colors.fg,
-        bg = ""
+        bg = "",
       },
       duplicate_visible = {
         fg = colors.fg,
-        bg = ""
+        bg = "",
       },
       separator = {
         fg = colors.bg,
-        bg = ""
+        bg = "",
       },
       separator_selected = {
         fg = colors.bg,
-        bg = ""
+        bg = "",
       },
       separator_visible = {
         fg = colors.bg,
-        bg = ""
+        bg = "",
       },
       offset_separator = {
         fg = colors.bg,
-        bg = ""
+        bg = "",
       },
     },
   },
