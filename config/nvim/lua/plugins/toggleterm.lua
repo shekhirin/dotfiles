@@ -27,6 +27,9 @@ return {
           guifg = "#4B4F51",
         },
       },
+      on_open = function(term)
+        vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = term.bufnr })
+      end,
     })
   end,
 }
