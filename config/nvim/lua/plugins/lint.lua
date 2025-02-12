@@ -7,7 +7,11 @@ return {
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("RunLinter", { clear = true }),
       callback = function()
-        lint.try_lint("codespell")
+        local bufname = vim.api.nvim_buf_get_name(0)
+        -- Only run if file is in current working directory
+        if bufname:find(vim.loop.cwd() or "", 1, true) == 1 then
+          lint.try_lint("codespell")
+        end
       end,
     })
   end,
