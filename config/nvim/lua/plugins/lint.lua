@@ -4,6 +4,14 @@ return {
   config = function()
     local lint = require("lint")
 
+    -- Configure codespell to use the spellfile
+    lint.linters.codespell.cmd = "codespell"
+    lint.linters.codespell.args = {
+      "--ignore-words",
+      vim.opt.spellfile:get()[1], -- get() returns a table, we want the first value
+      "$FILENAME",
+    }
+
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("RunLinter", { clear = true }),
       callback = function()

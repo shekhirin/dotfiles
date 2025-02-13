@@ -40,6 +40,7 @@ local options = {
   title = true, -- set the title of window to the value of the titlestring
   confirm = true, -- confirm to save changes before exiting modified buffer
   fillchars = { eob = " " }, -- change the character at the end of buffer
+  spellfile = vim.fn.stdpath("config") .. "/spellfile.add", -- set custom spellfile location in neovim config directory
   -- cursorlineopt = "number",             -- set the cursorline
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
