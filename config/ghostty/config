@@ -1,6 +1,7 @@
 # https://github.com/mitchellh/ghostty/blob/main/src/config/Config.zig
 
-theme = catppuccin-mocha
+# Theme configuration with OS sync
+theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 font-family = JetBrains Mono
 font-family-bold = JetBrains Mono
