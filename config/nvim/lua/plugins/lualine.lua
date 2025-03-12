@@ -2,12 +2,14 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "meuter/lualine-so-fancy.nvim",
+    "nvim-lua/lsp-status.nvim",
   },
   enabled = true,
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
     local icons = require("config.icons")
+    local lsp_status = require("lsp-status")
     require("lualine").setup({
       options = {
         theme = "catppuccin",
@@ -48,6 +50,7 @@ return {
         },
         lualine_x = {
           "fancy_lsp_servers",
+          { function() return lsp_status.status() end },
           "fancy_diff",
           "progress",
         },

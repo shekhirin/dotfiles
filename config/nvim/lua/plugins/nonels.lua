@@ -61,6 +61,9 @@ return {
           diagnostics.yamllint,
           code_actions.gitsigns,
         },
+        on_init = function(new_client, _)
+          new_client.offset_encoding = "utf-32"
+        end,
         -- configure format on save
         on_attach = function(current_client, bufnr)
           if current_client.supports_method("textDocument/formatting") then

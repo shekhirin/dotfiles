@@ -21,16 +21,16 @@ return {
         --   },
         -- },
         server = {
-          --   cmd = function()
-          --     return { "rustup", "run", "nightly", "rust-analyzer", "--log-file", "/tmp/rust-analyzer.log" }
-          --   end,
+          cmd = function()
+            return { "rustup", "run", "nightly", "rust-analyzer", "--log-file", "/tmp/rust-analyzer.log" }
+          end,
           on_attach = require("config.lsp.on_attach"),
           -- standalone = false,
           settings = {
             -- rust-analyzer language server configuration
             ["rust-analyzer"] = {
               cargo = {
-                -- This prevents rust-analyzer’s cargo check and initial build-script and proc-macro building from
+                -- This prevents rust-analyzer's cargo check and initial build-script and proc-macro building from
                 -- locking the Cargo.lock at the expense of duplicating build artifacts.
                 targetDir = true,
                 features = "all",
