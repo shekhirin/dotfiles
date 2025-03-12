@@ -18,6 +18,7 @@ yabai -m config mouse_action2 resize
 yabai -m mouse_drop_action swap
 
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Anki$" manage=off
 
 # automatically focus the window below the cursor after a window/application is closed
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
