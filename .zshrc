@@ -15,6 +15,15 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+function source_bee_init_on_linux_dir() {
+    if [[ "$PWD" == /Volumes/Linux/linux* ]]; then
+        source bee-init
+    fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd source_bee_init_on_linux_dir
+
 export HOMEBREW_NO_ENV_HINTS=yes
 
 alias l='eza'
@@ -106,9 +115,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm@13/include"
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
-export PYENV_ROOT="$HOME/.pyenv"
-
-eval "$(pyenv init -)"
 
 alias get_idf='. $HOME/Projects/esp-idf/export.sh'
 export EDITOR=nvim

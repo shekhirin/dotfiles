@@ -20,3 +20,5 @@ keybind = ctrl+q=esc:q
 keybind = cmd+q=ignore
 
 command = "/bin/zsh -l -c 'zellij attach main || zellij -s main'"
+
+shell-integration-features = sudo
