@@ -1,8 +1,4 @@
 keybinds {
-    // Conflicts with zsh word jump keybinds
-    unbind "Alt Left"
-    unbind "Alt Right"
-
     tab {
         bind "i" { MoveTab "Left"; }
         bind "o" { MoveTab "Right"; }
@@ -15,6 +11,8 @@ keybinds {
         // Conflicts with zsh word jump keybinds
         unbind "Alt Left"
         unbind "Alt Right"
+        // Tmux
+        unbind "Ctrl b"
 
         bind "Alt h" { MoveFocusOrTab "Left"; }
         bind "Alt l" { MoveFocusOrTab "Right"; }
@@ -23,7 +21,6 @@ keybinds {
         // Conflicts with vim
         unbind "Ctrl o"
     }
-    unbind "Ctrl q"
 }
 
 plugins {
