@@ -1,18 +1,11 @@
-# Zsh
-source ~/zsh-snap/znap.zsh
-
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="robbyrussell"
-
 plugins=(
     git
     zsh-autosuggestions
     docker
     docker-compose
 )
-
 source $ZSH/oh-my-zsh.sh
 
 function source_bee_init_on_linux_dir() {
@@ -20,25 +13,19 @@ function source_bee_init_on_linux_dir() {
         source bee-init
     fi
 }
-
 autoload -U add-zsh-hook
 add-zsh-hook chpwd source_bee_init_on_linux_dir
 
 export HOMEBREW_NO_ENV_HINTS=yes
 
-alias l='eza'
-alias la='eza -a'
-alias ll='eza -lah'
-alias ls='eza --color=auto'
+source ~/.env.secrets
 
-alias cat='bat --paging=never'
+# ghostty word jumps
+bindkey "\e[1;3D" backward-word
+bindkey "\e[1;3C" forward-word
 
-alias cd='z'
-
-alias k=kubectl
-complete -F __start_kubectl k
-
-alias speed='npx speed-cloudflare-cli'
+alias ls=eza
+alias cd=z
 
 sugoi () {
     yabai --start-service
@@ -52,26 +39,18 @@ tell application "Finder" to set collapsed of windows to true
 END
     # Laptop
     yabai -m query --windows | jq -e '.[] | select(.app == "Slack")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Slack").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
-    # yabai -m query --windows | jq -e '.[] | select(.app == "Telegram")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
-    # yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
     yabai -m query --windows | jq -e '.[] | select(.app == "Slack")."is-visible" | not' && open /Applications/Slack.app
-    # yabai -m query --windows | jq -e '.[] | select(.app == "Telegram")."is-visible" | not' && open /Applications/Telegram.localized/Telegram.app
-    # yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."is-visible" | not' && open /System/Applications/Messages.app
-    yabai -m query --windows | jq '.[] | select(.app == "Slack").id' | xargs -I{} yabai -m window {} --display west --warp west
-    # yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --display west --warp east
-    # yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --display west --warp east
-    # yabai -m query --windows | jq '.[] | select(.app == "Telegram").id' | xargs -I{} yabai -m window {} --resize bottom:0:$(yabai -m query --windows | jq '.[] | 562 - select(.app == "Telegram").frame.h')
+    yabai -m query --windows | jq '.[] | select(.app == "Slack").id' | xargs -I{} yabai -m window {} --display east --warp east
     yabai -m query --windows | jq '.[] | select(.app == "Slack").id' | xargs -I{} yabai -m window {} --resize right:$(yabai -m query --windows | jq '.[] | 1200 - select(.app == "Slack").frame.w'):0
     yabai -m query --windows | jq -e '.[] | select(.app == "Slack")."split-type" == "horizontal"' && yabai -m query --windows | jq '.[] | select(.app == "Slack").id' | xargs -I{} yabai -m window {} --toggle split
     # Main monitor
     yabai -m query --windows | jq -e '.[] | select(.app == "Google Chrome")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Google Chrome").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
     yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."is-native-fullscreen"' && (yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --toggle native-fullscreen && sleep 1)
-    # yabai -m query --windows | jq -e '.[] | select(.app == "Messages")."split-type" == "vertical"' && yabai -m query --windows | jq '.[] | select(.app == "Messages").id' | xargs -I{} yabai -m window {} --toggle split
     yabai -m query --windows | jq -e '.[] | select(.app == "Google Chrome")."is-visible" | not' && open /Applications/Google\ Chrome.app
     yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."is-visible" | not' && open /Applications/Ghostty.app
     yabai -m query --windows | jq -e '.[] | select(.app == "Ghostty")."split-type" == "horizontal"' && yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --toggle split
-    yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --display east --warp east
-    yabai -m query --windows | jq '.[] | select(.app == "Google Chrome").id' | xargs -I{} yabai -m window {} --display east --warp west
+    yabai -m query --windows | jq '.[] | select(.app == "Ghostty").id' | xargs -I{} yabai -m window {} --display west --warp west
+    yabai -m query --windows | jq '.[] | select(.app == "Google Chrome").id' | xargs -I{} yabai -m window {} --display west --warp west
     yabai -m query --windows | jq '.[] | select(.app == "Ghostty") | .space' | xargs -I{} yabai -m space {} --balance
 }
 kirei () {
@@ -94,71 +73,6 @@ END
     yabai --stop-service
 }
 
-export GPG_TTY=$(tty)
-
-export GOPATH="$HOME/go"
-
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-source ~/.env.secrets
-
-export LDFLAGS="-L/opt/homebrew/opt/llvm@13/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm@13/include"
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-
-alias get_idf='. $HOME/Projects/esp-idf/export.sh'
-export EDITOR=nvim
-
-export BAT_THEME=ansi
-
-# eval "$(atuin init zsh)"
-eval "$(zoxide init zsh)"
-
-# ghostty word jumps
-bindkey "\e[1;3D" backward-word
-bindkey "\e[1;3C" forward-word
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-
-# jj completions
-source <(jj util completion zsh)
-
-# Kurtosis
-# eval "$(kurtosis completion zsh)"
-
-# PATH
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
-export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$PATH:$HOME/.foundry/bin"
-export PATH="/opt/homebrew/opt/llvm@13/bin:$PATH"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/zls:$PATH"
-export PATH=$PATH:$HOME/.zokrates/bin
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/llvm@17/bin:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
-. "$HOME/.cargo/env"
-
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-
 mptb() {
     cast from-rlp "$1" | \
         jq '.[0:17] |
@@ -168,12 +82,4 @@ mptb() {
 }
 
 eval "$(starship init zsh)"
-
-export NARGO_HOME="/Users/shekhirin/.nargo"
-
-export PATH="$PATH:$NARGO_HOME/bin"
-export PATH="${HOME}/.bb:${PATH}"
-export PATH="/Users/shekhirin/.bb:$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/shekhirin/.cache/lm-studio/bin"
+eval "$(zoxide init zsh)"
