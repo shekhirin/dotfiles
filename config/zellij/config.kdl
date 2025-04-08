@@ -1,4 +1,8 @@
 keybinds {
+    // Conflicts with zsh word jump keybinds
+    unbind "Alt Left"
+    unbind "Alt Right"
+
     tab {
         bind "i" { MoveTab "Left"; }
         bind "o" { MoveTab "Right"; }
@@ -19,36 +23,41 @@ keybinds {
         // Conflicts with vim
         unbind "Ctrl o"
     }
-    unbind "Ctrl b"
     unbind "Ctrl q"
 }
 
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
 }
-
-// Disable session serialization (and thus also resurrection)
-session_serialization false
-
-// Toggle between having pane frames around the panes
-// Options:
-//   - true (default)
-//   - false
-pane_frames false
 
 // Choose the theme that is specified in the themes section.
 // Default: default
-//
+// 
 theme "catppuccin-mocha"
-
+ 
 // The name of the default layout to load on startup
 // Default: "default"
+// 
 default_layout "default"
-
+ 
 // The folder in which Zellij will look for layouts
-// TODO: use $HOME or ~ (https://github.com/zellij-org/zellij/issues/2764)
+// (Requires restart)
+// 
 layout_dir "/Users/shekhirin/.config/zellij/layout"
-
+ 
+// Toggle having pane frames around the panes
+// Options:
+//   - true (default, enabled)
+//   - false
+// 
+pane_frames false
+ 
+// Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
+// Options:
+//   - true (default)
+//   - false
+// 
+session_serialization false
+// Whether to show tips on startup
+// Default: true
+// 
+show_startup_tips false

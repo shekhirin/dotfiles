@@ -40,8 +40,6 @@ return {
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   },
-  glsl_analyzer = {},
-  glslls = {},
   verible = {
     root_dir = function()
       return vim.loop.cwd()
