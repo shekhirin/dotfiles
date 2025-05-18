@@ -12,8 +12,8 @@ font-feature = -calt
 
 clipboard-paste-protection = false
 mouse-hide-while-typing = true
-# window-decoration = false
-# macos-titlebar-style = tabs
+
+resize-overlay = never
 
 # No accidental quit
 keybind = ctrl+q=esc:q
