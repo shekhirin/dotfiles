@@ -156,12 +156,6 @@ alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
 alt-c = 'exec-and-forget open -a /Applications/Google\ Chrome.app'
 alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-z = 'exec-and-forget open -a /Applications/Zed.app'
