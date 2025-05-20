@@ -120,10 +120,10 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#join-with
-alt-shift-left = 'join-with left'
-alt-shift-down = 'join-with down'
-alt-shift-up = 'join-with up'
-alt-shift-right = 'join-with right'
+alt-ctrl-left = 'join-with left'
+alt-ctrl-down = 'join-with down'
+alt-ctrl-up = 'join-with up'
+alt-ctrl-right = 'join-with right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
 alt-ctrl-shift-f = 'fullscreen'
