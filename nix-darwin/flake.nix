@@ -13,6 +13,11 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    rudy-src = {
+      url = "github:samscott89/rudy";
+      flake = false;
+    };
   };
 
   outputs =
@@ -29,9 +34,28 @@
       system = "aarch64-darwin";
       user = "shekhirin";
 
+      rudyOverlay = final: prev: {
+        rudy-lldb = pkgs.rustPlatform.buildRustPackage {
+          pname = "rudy-lldb";
+          version = "git";
+          src = inputs.rudy-src;
+
+          buildAndTestSubdir = "rudy-lldb";
+
+          cargoPatches = [ ./pkgs/rudy/Cargo.lock.patch ];
+          cargoHash = "sha256-AY82Fh3Mtjry9sI9OYXJ14iWSZoZWe+1CInZpZLAtG4=";
+
+          postInstall = ''
+            install -Dm644 rudy-lldb/python/rudy_lldb.py \
+              $out/share/lldb/rudy_lldb.py
+          '';
+        };
+      };
+
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ ];
+
+        overlays = [ rudyOverlay ];
         config = {
           allowUnfree = true;
         };
@@ -120,6 +144,10 @@
             };
           }
         ];
+      };
+
+      packages."${system}" = {
+        rudy-lldb = pkgs.rudy-lldb;
       };
     };
 }

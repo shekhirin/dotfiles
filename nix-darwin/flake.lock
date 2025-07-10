@@ -188,7 +188,24 @@
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "rudy-src": "rudy-src"
+      }
+    },
+    "rudy-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752083505,
+        "narHash": "sha256-VGQUBffiuVALuws8i9jTe9/2eNtYjJOcJ5ABJE426KI=",
+        "owner": "samscott89",
+        "repo": "rudy",
+        "rev": "c74ab9a34d9df1c4734022cd37dee0b4a47b30dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samscott89",
+        "repo": "rudy",
+        "type": "github"
       }
     },
     "systems": {

@@ -3,6 +3,9 @@
   lib,
   ...
 }:
+let
+  rudy = pkgs.rudy-lldb;
+in
 {
   home.stateVersion = "25.05";
 
@@ -27,6 +30,8 @@
 
     # rust
     rustup
+    lldb
+    rudy-lldb
 
     docker
 
@@ -109,6 +114,11 @@
       '')
     ];
   };
+
+  home.file.".lldb/rudy_lldb.py".source = "${rudy}/share/lldb/rudy_lldb.py";
+  home.file.".lldbinit".text = ''
+    command script import ~/.lldb/rudy_lldb.py
+  '';
 
   programs.aerospace = {
     enable = true; # installs & configures AeroSpace
