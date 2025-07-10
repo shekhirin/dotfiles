@@ -45,6 +45,12 @@
           system.stateVersion = 6;
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
+          system.activationScripts.postActivation.text = ''
+            printf "Disabling Spotlight on /nix... "
+            touch /nix/.metadata_never_index
+            echo "ok"
+          '';
+
           ## Nix settings
           # Let Determinate Nix handle Nix configuration
           nix.enable = false;
@@ -107,9 +113,7 @@
                 autoUpdate = true;
                 upgrade = true;
               };
-              brews = [
-                "pinentry-mac"
-              ];
+              brews = [ ];
               casks = [
                 "orbstack"
               ];

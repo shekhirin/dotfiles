@@ -28,16 +28,22 @@
 
     docker
 
+    # GPG
     gnupg
+    pinentry_mac
 
     bun
     uv
   ];
 
+  home.file.".gnupg/gpg-agent.conf".text = ''
+    pinentry-program ${lib.getExe pkgs.pinentry_mac}
+  '';
+
   home.activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
-    ${pkgs.rustup}/bin/rustup toolchain install stable nightly
-    ${pkgs.rustup}/bin/rustup default stable
-    ${pkgs.rustup}/bin/rustup component add --toolchain nightly rust-analyzer
+    ${lib.getExe pkgs.rustup} toolchain install stable nightly
+    ${lib.getExe pkgs.rustup} default stable
+    ${lib.getExe pkgs.rustup} component add --toolchain nightly rust-analyzer
   '';
 
   programs.nushell = {
