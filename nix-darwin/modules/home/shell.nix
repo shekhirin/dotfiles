@@ -6,6 +6,7 @@
 
     shellAliases = {
       cd = "z";
+      cat = "bat";
     };
     configFile.source = ../../home/config.nu;
     environmentVariables = {
