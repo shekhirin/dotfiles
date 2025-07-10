@@ -27,6 +27,8 @@ in
     bun
     uv
     
+    # Apps from nixpkgs
+    signal-desktop-bin
   ];
 
   home.activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''

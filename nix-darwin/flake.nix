@@ -39,6 +39,7 @@
 
         overlays = [ 
           (import ./overlays/rudy.nix { inherit inputs; })
+          (import ./overlays/signal-desktop-bin.nix)
         ];
         config = {
           allowUnfree = true;
