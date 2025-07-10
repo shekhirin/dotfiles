@@ -10,6 +10,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    mac-app-util.url = "github:hraban/mac-app-util";
+
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
@@ -19,6 +21,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      mac-app-util,
       nix-homebrew,
       ...
     }:
@@ -68,6 +71,9 @@
         modules = [
           configuration
 
+          # Fix .app application files
+          mac-app-util.darwinModules.default
+
           ## Home‑Manager
           home-manager.darwinModules.home-manager
           {
@@ -75,9 +81,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
+            home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
             home-manager.users.shekhirin = import ./home/home.nix;
           }
 
+          # Homebrew
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
@@ -99,7 +107,9 @@
                 autoUpdate = true;
                 upgrade = true;
               };
-              brews = [ ];
+              brews = [
+                "pinentry-mac"
+              ];
               casks = [
                 "orbstack"
               ];

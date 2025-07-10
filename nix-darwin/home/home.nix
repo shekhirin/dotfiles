@@ -28,6 +28,8 @@
 
     docker
 
+    gnupg
+
     bun
     uv
   ];
