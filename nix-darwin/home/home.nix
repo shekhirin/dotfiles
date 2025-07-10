@@ -17,6 +17,9 @@
     bat
     eza
     just
+    vim
+    delta
+    git
 
     # nix
     nil
@@ -53,6 +56,9 @@
       cd = "z";
     };
     configFile.source = ./config.nu;
+    environmentVariables = {
+      EDITOR = "vim";
+    };
   };
 
   programs.zsh = {
@@ -322,5 +328,18 @@
     enable = true;
 
     enableNushellIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      core = {
+        editor = "vim";
+        pager = "delta";
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+    };
   };
 }
