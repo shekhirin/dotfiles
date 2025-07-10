@@ -18,7 +18,6 @@
     eza
     just
     vim
-    delta
     git
 
     # nix
@@ -332,13 +331,10 @@
 
   programs.git = {
     enable = true;
+    delta.enable = true;
     extraConfig = {
       core = {
         editor = "vim";
-        pager = "delta";
-      };
-      interactive = {
-        diffFilter = "delta --color-only";
       };
     };
   };
