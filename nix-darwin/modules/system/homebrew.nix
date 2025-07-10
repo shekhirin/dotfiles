@@ -24,6 +24,8 @@
     brews = [ ];
     casks = [
       "orbstack"
+      "spotify"
+      "telegram"
     ];
   };
 }
