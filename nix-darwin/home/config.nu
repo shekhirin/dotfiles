@@ -20,9 +20,9 @@ $env.config.hooks = {
     }
 }
 
-def yolo [...args] {
+def --wrapped yolo [...rest] {
     cd ~/Projects/oss/claude-workspaces/claude-yolo
-    ^docker compose run --rm claude-yolo ...$args
+    ^docker compose run --rm claude-yolo ...$rest
 }
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
