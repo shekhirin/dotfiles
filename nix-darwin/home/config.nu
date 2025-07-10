@@ -64,5 +64,64 @@ def gtv [] {
   git tag | sort
 }
 
+# Additional git helper functions
+def ggf [] {
+  git push --force origin (git_current_branch)
+}
+
+def ggfl [] {
+  git push --force-with-lease origin (git_current_branch)
+}
+
+def ggl [] {
+  git pull origin (git_current_branch)
+}
+
+def ggp [] {
+  git push origin (git_current_branch)
+}
+
+def ggpnp [] {
+  ggl
+  ggp
+}
+
+def ggu [] {
+  git pull --rebase origin (git_current_branch)
+}
+
+def groh [] {
+  git reset origin/(git_current_branch) --hard
+}
+
+def gluc [] {
+  git pull upstream (git_current_branch)
+}
+
+def gccd [...args] {
+  git clone --recurse-submodules ...$args
+  let repo_name = ($args | last | path basename | str replace ".git" "")
+  cd $repo_name
+}
+
+def gignored [] {
+  git ls-files -v | grep "^[[:lower:]]"
+}
+
+def gunwip [] {
+  if (git log -n 1 | grep -q "--wip--") {
+    git reset HEAD~1
+  }
+}
+
+def gwip [] {
+  git add -A
+  let deleted_files = (git ls-files --deleted | complete)
+  if $deleted_files.exit_code == 0 {
+    git rm ...(git ls-files --deleted | lines)
+  }
+  git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"
+}
+
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
