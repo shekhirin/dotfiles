@@ -26,6 +26,9 @@ in
 
     bun
     uv
+    
+    # apps
+    spotify
   ];
 
   home.activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''

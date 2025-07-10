@@ -37,7 +37,10 @@
       pkgs = import nixpkgs {
         inherit system;
 
-        overlays = [ (import ./overlays/rudy.nix { inherit inputs; }) ];
+        overlays = [ 
+          (import ./overlays/rudy.nix { inherit inputs; })
+          (import ./overlays/spotify.nix)
+        ];
         config = {
           allowUnfree = true;
         };
