@@ -5,3 +5,7 @@ switch:
 
 build:
     sudo darwin-rebuild build --flake nix-darwin/
+
+update:
+    cd nix-darwin && nix flake update
+    sudo darwin-rebuild switch --flake nix-darwin/
