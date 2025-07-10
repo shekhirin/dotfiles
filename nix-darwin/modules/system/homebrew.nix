@@ -26,6 +26,7 @@
       "orbstack"
       "spotify"
       "telegram"
+      "thebrowsercompany-dia"
     ];
   };
 }
