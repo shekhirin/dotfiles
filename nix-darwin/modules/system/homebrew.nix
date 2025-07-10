@@ -27,6 +27,8 @@
       "spotify"
       "telegram"
       "thebrowsercompany-dia"
+      # Notion kept in homebrew due to https://github.com/nix-community/nixpkgs-update/issues/468
+      "notion"
     ];
   };
 }

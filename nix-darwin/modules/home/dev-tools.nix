@@ -30,8 +30,8 @@ in
     # Apps from nixpkgs
     signal-desktop-bin
     slack
-    notion-app
     anki-bin
+    # notion-app - moved to homebrew due to https://github.com/nix-community/nixpkgs-update/issues/468
     
     # Foundry tools (nightly)
     foundry-bin
