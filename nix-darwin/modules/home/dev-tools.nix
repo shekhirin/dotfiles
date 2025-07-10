@@ -29,6 +29,9 @@ in
     
     # Apps from nixpkgs
     signal-desktop-bin
+    slack
+    notion-app
+    anki-bin
     
     # Foundry tools (nightly)
     foundry-bin
