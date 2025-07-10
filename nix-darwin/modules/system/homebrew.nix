@@ -20,6 +20,7 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
+      cleanup = "zap";
     };
     brews = [ ];
     casks = [
