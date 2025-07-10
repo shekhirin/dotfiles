@@ -29,6 +29,9 @@ in
     
     # Apps from nixpkgs
     signal-desktop-bin
+    
+    # Foundry tools (nightly)
+    foundry-bin
   ];
 
   home.activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''

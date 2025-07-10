@@ -14,6 +14,8 @@
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
+    foundry.url = "github:shazow/foundry.nix";
+
     rudy-src = {
       url = "github:samscott89/rudy";
       flake = false;
@@ -28,6 +30,7 @@
       home-manager,
       mac-app-util,
       nix-homebrew,
+      foundry,
       ...
     }:
     let
@@ -40,6 +43,7 @@
         overlays = [ 
           (import ./overlays/rudy.nix { inherit inputs; })
           (import ./overlays/signal-desktop-bin.nix)
+          foundry.overlay
         ];
         config = {
           allowUnfree = true;
