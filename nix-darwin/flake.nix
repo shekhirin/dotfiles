@@ -43,6 +43,7 @@
         overlays = [ 
           (import ./overlays/rudy.nix { inherit inputs; })
           (import ./overlays/signal-desktop-bin.nix)
+          (import ./overlays/spotify.nix)
           foundry.overlay
         ];
         config = {

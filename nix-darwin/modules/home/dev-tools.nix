@@ -31,6 +31,7 @@ in
     signal-desktop-bin
     slack
     anki-bin
+    spotify
     # notion-app - moved to homebrew due to https://github.com/nix-community/nixpkgs-update/issues/468
     
     # Foundry tools (nightly)
