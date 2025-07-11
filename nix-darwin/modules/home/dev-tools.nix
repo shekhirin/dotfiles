@@ -14,6 +14,8 @@ in
     ripgrep
     fd
     fastfetch
+    kubectl
+    kubectx
 
     # nix
     nil
