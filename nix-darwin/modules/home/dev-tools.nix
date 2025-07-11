@@ -11,6 +11,7 @@ in
     just
     vim
     git
+    git-lfs
     ripgrep
     fd
     fastfetch
