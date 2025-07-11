@@ -16,6 +16,7 @@ in
     fastfetch
     kubectl
     kubectx
+    btop
 
     # nix
     nil
