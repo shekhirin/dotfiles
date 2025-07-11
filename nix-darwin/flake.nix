@@ -45,6 +45,7 @@
           (import ./overlays/signal-desktop-bin.nix)
           (import ./overlays/spotify.nix)
           (import ./overlays/notion.nix)
+          (import ./overlays/protonvpn.nix)
           foundry.overlay
         ];
         config = {
