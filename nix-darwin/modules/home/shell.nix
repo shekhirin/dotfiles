@@ -42,7 +42,7 @@
       gcf = "git config --list";
       gcl = "git clone --recursive";
       gclean = "git clean -fd";
-      gcm = "git checkout master";
+      # gcm is defined as a function in config.nu to use git_main_branch
       gcmsg = "git commit -m";
       gcas = "git commit -a -s";
       gcasm = "git commit -a -s -m";

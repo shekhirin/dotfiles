@@ -30,6 +30,49 @@ def git_current_branch [] {
   git branch --show-current | str trim -c "\n"
 }
 
+def git_main_branch [] {
+  # Check if we're in a git repo
+  if (git rev-parse --git-dir | complete).exit_code != 0 {
+    return ""
+  }
+  
+  # List of possible main branch names to check
+  let refs = [
+    "refs/heads/main"
+    "refs/heads/trunk" 
+    "refs/heads/mainline"
+    "refs/heads/default"
+    "refs/heads/stable"
+    "refs/heads/master"
+    "refs/remotes/origin/main"
+    "refs/remotes/origin/trunk"
+    "refs/remotes/origin/mainline" 
+    "refs/remotes/origin/default"
+    "refs/remotes/origin/stable"
+    "refs/remotes/origin/master"
+    "refs/remotes/upstream/main"
+    "refs/remotes/upstream/trunk"
+    "refs/remotes/upstream/mainline"
+    "refs/remotes/upstream/default" 
+    "refs/remotes/upstream/stable"
+    "refs/remotes/upstream/master"
+  ]
+  
+  # Check each ref to see if it exists
+  for ref in $refs {
+    if (git show-ref --verify $ref | complete).exit_code == 0 {
+      return ($ref | split row "/" | last)
+    }
+  }
+  
+  # Fallback to master
+  "master"
+}
+
+def gcm [] {
+  git checkout (git_main_branch)
+}
+
 def ggpull [] {
   git pull origin (git_current_branch)
 }
