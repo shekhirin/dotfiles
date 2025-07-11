@@ -18,6 +18,7 @@ in
     kubectl
     kubectx
     btop
+    claude-code
 
     # nix
     nil
