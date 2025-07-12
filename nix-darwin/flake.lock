@@ -90,11 +90,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1752138704,
-        "narHash": "sha256-pMRHu3sKhXW6jBuxyuEVE77frIo+IjgSLD4mhEUVJv0=",
+        "lastModified": 1752311419,
+        "narHash": "sha256-2OY4KND3B32yLV1WIPyqaJIQfXljAORw+6QnJWuUUsI=",
         "owner": "shazow",
         "repo": "foundry.nix",
-        "rev": "9d4000266bf2f0b9e95cc62aec9a41508fec203a",
+        "rev": "074d939e9fa32ed64def13bc64372a2ec5be8779",
         "type": "github"
       },
       "original": {
@@ -110,11 +110,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752180332,
-        "narHash": "sha256-CCufHi/GclygJZbbsKyTvqylz5E3pH2oHFL9ycB8YMM=",
+        "lastModified": 1752286566,
+        "narHash": "sha256-A4nftqiNz2bNihz0bKY94Hq/6ydR6UQOcGioeL7iymY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3978bcd6961847385121db30c58dbd444d4a73df",
+        "rev": "392ddb642abec771d63688c49fa7bcbb9d2a5717",
         "type": "github"
       },
       "original": {
@@ -244,11 +244,11 @@
     "rudy-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1752083505,
-        "narHash": "sha256-VGQUBffiuVALuws8i9jTe9/2eNtYjJOcJ5ABJE426KI=",
+        "lastModified": 1752247913,
+        "narHash": "sha256-bMmXhtygK9hIldJFUGHBzBE7M4grfokniebB94+28oo=",
         "owner": "samscott89",
         "repo": "rudy",
-        "rev": "c74ab9a34d9df1c4734022cd37dee0b4a47b30dc",
+        "rev": "558e8e12d4a92bb8dcefd951beb8c434d6802413",
         "type": "github"
       },
       "original": {
