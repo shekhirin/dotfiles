@@ -1,15 +1,9 @@
-{ config, pkgs, lib, user, ... }:
+{ user, ... }:
 
 {
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 6;
-  
-  system.activationScripts.postActivation.text = ''
-    printf "Disabling Spotlight on /nix... "
-    touch /nix/.metadata_never_index
-    echo "ok"
-  '';
 
   ## Nix settings
   # Let Determinate Nix handle Nix configuration
