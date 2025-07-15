@@ -6,7 +6,30 @@ $env.config.hooks = {
     pre_execution: [
         {||
             if "ZELLIJ" in $env {
-                ^zellij action rename-tab (commandline)
+                let cmd = (commandline | str trim)
+                let title = if ($cmd | str length) > 0 {
+                    let parts = ($cmd | split row ' ')
+                    let binary = ($parts | first | path basename)
+                    let args = ($parts | skip 1)
+                    
+                    # Start with just the binary name
+                    mut result = $binary
+                    
+                    # Add arguments one by one while staying under 30 characters
+                    for arg in $args {
+                        let test_result = $"($result) ($arg)"
+                        if ($test_result | str length) <= 30 {
+                            $result = $test_result
+                        } else {
+                            break
+                        }
+                    }
+                    
+                    $result
+                } else {
+                    $cmd
+                }
+                ^zellij action rename-tab $title
             }
         }
     ]
