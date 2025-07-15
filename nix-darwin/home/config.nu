@@ -49,7 +49,8 @@ $env.config.hooks = {
 
 def --wrapped yolo [...rest] {
     cd ~/Projects/oss/claude-workspaces/claude-yolo
-    ^docker compose run --rm claude-yolo ...$rest
+    ^docker compose up -d
+    ^docker exec -it claude-yolo /home/claude/.npm-global/bin/claude --dangerously-skip-permissions ...$rest
 }
 
 # Git helper functions

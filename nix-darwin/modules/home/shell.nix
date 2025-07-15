@@ -194,7 +194,7 @@
         chpwd_functions+=(zellij_tab_name_update)
 
         yolo () {
-          (cd ~/Projects/oss/claude-workspaces/claude-yolo && docker compose run --rm claude-yolo "$@")
+          (cd ~/Projects/oss/claude-workspaces/claude-yolo && docker compose up -d && docker exec -it claude-yolo /home/claude/.npm-global/bin/claude --dangerously-skip-permissions "$@")
         }
 
         eval "$(starship init zsh)"
