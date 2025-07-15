@@ -77,6 +77,34 @@ def gmom [] {
   git merge $"origin/(git_main_branch)"
 }
 
+def glum [] {
+  git pull upstream (git_main_branch)
+}
+
+def gmum [] {
+  git merge $"upstream/(git_main_branch)"
+}
+
+def grbm [] {
+  git rebase (git_main_branch)
+}
+
+def grbom [] {
+  git rebase $"origin/(git_main_branch)"
+}
+
+def gswm [] {
+  git switch (git_main_branch)
+}
+
+def gupom [] {
+  git pull --rebase origin (git_main_branch)
+}
+
+def gupomi [] {
+  git pull --rebase=interactive origin (git_main_branch)
+}
+
 def ggpull [] {
   git pull origin (git_current_branch)
 }

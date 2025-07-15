@@ -81,12 +81,12 @@
       gloga = "git log --oneline --decorate --graph --all";
       glol = "git log --graph --pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset --abbrev-commit";
       glola = "git log --graph --pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset --abbrev-commit --all";
-      glum = "git pull upstream master";
+      # glum is now defined as a function in config.nu to use git_main_branch
       gm = "git merge";
       # gmom is now defined as a function in config.nu to use git_main_branch
       gmt = "git mergetool --no-prompt";
       gmtvim = "git mergetool --no-prompt --tool=vimdiff";
-      gmum = "git merge upstream/master";
+      # gmum is now defined as a function in config.nu to use git_main_branch
       gma = "git merge --abort";
       gp = "git push";
       gpd = "git push --dry-run";
@@ -101,9 +101,9 @@
       grba = "git rebase --abort";
       grbc = "git rebase --continue";
       grbi = "git rebase -i";
-      grbm = "git rebase master";
+      # grbm is now defined as a function in config.nu to use git_main_branch
       grbd = "git rebase develop";
-      grbom = "git rebase origin/master";
+      # grbom is now defined as a function in config.nu to use git_main_branch
       grbo = "git rebase --onto";
       grbs = "git rebase --skip";
       grh = "git reset HEAD";
@@ -140,7 +140,7 @@
       gsu = "git submodule update";
       gsw = "git switch";
       gswc = "git switch -c";
-      gswm = "git switch master";
+      # gswm is now defined as a function in config.nu to use git_main_branch
       gswd = "git switch develop";
       gts = "git tag -s";
       gunignore = "git update-index --no-assume-unchanged";
@@ -148,8 +148,8 @@
       gupv = "git pull --rebase -v";
       gupa = "git pull --rebase --autostash";
       gupav = "git pull --rebase --autostash -v";
-      gupom = "git pull --rebase origin master";
-      gupomi = "git pull --rebase=interactive origin master";
+      # gupom is now defined as a function in config.nu to use git_main_branch
+      # gupomi is now defined as a function in config.nu to use git_main_branch
       gam = "git am";
       gamc = "git am --continue";
       gams = "git am --skip";
