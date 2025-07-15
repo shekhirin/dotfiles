@@ -81,12 +81,9 @@
       gloga = "git log --oneline --decorate --graph --all";
       glol = "git log --graph --pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset --abbrev-commit";
       glola = "git log --graph --pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset --abbrev-commit --all";
-      glum = "git pull upstream master";
       gm = "git merge";
-      gmom = "git merge origin/master";
       gmt = "git mergetool --no-prompt";
       gmtvim = "git mergetool --no-prompt --tool=vimdiff";
-      gmum = "git merge upstream/master";
       gma = "git merge --abort";
       gp = "git push";
       gpd = "git push --dry-run";
@@ -101,9 +98,7 @@
       grba = "git rebase --abort";
       grbc = "git rebase --continue";
       grbi = "git rebase -i";
-      grbm = "git rebase master";
       grbd = "git rebase develop";
-      grbom = "git rebase origin/master";
       grbo = "git rebase --onto";
       grbs = "git rebase --skip";
       grh = "git reset HEAD";
@@ -140,7 +135,6 @@
       gsu = "git submodule update";
       gsw = "git switch";
       gswc = "git switch -c";
-      gswm = "git switch master";
       gswd = "git switch develop";
       gts = "git tag -s";
       gunignore = "git update-index --no-assume-unchanged";
@@ -148,8 +142,6 @@
       gupv = "git pull --rebase -v";
       gupa = "git pull --rebase --autostash";
       gupav = "git pull --rebase --autostash -v";
-      gupom = "git pull --rebase origin master";
-      gupomi = "git pull --rebase=interactive origin master";
       gam = "git am";
       gamc = "git am --continue";
       gams = "git am --skip";
