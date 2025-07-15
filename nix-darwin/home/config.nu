@@ -73,6 +73,10 @@ def gcm [] {
   git checkout (git_main_branch)
 }
 
+def gmom [] {
+  git merge $"origin/(git_main_branch)"
+}
+
 def ggpull [] {
   git pull origin (git_current_branch)
 }

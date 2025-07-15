@@ -83,7 +83,7 @@
       glola = "git log --graph --pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset --abbrev-commit --all";
       glum = "git pull upstream master";
       gm = "git merge";
-      gmom = "git merge origin/master";
+      # gmom is now defined as a function in config.nu to use git_main_branch
       gmt = "git mergetool --no-prompt";
       gmtvim = "git mergetool --no-prompt --tool=vimdiff";
       gmum = "git merge upstream/master";
