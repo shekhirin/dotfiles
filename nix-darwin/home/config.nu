@@ -2,22 +2,26 @@ $env.config.show_banner = false
 $env.config.highlight_resolved_externals = true
 
 $env.config.hooks = {
-    pre_execution: [{
-        append {
-            let context = if (commandline | is-not-empty) {
-                commandline | split row ' ' | take 1
-            } else {
-                basename $env.LAST_PWD
+    # Show the command that is about to run
+    pre_execution: [
+        {||
+            if "ZELLIJ" in $env {
+                ^zellij action rename-tab (commandline)
             }
-            zellij action rename-tab $"($context)"
         }
-    }]
-    env_change: {
-        PWD: [{|before, after|
-            $env.LAST_PWD = $after
-            zellij action rename-tab $"(basename $after)"
-        }]
-    }
+    ]
+
+    # After the command finishes, show the working directory
+    pre_prompt: [
+        {||
+            if "ZELLIJ" in $env {
+                let dir = (pwd | path basename)
+                # uncomment next line to include the last exit code
+                # let dir = $"($dir) [($env.LAST_EXIT_CODE)]"
+                ^zellij action rename-tab $dir
+            }
+        }
+    ]
 }
 
 def --wrapped yolo [...rest] {
