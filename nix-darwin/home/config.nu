@@ -202,5 +202,10 @@ def gwip [] {
   git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"
 }
 
+# Add cargo bin to PATH
+# TODO: This should ideally be done in home.nix via home.sessionPath or home.sessionVariables
+# but home manager's PATH management doesn't seem to work properly with nushell
+$env.PATH = ($env.PATH | append $"($env.HOME)/.cargo/bin")
+
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
