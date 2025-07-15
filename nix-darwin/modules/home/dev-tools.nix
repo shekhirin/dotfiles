@@ -45,6 +45,7 @@ in
                     # Error: "1Password is not installed inside of /Applications. Please move 1Password and restart the app."
     tailscale
     protonvpn
+    protonmail-bridge
     
     # Foundry tools (nightly)
     foundry-bin
