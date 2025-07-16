@@ -19,6 +19,11 @@
     home = "/Users/${user}";
   };
 
+  ## Tailscale
+  services.tailscale = {
+    enable = true;
+  };
+
   ## Touch‑ID sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 }
