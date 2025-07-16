@@ -1,4 +1,4 @@
-{ user, ... }:
+{ user, pkgs, config, lib, ... }:
 
 {
   ## Core system
@@ -26,4 +26,23 @@
 
   ## Touch‑ID sudo
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  ## Dock configuration
+  local.dock = {
+    enable = true;
+    username = user;
+    entries = [
+      { path = "/Applications/Dia.app"; }
+      { path = "/System/Applications/Mail.app"; }
+      { path = "/System/Applications/Calendar.app"; }
+      { path = "/System/Applications/Messages.app"; }
+      { path = "${pkgs.slack}/Applications/Slack.app"; }
+      { path = "/Applications/Telegram.app"; }
+      { path = "${pkgs.spotify}/Applications/Spotify.app"; }
+      { path = "${pkgs.notion-app}/Applications/Notion.app"; }
+      { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
+      { path = "/Applications/Zed.app"; }
+      { path = "/System/Applications/System Settings.app"; }
+    ];
+  };
 }

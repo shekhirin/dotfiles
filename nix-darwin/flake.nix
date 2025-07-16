@@ -10,7 +10,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    mac-app-util.url = "github:hraban/mac-app-util";
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -18,6 +17,11 @@
 
     rudy-src = {
       url = "github:samscott89/rudy";
+      flake = false;
+    };
+
+    dock-module = {
+      url = "github:dustinlyons/nixos-config";
       flake = false;
     };
   };
@@ -28,9 +32,9 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      mac-app-util,
       nix-homebrew,
       foundry,
+      dock-module,
       ...
     }:
     let
@@ -66,8 +70,9 @@
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/system/homebrew.nix
 
-          # Fix .app application files
-          mac-app-util.darwinModules.default
+          # Dock configuration
+          "${dock-module}/modules/darwin/dock"
+
 
           # Home-Manager
           home-manager.darwinModules.home-manager
@@ -76,7 +81,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
+            home-manager.sharedModules = [ ];
             home-manager.users.${user} = import ./modules/home/default.nix;
           }
           
