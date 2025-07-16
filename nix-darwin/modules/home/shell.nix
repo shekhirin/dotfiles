@@ -149,7 +149,7 @@
       gamscp = "git am --show-current-patch";
       gwch = "git whatchanged -p --abbrev-commit --pretty=medium";
     };
-    configFile.source = ../../home/config.nu;
+    configFile.source = ./config.nu;
     environmentVariables = {
       EDITOR = "vim";
     };
