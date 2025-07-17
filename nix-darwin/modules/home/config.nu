@@ -53,7 +53,7 @@ def --wrapped yolo [...rest] {
     if ($container_status.stdout | str trim) == "" {
         ^docker compose up -d
     }
-    ^docker exec -it claude-yolo claude --dangerously-skip-permissions ...$rest
+    ^docker exec -it claude-yolo bash -c $'export PATH="/home/claude/.foundry/bin:/home/claude/.cargo/bin:/home/claude/.npm-global/bin:/home/claude/.local/bin:$PATH" && source /home/claude/.cargo/env && claude --dangerously-skip-permissions ($rest | str join " ")'
 }
 
 # Git helper functions
