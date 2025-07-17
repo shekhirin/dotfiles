@@ -24,9 +24,11 @@
     };
     brews = [ ];
     casks = [
+      "bambu-studio"
       "orbstack"
       "telegram"
       "thebrowsercompany-dia"
+      "vuescan"
     ];
   };
 }
