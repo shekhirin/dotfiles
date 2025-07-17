@@ -32,6 +32,9 @@ in
     lldb
     rudy-lldb
 
+    # go
+    go
+
     docker
 
     bun
