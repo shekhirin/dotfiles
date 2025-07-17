@@ -15,6 +15,7 @@ in
     ripgrep
     fd
     fastfetch
+    glow
     kubectl
     kubectx
     btop
