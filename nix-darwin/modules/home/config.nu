@@ -38,7 +38,7 @@ $env.config.hooks = {
     pre_prompt: [
         {||
             if "ZELLIJ" in $env {
-                let dir = (pwd | path basename)
+                let dir = if (pwd) == ($env.HOME) { "~" } else { (pwd | path basename) }
                 # uncomment next line to include the last exit code
                 # let dir = $"($dir) [($env.LAST_EXIT_CODE)]"
                 ^zellij action rename-tab $dir
