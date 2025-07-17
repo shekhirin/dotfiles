@@ -27,6 +27,11 @@
   ## Touch‑ID sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  ## System defaults
+  system.defaults = {
+    screencapture.location = "~/Pictures/Screenshots";
+  };
+
   ## Dock configuration
   local.dock = {
     enable = true;
