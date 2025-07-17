@@ -17,6 +17,7 @@ in
     fastfetch
     glow
     kubectl
+    starship
     kubectx
     btop
     claude-code

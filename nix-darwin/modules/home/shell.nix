@@ -193,12 +193,20 @@
         zellij_tab_name_update
         chpwd_functions+=(zellij_tab_name_update)
 
-        eval "$(starship init zsh)"
         if [[ -z "$CLAUDECODE" ]]; then
           eval "$(zoxide init --cmd cd zsh)"
         fi
       '')
     ];
+  };
+  
+  programs.starship = {
+    enable = true;
+    settings = {
+      directory = {
+        truncate_to_repo = false;
+      };
+    };
   };
 
   programs.zoxide = {

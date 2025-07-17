@@ -234,5 +234,3 @@ def gwip [] {
 # but home manager's PATH management doesn't seem to work properly with nushell
 $env.PATH = ($env.PATH | append $"($env.HOME)/.cargo/bin")
 
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
