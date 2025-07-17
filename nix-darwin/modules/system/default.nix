@@ -30,6 +30,7 @@
   ## System defaults
   system.defaults = {
     screencapture.location = "~/Pictures/Screenshots";
+    dock.autohide = true;
   };
 
   ## Dock configuration
