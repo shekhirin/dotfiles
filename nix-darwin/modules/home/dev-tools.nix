@@ -38,12 +38,15 @@ in
     # build tools
     cmake
     protobuf
+    ccache
 
     # containerization
     docker
 
     # package managers
     bun
+    
+    # python
     uv
     
     # Apps from nixpkgs
