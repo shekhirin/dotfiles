@@ -35,8 +35,14 @@ in
     # go
     go
 
+    # build tools
+    cmake
+    protobuf
+
+    # containerization
     docker
 
+    # package managers
     bun
     uv
     
