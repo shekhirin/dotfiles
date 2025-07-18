@@ -152,6 +152,7 @@
     configFile.source = ./config.nu;
     environmentVariables = {
       EDITOR = "vim";
+      PKG_CONFIG_PATH = "${pkgs.ffmpeg.dev}/lib/pkgconfig";
     };
   };
 
@@ -173,9 +174,13 @@
       ];
     };
 
+    envExtra = ''
+      export HOMEBREW_NO_ENV_HINTS=yes
+      export PKG_CONFIG_PATH="${pkgs.ffmpeg.dev}/lib/pkgconfig"
+    '';
+
     initContent = lib.mkMerge [
       (lib.mkOrder 550 ''
-        export HOMEBREW_NO_ENV_HINTS=yes
         source ~/.env.secrets
 
         bindkey "\e[1;3D" backward-word

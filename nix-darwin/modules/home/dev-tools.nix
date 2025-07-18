@@ -39,6 +39,8 @@ in
     cmake
     protobuf
     ccache
+    pkg-config
+    ffmpeg.dev
 
     # containerization
     docker
@@ -85,4 +87,5 @@ in
       };
     };
   };
+
 }
