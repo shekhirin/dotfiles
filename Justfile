@@ -9,3 +9,4 @@ build:
 update:
     cd nix-darwin && nix flake update
     sudo darwin-rebuild switch --flake nix-darwin/
+    brew upgrade --cask --greedy
