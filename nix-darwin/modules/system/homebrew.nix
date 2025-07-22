@@ -30,5 +30,8 @@
       "thebrowsercompany-dia"
       "vuescan"
     ];
+    masApps = {
+      "Xcode" = 497799835;
+    };
   };
 }
