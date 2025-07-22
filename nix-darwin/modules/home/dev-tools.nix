@@ -22,6 +22,7 @@ in
     kubectx
     btop
     claude-code
+    direnv
 
     # nix
     nil
