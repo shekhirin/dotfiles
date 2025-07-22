@@ -213,4 +213,65 @@
       show_startup_tips = false;
     };
   };
+
+  programs.zed-editor = {
+    enable = true;
+    userSettings = {
+      agent = {
+        default_profile = "write";
+        always_allow_tool_actions = false;
+        default_model = {
+          provider = "zed.dev";
+          model = "claude-opus-4";
+        };
+        model_parameters = [ ];
+        inline_assistant_model = {
+          provider = "zed.dev";
+          model = "claude-opus-4";
+        };
+      };
+      vim_mode = true;
+      ui_font_size = 14;
+      buffer_font_size = 12;
+      buffer_font_features = { calt = false; };
+      buffer_font_fallbacks = [ "JetBrains Mono" ];
+      theme = {
+        mode = "system";
+        light = "Catppuccin Latte - No Italics";
+        dark = "Catppuccin Mocha - No Italics";
+      };
+      lsp = {
+        rust-analyzer = {
+          initialization_options = {
+            cargo = {
+              targetDir = true;
+              features = "all";
+            };
+            check = {
+              command = "clippy";
+              extraArgs = [ "--no-deps" ];
+              features = "all";
+            };
+            rustfmt = {
+              extraArgs = [ "+nightly" ];
+            };
+          };
+        };
+      };
+      languages = {
+        TOML = {
+          language_servers = [ "!Taplo" ];
+        };
+      };
+      file_types = {
+        Dockerfile = [ "Dockerfile*" ];
+      };
+      autosave = "on_focus_change";
+      terminal = { 
+        shell = { 
+          program = "nu"; 
+        }; 
+      };
+    };
+  };
 }

@@ -49,7 +49,7 @@
       { path = "${pkgs.spotify}/Applications/Spotify.app"; }
       { path = "${pkgs.notion-app}/Applications/Notion.app"; }
       { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
-      { path = "/Applications/Zed.app"; }
+      { path = "${pkgs.zed-editor}/Applications/Zed.app"; }
       { path = "${pkgs.anki-bin}/Applications/Anki.app"; }
       { path = "/System/Applications/System Settings.app"; }
     ];
