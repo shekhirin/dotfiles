@@ -15,11 +15,6 @@
 
     foundry.url = "github:shazow/foundry.nix";
 
-    rudy-src = {
-      url = "github:samscott89/rudy";
-      flake = false;
-    };
-
     dock-module = {
       url = "github:dustinlyons/nixos-config";
       flake = false;
@@ -45,7 +40,6 @@
         inherit system;
 
         overlays = [ 
-          (import ./overlays/rudy.nix { inherit inputs; })
           (import ./overlays/signal-desktop-bin.nix)
           (import ./overlays/spotify.nix)
           (import ./overlays/notion.nix)
@@ -93,7 +87,6 @@
       };
 
       packages."${system}" = {
-        rudy-lldb = pkgs.rudy-lldb;
       };
     };
 }
