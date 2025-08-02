@@ -20,6 +20,7 @@
     btop
     claude-code
     direnv
+    yt-dlp
 
     # nix
     nil
