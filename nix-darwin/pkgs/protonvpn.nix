@@ -1,4 +1,9 @@
-{ lib, stdenv, fetchurl, undmg }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  undmg,
+}:
 
 # TODO: Add auto-update functionality using nix-update
 # Can be enabled by:

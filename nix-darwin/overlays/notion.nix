@@ -8,6 +8,6 @@ final: prev: {
       url = "https://desktop-release.notion-static.com/Notion-4.15.3-universal.dmg";
       sha256 = "sha256-Go8g7s3vupw5ep+NOh9StJ2gaGKe38oICaJO+x/kPUk=";
     };
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ prev.undmg ];
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ prev.undmg ];
   });
 }

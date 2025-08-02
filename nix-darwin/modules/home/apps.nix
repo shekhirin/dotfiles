@@ -233,7 +233,9 @@
       vim_mode = true;
       ui_font_size = 14;
       buffer_font_size = 12;
-      buffer_font_features = { calt = false; };
+      buffer_font_features = {
+        calt = false;
+      };
       buffer_font_fallbacks = [ "JetBrains Mono" ];
       theme = {
         mode = "system";
@@ -267,10 +269,10 @@
         Dockerfile = [ "Dockerfile*" ];
       };
       autosave = "on_focus_change";
-      terminal = { 
-        shell = { 
-          program = "nu"; 
-        }; 
+      terminal = {
+        shell = {
+          program = "nu";
+        };
       };
     };
   };

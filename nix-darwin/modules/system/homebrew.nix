@@ -1,4 +1,11 @@
-{ config, pkgs, lib, user, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  user,
+  inputs,
+  ...
+}:
 
 {
   nix-homebrew = {

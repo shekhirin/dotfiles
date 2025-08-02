@@ -1,4 +1,10 @@
-{ user, pkgs, config, lib, ... }:
+{
+  user,
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   ## Core system

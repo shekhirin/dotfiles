@@ -10,7 +10,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     foundry.url = "github:shazow/foundry.nix";
@@ -39,7 +38,7 @@
       pkgs = import nixpkgs {
         inherit system;
 
-        overlays = [ 
+        overlays = [
           (import ./overlays/signal-desktop-bin.nix)
           (import ./overlays/spotify.nix)
           (import ./overlays/notion.nix)
@@ -59,14 +58,13 @@
         modules = [
           # System configuration
           ./modules/system/default.nix
-          
+
           # Homebrew
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/system/homebrew.nix
 
           # Dock configuration
           "${dock-module}/modules/darwin/dock"
-
 
           # Home-Manager
           home-manager.darwinModules.home-manager
@@ -78,7 +76,7 @@
             home-manager.sharedModules = [ ];
             home-manager.users.${user} = import ./modules/home/default.nix;
           }
-          
+
           # Set system revision for rebuild tracking
           {
             system.configurationRevision = self.rev or self.dirtyRev or null;

@@ -7,7 +7,7 @@
     shellAliases = {
       cd = "z";
       cat = "bat";
-      
+
       # Git aliases
       s = "git status -sb";
       g = "git";
@@ -152,7 +152,6 @@
     configFile.source = ./config.nu;
     environmentVariables = {
       EDITOR = "vim";
-      PKG_CONFIG_PATH = "${pkgs.ffmpeg.dev}/lib/pkgconfig";
     };
   };
 
@@ -176,7 +175,6 @@
 
     envExtra = ''
       export HOMEBREW_NO_ENV_HINTS=yes
-      export PKG_CONFIG_PATH="${pkgs.ffmpeg.dev}/lib/pkgconfig"
     '';
 
     initContent = lib.mkMerge [
@@ -204,7 +202,7 @@
       '')
     ];
   };
-  
+
   programs.starship = {
     enable = true;
     enableNushellIntegration = true;
