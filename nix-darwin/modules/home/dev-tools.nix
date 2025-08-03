@@ -34,6 +34,9 @@
     # go
     go
 
+    # zig
+    zls
+
     # build tools
     cmake
     protobuf
