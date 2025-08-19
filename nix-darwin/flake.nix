@@ -12,8 +12,6 @@
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
-    foundry.url = "github:shazow/foundry.nix";
-
     dock-module = {
       url = "github:dustinlyons/nixos-config";
       flake = false;
@@ -27,7 +25,6 @@
       nix-darwin,
       home-manager,
       nix-homebrew,
-      foundry,
       dock-module,
       ...
     }:
@@ -43,7 +40,6 @@
           (import ./overlays/spotify.nix)
           (import ./overlays/notion.nix)
           (import ./overlays/protonvpn.nix)
-          foundry.overlay
         ];
         config = {
           allowUnfree = true;

@@ -21,6 +21,7 @@
     claude-code
     direnv
     yt-dlp
+    foundry
 
     # nix
     nil
@@ -64,9 +65,6 @@
     tailscale
     protonvpn
     protonmail-bridge
-
-    # Foundry tools (nightly)
-    foundry-bin
   ];
 
   home.activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
