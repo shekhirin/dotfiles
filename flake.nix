@@ -18,6 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Colmena for deployment
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     # macOS-specific
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     
@@ -33,6 +39,7 @@
     nixpkgs-stable,
     nix-darwin,
     home-manager,
+    colmena,
     nix-homebrew,
     dock-module,
     ...
@@ -102,6 +109,30 @@
         ./machines/box/hardware-configuration.nix
         ./machines/box/default.nix
       ];
+    };
+
+    # Colmena deployment configuration
+    colmena = {
+      meta = {
+        nixpkgs = nixosPkgs;
+        specialArgs = { inherit inputs user; };
+        nodeNixpkgs = {
+          box = nixosPkgs;
+        };
+      };
+
+      box = {
+        deployment = {
+          targetHost = "box";
+          targetUser = "shekhirin";
+          buildOnTarget = false;
+        };
+        
+        imports = [
+          ./machines/box/hardware-configuration.nix
+          ./machines/box/default.nix
+        ];
+      };
     };
   };
 }

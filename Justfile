@@ -16,15 +16,27 @@ update-macbook:
     sudo darwin-rebuild switch --flake .#macbook
     brew upgrade --cask --greedy
 
-# Switch and deploy box via SSH
-switch-box:
-    nixos-rebuild switch --flake .#box --target-host shekhirin@box --use-remote-sudo
+# Deploy to box using Colmena
+deploy-box:
+    colmena apply --on box
 
-# Build box
+# Deploy to box using Colmena (verbose)
+deploy-box-verbose:
+    colmena apply --on box --verbose
+
+# Build box configuration with Colmena (without deploying)
 build-box:
-    nixos-rebuild build --flake .#box
+    colmena build --on box
+
+# Check box configuration
+check-box:
+    colmena eval --on box config.system.build.toplevel
+
+# Deploy to all nodes (currently just box)
+deploy-all:
+    colmena apply
 
 # Update and deploy to box
 update-box:
     nix flake update
-    nixos-rebuild switch --flake .#box --target-host shekhirin@box --use-remote-sudo
+    colmena apply --on box

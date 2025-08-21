@@ -27,6 +27,7 @@
     nil
     nixd
     nixfmt-rfc-style
+    colmena
 
     # rust
     rustup
