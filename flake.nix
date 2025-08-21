@@ -18,9 +18,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Colmena for deployment
+    # Colmena for deployment - pinned to 0.4.0 for compatibility
     colmena = {
-      url = "github:zhaofengli/colmena";
+      url = "github:zhaofengli/colmena/v0.4.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -111,21 +111,19 @@
       ];
     };
 
-    # Colmena deployment configuration
-    colmena = {
+    # Colmena deployment configuration (NixOS only)
+    colmenaHive = colmena.lib.makeHive {
       meta = {
         nixpkgs = nixosPkgs;
         specialArgs = { inherit inputs user; };
-        nodeNixpkgs = {
-          box = nixosPkgs;
-        };
       };
 
+      # Remote NixOS box
       box = {
         deployment = {
           targetHost = "box";
           targetUser = "shekhirin";
-          buildOnTarget = false;
+          buildOnTarget = true;
         };
         
         imports = [

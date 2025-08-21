@@ -2,41 +2,29 @@
 default:
     @just --list
 
-# Switch macbook
-switch-macbook:
-    sudo darwin-rebuild switch --flake .#macbook
+# Switch macbook locally
+switch-macbook *ARGS:
+    sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
 
-# Build macbook
-build-macbook:
-    sudo darwin-rebuild build --flake .#macbook
+# Build macbook configuration
+build-macbook *ARGS:
+    sudo darwin-rebuild build --flake .#macbook {{ARGS}}
 
-# Update macbook
-update-macbook:
+# Update and switch macbook
+update-macbook *ARGS:
     nix flake update
-    sudo darwin-rebuild switch --flake .#macbook
+    sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
     brew upgrade --cask --greedy
 
-# Deploy to box using Colmena
-deploy-box:
-    colmena apply --on box
+# Switch box using Colmena
+switch-box *ARGS:
+    colmena apply --on box {{ARGS}}
 
-# Deploy to box using Colmena (verbose)
-deploy-box-verbose:
-    colmena apply --on box --verbose
+# Build box configuration using Colmena
+build-box *ARGS:
+    colmena build --on box {{ARGS}}
 
-# Build box configuration with Colmena (without deploying)
-build-box:
-    colmena build --on box
-
-# Check box configuration
-check-box:
-    colmena eval --on box config.system.build.toplevel
-
-# Deploy to all nodes (currently just box)
-deploy-all:
-    colmena apply
-
-# Update and deploy to box
-update-box:
+# Update flake and switch box using Colmena
+update-box *ARGS:
     nix flake update
-    colmena apply --on box
+    colmena apply --on box {{ARGS}}

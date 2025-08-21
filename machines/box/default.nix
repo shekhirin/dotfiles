@@ -53,6 +53,9 @@
     ];
   };
 
+  # Allow passwordless sudo for deployment
+  security.sudo.wheelNeedsPassword = false;
+
   # System packages
   environment.systemPackages = with pkgs; [
     vim
