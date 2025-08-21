@@ -1,12 +1,30 @@
-default: switch
+# Display available commands
+default:
+    @just --list
 
-switch:
-    sudo darwin-rebuild switch --flake nix-darwin/
+# Switch macbook
+switch-macbook:
+    sudo darwin-rebuild switch --flake .#macbook
 
-build:
-    sudo darwin-rebuild build --flake nix-darwin/
+# Build macbook
+build-macbook:
+    sudo darwin-rebuild build --flake .#macbook
 
-update:
-    cd nix-darwin && nix flake update
-    sudo darwin-rebuild switch --flake nix-darwin/
+# Update macbook
+update-macbook:
+    nix flake update
+    sudo darwin-rebuild switch --flake .#macbook
     brew upgrade --cask --greedy
+
+# Switch and deploy box via SSH
+switch-box:
+    nixos-rebuild switch --flake .#box --target-host shekhirin@box --use-remote-sudo
+
+# Build box
+build-box:
+    nixos-rebuild build --flake .#box
+
+# Update and deploy to box
+update-box:
+    nix flake update
+    nixos-rebuild switch --flake .#box --target-host shekhirin@box --use-remote-sudo
