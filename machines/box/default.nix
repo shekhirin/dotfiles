@@ -1,4 +1,10 @@
-{ config, pkgs, lib, user, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  user,
+  ...
+}:
 
 {
   # Bootloader
@@ -45,7 +51,10 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Alexey Shekhirin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [ ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPW/RxwmcIDELwXMmja7fnzwIVTzIEDwqbqFSDDeCDHn shekhirin@shekhirin.local"
@@ -71,7 +80,10 @@
   programs.mosh.enable = true;
 
   # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # State version
   system.stateVersion = "25.05";
