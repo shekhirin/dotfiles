@@ -3,10 +3,15 @@
   pkgs,
   lib,
   user,
+  inputs,
   ...
 }:
 
 {
+  imports = [
+    ../../modules/common/nix-settings.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -65,10 +70,21 @@
   # Allow passwordless sudo for deployment
   security.sudo.wheelNeedsPassword = false;
 
+  # Home Manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.${user} = {
+      imports = [
+        ../../modules/common/packages.nix
+        ../../modules/home/shell.nix
+      ];
+      home.stateVersion = "25.05";
+    };
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
-    vim
-    git
     ghostty.terminfo
   ];
 
@@ -78,12 +94,6 @@
 
   # Programs
   programs.mosh.enable = true;
-
-  # Nix settings
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   # State version
   system.stateVersion = "25.05";

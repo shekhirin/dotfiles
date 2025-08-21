@@ -7,6 +7,9 @@
 }:
 
 {
+  imports = [
+    ../../modules/common/nix-settings.nix
+  ];
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 6;
@@ -15,7 +18,6 @@
   ## Nix settings
   # Let Determinate Nix handle Nix configuration
   nix.enable = false;
-  nix.settings.experimental-features = "nix-command flakes";
   nix.extraOptions = ''
     extra-platforms = aarch64-darwin
   '';

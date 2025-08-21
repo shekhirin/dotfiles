@@ -2,8 +2,14 @@
 
 {
   imports = [
+    # Common modules (shared between all machines)
+    ../common/packages.nix
+    
+    # Darwin-specific modules
+    ../darwin/development.nix
+    
+    # Platform-agnostic home modules
     ./shell.nix
-    ./dev-tools.nix
     ./apps.nix
     ./gpg.nix
   ];
