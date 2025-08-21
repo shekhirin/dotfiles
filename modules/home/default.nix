@@ -9,6 +9,7 @@
     # Darwin-specific modules
     ../darwin/development.nix
     ../darwin/gpg.nix
+    ../darwin/apps.nix
     
     # macOS-specific home modules
     ./apps.nix
