@@ -4,14 +4,14 @@
   imports = [
     # Common modules (shared between all machines)
     ../common/packages.nix
+    ../common/shell.nix
     
     # Darwin-specific modules
     ../darwin/development.nix
+    ../darwin/gpg.nix
     
-    # Platform-agnostic home modules
-    ./shell.nix
+    # macOS-specific home modules
     ./apps.nix
-    ./gpg.nix
   ];
 
   home.stateVersion = "25.05";

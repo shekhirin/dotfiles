@@ -77,7 +77,7 @@
     users.${user} = {
       imports = [
         ../../modules/common/packages.nix
-        ../../modules/home/shell.nix
+        ../../modules/common/shell.nix
       ];
       home.stateVersion = "25.05";
     };
