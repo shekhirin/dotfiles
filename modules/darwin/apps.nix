@@ -1,6 +1,36 @@
 { pkgs, lib, ... }:
 
 {
+  # GUI applications and macOS-specific packages
+  home.packages = with pkgs; [
+    # Apps from nixpkgs
+    signal-desktop-bin
+    slack
+    anki-bin
+    spotify
+    notion-app # using overlay for version 4.15.3 to fix auto-update
+    # _1password-gui # Commented out: needs to be in /Applications to work properly
+    # Error: "1Password is not installed inside of /Applications. Please move 1Password and restart the app."
+    tailscale
+    protonvpn
+    protonmail-bridge
+  ];
+
+  # ProtonMail Bridge service
+  launchd.agents.protonmail-bridge = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.protonmail-bridge}/bin/protonmail-bridge"
+        "--noninteractive"
+      ];
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/protonmail-bridge.stdout.log";
+      StandardErrorPath = "/tmp/protonmail-bridge.stderr.log";
+    };
+  };
+
   programs.aerospace = {
     enable = true; # installs & configures AeroSpace
     launchd.enable = true; # manage it via launchd (autostart)
