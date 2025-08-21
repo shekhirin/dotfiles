@@ -257,6 +257,13 @@
             rustfmt = {
               extraArgs = [ "+nightly" ];
             };
+            workspace = {
+              symbol = {
+                search = {
+                  kind = "all_symbols";
+                };
+              };
+            };
           };
         };
       };
