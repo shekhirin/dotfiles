@@ -2,5 +2,6 @@
 
 def u [] {
   nix-collect-garbage
-  sudo nixos-rebuild switch --flake github:shekhirin/dotfiles/main#box --option tarball-ttl 0
+  nix flake prefetch github:shekhirin/dotfiles
+  sudo nixos-rebuild switch --flake github:shekhirin/dotfiles#box
 }
