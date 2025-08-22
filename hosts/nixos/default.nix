@@ -9,7 +9,9 @@
 
 {
   imports = [
-    ../../modules/common/nix-settings.nix
+    ./hardware-configuration.nix
+    ../../modules/shared
+    ../../modules/nixos
     inputs.home-manager.nixosModules.home-manager
   ];
   # Bootloader
@@ -76,24 +78,12 @@
     useUserPackages = true;
     users.${user} = {
       imports = [
-        ../../modules/common/packages.nix
-        ../../modules/common/shell.nix
+        ../../modules/shared/packages.nix
+        ../../modules/shared/shell.nix
       ];
       home.stateVersion = "25.05";
     };
   };
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    ghostty.terminfo
-  ];
-
-  # Services
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
-
-  # Programs
-  programs.mosh.enable = true;
 
   # State version
   system.stateVersion = "25.05";

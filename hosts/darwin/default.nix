@@ -8,7 +8,7 @@
 
 {
   imports = [
-    ../../modules/common/nix-settings.nix
+    ../../modules/shared
   ];
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";

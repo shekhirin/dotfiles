@@ -74,11 +74,11 @@
         specialArgs = { inherit inputs user dock-module; };
 
         modules = [
-          ./machines/macbook/default.nix
+          ./hosts/darwin/default.nix
 
           # Homebrew
           nix-homebrew.darwinModules.nix-homebrew
-          ./machines/macbook/homebrew.nix
+          ./modules/darwin/homebrew.nix
 
           # Dock configuration
           "${dock-module}/modules/darwin/dock"
@@ -92,7 +92,20 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.users.${user} = import ./modules/home/default.nix;
+            home-manager.users.${user} = {
+              imports = [
+                # Common modules (shared between all machines)
+                ./modules/shared/packages.nix
+                ./modules/shared/shell.nix
+
+                # Darwin-specific modules
+                ./modules/darwin/development.nix
+                ./modules/darwin/gpg.nix
+                ./modules/darwin/apps.nix
+              ];
+
+              home.stateVersion = "25.05";
+            };
           }
 
           # Set system revision
@@ -109,8 +122,7 @@
         specialArgs = { inherit inputs user; };
 
         modules = [
-          ./machines/box/hardware-configuration.nix
-          ./machines/box/default.nix
+          ./hosts/nixos/default.nix
         ];
       };
 
@@ -130,8 +142,7 @@
           };
 
           imports = [
-            ./machines/box/hardware-configuration.nix
-            ./machines/box/default.nix
+            ./hosts/nixos/default.nix
           ];
         };
       };
