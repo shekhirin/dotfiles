@@ -1,7 +1,0 @@
-require("config.abbreviations")
-require("config.autocmds")
-require("config.ft")
-require("config.keymaps")
-require("config.lazy")
-require("config.options")
-require("config.user_commands")
