@@ -162,54 +162,6 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    dotDir = "${config.xdg.configHome}/zsh";
-    syntaxHighlighting.enable = true;
-
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-      plugins = [
-        "git"
-        "docker"
-        "docker-compose"
-      ];
-    };
-
-    envExtra = ''
-      export HOMEBREW_NO_ENV_HINTS=yes
-    '';
-
-    initContent = lib.mkMerge [
-      (lib.mkOrder 550 ''
-        source ~/.env.secrets
-
-        bindkey "\e[1;3D" backward-word
-        bindkey "\e[1;3C" forward-word
-      '')
-      (lib.mkAfter ''
-        zellij_tab_name_update() {
-          if [[ -n $ZELLIJ ]]; then
-            local current_dir=$PWD
-            [[ $current_dir == $HOME ]] && current_dir="~" || current_dir=''${current_dir##*/}
-            command nohup zellij action rename-tab $current_dir >/dev/null 2>&1
-          fi
-        }
-
-        zellij_tab_name_update
-        chpwd_functions+=(zellij_tab_name_update)
-
-        if [[ -z "$CLAUDECODE" ]]; then
-          eval "$(zoxide init --cmd cd zsh)"
-        fi
-      '')
-    ];
-  };
-
   programs.starship = {
     enable = true;
     enableNushellIntegration = true;
@@ -230,7 +182,6 @@
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
     enableNushellIntegration = true;
     nix-direnv.enable = true;
     config = {
