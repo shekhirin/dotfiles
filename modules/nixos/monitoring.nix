@@ -163,15 +163,18 @@ in
       name = "node.json";
       sha256 = "sha256:0fwm95q12pjsc342ckdbvbixv8p7s87riliv314073xj8v220b0k";
     };
-    "grafana-dashboards/reth.json".source = pkgs.runCommand "reth-dashboard.json" {
-      src = builtins.fetchurl {
-        url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
-        name = "reth.json";
-        sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
-      };
-    } ''
-      ${pkgs.gnused}/bin/sed 's/"query": "$\{VAR_INSTANCE_LABEL\}"/"query": "instance"/g' $src > $out
-    '';
+    "grafana-dashboards/reth.json".source =
+      pkgs.runCommand "reth-dashboard.json"
+        {
+          src = builtins.fetchurl {
+            url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
+            name = "reth.json";
+            sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
+          };
+        }
+        ''
+          ${pkgs.gnused}/bin/sed 's/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/' $src > $out
+        '';
   };
 
   # Node Exporter for system metrics
