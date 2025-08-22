@@ -46,8 +46,6 @@
       ...
     }:
     let
-      # Common variables
-      user = "shekhirin";
 
       # System-specific package sets
       darwinPkgs = import nixpkgs {
@@ -71,7 +69,7 @@
       darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = darwinPkgs;
-        specialArgs = { inherit inputs user dock-module; };
+        specialArgs = { inherit inputs dock-module; };
 
         modules = [
           ./hosts/darwin/default.nix
@@ -92,7 +90,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.users.${user} = {
+            home-manager.users.shekhirin = {
               imports = [
                 # Common modules (shared between all machines)
                 ./modules/shared/packages.nix
@@ -119,7 +117,7 @@
       nixosConfigurations.box = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
         pkgs = nixosPkgs;
-        specialArgs = { inherit inputs user; };
+        specialArgs = { inherit inputs; };
 
         modules = [
           ./hosts/nixos/default.nix
@@ -130,7 +128,7 @@
       colmenaHive = colmena.lib.makeHive {
         meta = {
           nixpkgs = nixosPkgs;
-          specialArgs = { inherit inputs user; };
+          specialArgs = { inherit inputs; };
         };
 
         # Remote NixOS box

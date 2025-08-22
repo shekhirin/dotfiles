@@ -1,15 +1,19 @@
 {
-  user,
   pkgs,
   config,
   lib,
   ...
 }:
 
+let
+  user = "shekhirin";
+in
 {
   imports = [
     ../../modules/shared
   ];
+
+  _module.args = { inherit user; };
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 6;

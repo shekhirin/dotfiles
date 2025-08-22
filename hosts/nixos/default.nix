@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  user,
   inputs,
   ...
 }:
@@ -55,7 +54,7 @@
   };
 
   # User configuration
-  users.users.${user} = {
+  users.users.shekhirin = {
     isNormalUser = true;
     description = "Alexey Shekhirin";
     shell = pkgs.nushell;
@@ -77,7 +76,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${user} = {
+    users.shekhirin = {
       imports = [
         ../../modules/shared/packages.nix
         ../../modules/shared/shell.nix
