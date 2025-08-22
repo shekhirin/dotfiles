@@ -48,7 +48,7 @@ in
           {
             targets = [ "localhost:${nodeExporterPort}" ];
             labels = {
-              instance = "box";
+              instance = config.networking.hostName;
             };
           }
         ];
@@ -106,8 +106,8 @@ in
       server = {
         http_addr = "0.0.0.0";
         http_port = 3000;
-        domain = "box";
-        root_url = "http://box:3000";
+        domain = config.networking.hostName;
+        root_url = "http://${config.networking.hostName}:3000";
       };
 
       # Allow anonymous access for local viewing
