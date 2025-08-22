@@ -2,11 +2,11 @@
 default:
     @just --list
 
-# Switch macbook locally
+# Switch macbook
 switch-macbook *ARGS:
     sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
 
-# Build macbook configuration
+# Build macbook
 build-macbook *ARGS:
     sudo darwin-rebuild build --flake .#macbook {{ARGS}}
 
@@ -16,15 +16,24 @@ update-macbook *ARGS:
     sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
     brew upgrade --cask --greedy
 
-# Switch box using Colmena
+# Switch box
 switch-box *ARGS:
     colmena apply --on box {{ARGS}}
 
-# Build box configuration using Colmena
+# Build box
 build-box *ARGS:
     colmena build --on box {{ARGS}}
 
-# Update flake and switch box using Colmena
+# Update flake and switch box
 update-box *ARGS:
     nix flake update
     colmena apply --on box {{ARGS}}
+
+# Switch both macbook and box
+switch-all: && switch-macbook switch-box
+
+# Build both macbook and box
+build-all: && build-macbook build-box
+
+# Update flake and switch both macbook and box
+update-all: && update-macbook update-box
