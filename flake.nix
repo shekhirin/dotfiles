@@ -4,7 +4,6 @@
   inputs = {
     # Core packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     # Darwin support
     nix-darwin = {
@@ -18,10 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Colmena for deployment - pinned to 0.4.0 for compatibility
-    colmena = {
-      url = "github:zhaofengli/colmena/v0.4.0";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+    # Ethereum.nix for blockchain node configurations
+    ethereum-nix = {
+      url = "github:shekhirin/ethereum.nix/fix-reth-datadir-duplication";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # macOS-specific
@@ -32,21 +31,14 @@
       flake = false;
     };
 
-    # Ethereum.nix for blockchain node configurations
-    ethereum-nix = {
-      url = "github:shekhirin/ethereum.nix/fix-reth-datadir-duplication";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-stable,
       nix-darwin,
       home-manager,
-      colmena,
       nix-homebrew,
       dock-module,
       ethereum-nix,
@@ -66,7 +58,7 @@
         config.allowUnfree = true;
       };
 
-      nixosPkgs = import nixpkgs-stable {
+      nixosPkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
           ethereum-nix.overlays.default
@@ -124,7 +116,7 @@
       };
 
       # NixOS configuration for the box
-      nixosConfigurations.box = nixpkgs-stable.lib.nixosSystem {
+      nixosConfigurations.box = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         pkgs = nixosPkgs;
         specialArgs = { inherit inputs; };
@@ -132,27 +124,6 @@
         modules = [
           ./hosts/nixos/default.nix
         ];
-      };
-
-      # Colmena deployment configuration (NixOS only)
-      colmenaHive = colmena.lib.makeHive {
-        meta = {
-          nixpkgs = nixosPkgs;
-          specialArgs = { inherit inputs; };
-        };
-
-        # Remote NixOS box
-        box = {
-          deployment = {
-            targetHost = "box";
-            targetUser = "shekhirin";
-            buildOnTarget = true;
-          };
-
-          imports = [
-            ./hosts/nixos/default.nix
-          ];
-        };
       };
 
       # Formatters for each system

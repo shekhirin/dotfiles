@@ -29,6 +29,7 @@
       "telegram"
       "thebrowsercompany-dia"
       "vuescan"
+      "stremio"
     ];
     masApps = {
       "Xcode" = 497799835;

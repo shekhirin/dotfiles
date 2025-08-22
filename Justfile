@@ -18,22 +18,13 @@ update-macbook *ARGS:
 
 # Switch box
 switch-box *ARGS:
-    colmena apply --on box {{ARGS}}
+    sudo nixos-rebuild switch --flake .#box {{ARGS}}
 
 # Build box
 build-box *ARGS:
-    colmena build --on box {{ARGS}}
+    sudo nixos-rebuild build --flake .#box {{ARGS}}
 
-# Update flake and switch box
+# Update and switch box
 update-box *ARGS:
     nix flake update
-    colmena apply --on box {{ARGS}}
-
-# Switch both macbook and box
-switch-all: && switch-macbook switch-box
-
-# Build both macbook and box
-build-all: && build-macbook build-box
-
-# Update flake and switch both macbook and box
-update-all: && update-macbook update-box
+    sudo nixos-rebuild switch --flake .#box {{ARGS}}

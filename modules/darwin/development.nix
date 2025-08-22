@@ -15,7 +15,6 @@
     ffmpeg
 
     # Deployment and orchestration
-    colmena
     kubectl
     kubectx
 
