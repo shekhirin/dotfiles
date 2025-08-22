@@ -148,9 +148,20 @@ in
           type = "file";
           disableDeletion = false;
           updateIntervalSeconds = 10;
-          options.path = "/var/lib/grafana/dashboards";
+          options = {
+            path = "/etc/grafana-dashboards";
+            foldersFromFilesStructure = true;
+          };
         }
       ];
+    };
+  };
+
+  environment.etc = {
+    "grafana-dashboards/node.json".source = builtins.fetchurl {
+      url = "https://grafana.com/api/dashboards/1860/revisions/41/download";
+      name = "node.json";
+      sha256 = "sha256:0fwm95q12pjsc342ckdbvbixv8p7s87riliv314073xj8v220b0k";
     };
   };
 
