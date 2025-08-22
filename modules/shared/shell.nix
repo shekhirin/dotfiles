@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 
@@ -153,7 +154,9 @@
       gamscp = "git am --show-current-patch";
       gwch = "git whatchanged -p --abbrev-commit --pretty=medium";
     };
-    configFile.source = ./config.nu;
+    configFile.text = 
+      builtins.readFile ./config.nu + 
+      (if pkgs.stdenv.isLinux then "\n" + builtins.readFile ./config.box.nu else "");
     environmentVariables = {
       EDITOR = "vim";
     };
