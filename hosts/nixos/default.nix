@@ -4,13 +4,18 @@
   ...
 }:
 
+let
+  user = "shekhirin";
+in
 {
   imports = [
     ./hardware-configuration.nix
     ../../modules/shared
     ../../modules/nixos
     inputs.home-manager.nixosModules.home-manager
+    inputs.ethereum-nix.nixosModules.default
   ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -52,7 +57,7 @@
   };
 
   # User configuration
-  users.users.shekhirin = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "Alexey Shekhirin";
     shell = pkgs.nushell;
@@ -74,13 +79,108 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.shekhirin = {
+    users.${user} = {
       imports = [
         ../../modules/shared/packages.nix
         ../../modules/shared/shell.nix
       ];
       home.stateVersion = "25.05";
     };
+  };
+
+  # Create lighthouse and reth data directories with correct permissions
+  systemd.tmpfiles.rules = [
+    "e /mnt/nvme 0755 ${user} users -"
+    "d /mnt/nvme/lighthouse 0755 ${user} users -"
+    "d /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
+    "Z /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
+    "d /mnt/nvme/reth 0755 ${user} users -"
+    "d /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
+    "Z /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
+  ];
+
+  # Create static lighthouse user
+  users.users.lighthouse-mainnet = {
+    isSystemUser = true;
+    group = "lighthouse-mainnet";
+    home = "/var/lib/lighthouse-mainnet";
+    createHome = true;
+  };
+  users.groups.lighthouse-mainnet = { };
+
+  # Create static reth user
+  users.users.reth-mainnet = {
+    isSystemUser = true;
+    group = "reth-mainnet";
+    home = "/var/lib/reth-mainnet";
+    createHome = true;
+  };
+  users.groups.reth-mainnet = { };
+
+  # Ethereum services
+  services.ethereum.lighthouse-beacon.mainnet = {
+    enable = true;
+    package = pkgs.lighthouse; # Explicitly specify the package
+    args = {
+      network = "mainnet";
+      datadir = "/mnt/nvme/lighthouse/mainnet";
+      http.enable = true;
+      http.address = "0.0.0.0";
+      http.port = 5052;
+      metrics.enable = true;
+      metrics.address = "0.0.0.0";
+      metrics.port = 5054;
+      execution-endpoint = "http://127.0.0.1:8551";
+      execution-jwt = "/mnt/nvme/reth/mainnet/jwt.hex";
+      checkpoint-sync-url = "https://sync-mainnet.beaconcha.in";
+      user = "lighthouse-mainnet";
+    };
+    extraArgs = [ "--purge-db-force" ];
+    openFirewall = false;
+  };
+
+  # Reth service
+  services.ethereum.reth.mainnet = {
+    enable = true;
+    package = pkgs.reth; # Explicitly specify the package
+    args = {
+      datadir = "/mnt/nvme/reth/mainnet";
+      chain = "mainnet";
+      http = {
+        enable = true;
+        addr = "0.0.0.0";
+        port = 8545;
+        api = [
+          "eth"
+          "net"
+          "web3"
+        ];
+      };
+      authrpc = {
+        addr = "127.0.0.1";
+        port = 8551;
+        jwtsecret = "/mnt/nvme/reth/mainnet/jwt.hex";
+      };
+      metrics = {
+        enable = true;
+        addr = "0.0.0.0";
+        port = 9001;
+      };
+    };
+    openFirewall = false;
+  };
+
+  # Override systemd security settings for lighthouse
+  systemd.services.lighthouse-beacon-mainnet.serviceConfig = {
+    DynamicUser = false;
+    ProtectSystem = "yes"; # Less restrictive than "strict"
+  };
+
+  # Override systemd security settings for reth
+  systemd.services.reth-mainnet.serviceConfig = {
+    DynamicUser = false;
+    ProtectSystem = "yes"; # Less restrictive than "strict"
+    User = "reth-mainnet";
   };
 
   # State version

@@ -31,6 +31,12 @@
       url = "github:dustinlyons/nixos-config";
       flake = false;
     };
+
+    # Ethereum.nix for blockchain node configurations
+    ethereum-nix = {
+      url = "github:shekhirin/ethereum.nix/fix-reth-datadir-duplication";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs =
@@ -43,6 +49,7 @@
       colmena,
       nix-homebrew,
       dock-module,
+      ethereum-nix,
       ...
     }:
     let
@@ -61,6 +68,9 @@
 
       nixosPkgs = import nixpkgs-stable {
         system = "x86_64-linux";
+        overlays = [
+          ethereum-nix.overlays.default
+        ];
         config.allowUnfree = true;
       };
     in
