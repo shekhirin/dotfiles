@@ -26,8 +26,6 @@
     # Nix development
     nil
     nixd
-    nixfmt
-    nixfmt-tree
   ];
 
   programs.zellij = {

@@ -135,5 +135,11 @@
           ];
         };
       };
+
+      # Formatters for each system
+      formatter = {
+        aarch64-darwin = darwinPkgs.nixfmt-tree;
+        x86_64-linux = nixosPkgs.nixfmt-tree;
+      };
     };
 }

@@ -6,28 +6,28 @@
     rustup
     lldb
     go
-    
+
     # Build tools
     cmake
     protobuf
     ccache
     pkg-config
     ffmpeg
-    
+
     # Deployment and orchestration
     colmena
     kubectl
     kubectx
-    
+
     # Specialized tools
     foundry
     uv
     bun
     yt-dlp
-    
+
     # Containerization
     docker
-    
+
     # Additional CLI tools
     claude-code
   ];

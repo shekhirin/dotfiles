@@ -5,7 +5,7 @@
     # Common modules (shared between all machines)
     ../common/packages.nix
     ../common/shell.nix
-    
+
     # Darwin-specific modules
     ../darwin/development.nix
     ../darwin/gpg.nix
