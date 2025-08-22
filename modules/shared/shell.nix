@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   programs.nushell = {
@@ -154,9 +149,9 @@
       gamscp = "git am --show-current-patch";
       gwch = "git whatchanged -p --abbrev-commit --pretty=medium";
     };
-    configFile.text = 
-      builtins.readFile ./config.nu + 
-      (if pkgs.stdenv.isLinux then "\n" + builtins.readFile ./config.box.nu else "");
+    configFile.text =
+      builtins.readFile ./config.nu
+      + (if pkgs.stdenv.isLinux then "\n" + builtins.readFile ./config.box.nu else "");
     environmentVariables = {
       EDITOR = "vim";
     };

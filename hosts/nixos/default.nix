@@ -90,11 +90,8 @@ in
 
   # Create lighthouse and reth data directories with correct permissions
   systemd.tmpfiles.rules = [
-    "e /mnt/nvme 0755 ${user} users -"
-    "d /mnt/nvme/lighthouse 0755 ${user} users -"
     "d /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
     "Z /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
-    "d /mnt/nvme/reth 0755 ${user} users -"
     "d /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
     "Z /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
   ];
