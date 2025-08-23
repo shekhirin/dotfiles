@@ -8,4 +8,9 @@
     webui = null;
     openFirewall = true;
   };
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 }
