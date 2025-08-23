@@ -8,5 +8,6 @@
     ./reth.nix
     ./lighthouse.nix
     ./monitoring.nix
+    ./media.nix
   ];
 }

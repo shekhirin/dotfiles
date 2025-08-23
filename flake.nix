@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Shoko packages (temporary until merged to nixpkgs)
+    nixpkgs-shoko = {
+      url = "github:diniamo/nixpkgs/shokoanime";
+    };
+
     # macOS-specific
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -42,6 +47,7 @@
       nix-homebrew,
       dock-module,
       ethereum-nix,
+      nixpkgs-shoko,
       ...
     }:
     let
@@ -62,6 +68,9 @@
         system = "x86_64-linux";
         overlays = [
           ethereum-nix.overlays.default
+          (final: prev: {
+            shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
+          })
         ];
         config.allowUnfree = true;
       };
@@ -123,6 +132,7 @@
 
         modules = [
           ./hosts/nixos/default.nix
+          "${nixpkgs-shoko}/nixos/modules/services/misc/shoko.nix"
         ];
       };
 

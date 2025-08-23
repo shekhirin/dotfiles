@@ -258,6 +258,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-shoko": {
+      "locked": {
+        "lastModified": 1754105476,
+        "narHash": "sha256-8zE/x5yvZ2MAtROHyM1Co2Af1G4XpNlesD63CpbqouE=",
+        "owner": "diniamo",
+        "repo": "nixpkgs",
+        "rev": "68835b06378a799c94f9c27290df9b131c2455f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "diniamo",
+        "ref": "shokoanime",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1747790854,
@@ -281,7 +297,8 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-shoko": "nixpkgs-shoko"
       }
     },
     "systems": {
