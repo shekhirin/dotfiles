@@ -175,7 +175,6 @@ in
         ''
           ${pkgs.gnused}/bin/sed \
             -e 's/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/' \
-            -e 's/"uid": "$''\{DS_PROMETHEUS}"/"uid": "prometheus"/' \
             $src > $out
         '';
   };
