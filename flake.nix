@@ -28,6 +28,12 @@
       url = "github:diniamo/nixpkgs/shokoanime";
     };
 
+    # Declarative Jellyfin configuration
+    declarative-jellyfin = {
+      url = "github:Sveske-Juice/declarative-jellyfin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # macOS-specific
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -48,6 +54,7 @@
       dock-module,
       ethereum-nix,
       nixpkgs-shoko,
+      declarative-jellyfin,
       ...
     }:
     let
@@ -133,6 +140,7 @@
         modules = [
           ./hosts/nixos/default.nix
           "${nixpkgs-shoko}/nixos/modules/services/misc/shoko.nix"
+          declarative-jellyfin.nixosModules.default
         ];
       };
 

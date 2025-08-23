@@ -18,7 +18,7 @@
     openFirewall = true;
   };
 
-  services.jellyfin = {
+  services.declarative-jellyfin = {
     enable = true;
     openFirewall = true;
   };
