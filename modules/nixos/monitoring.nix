@@ -214,7 +214,7 @@ in
 
   # Create dashboard directory with proper permissions
   systemd.tmpfiles.rules = [
-    "d /var/lib/grafana/dashboards 2755 grafana grafana -"
+    "d /var/lib/grafana/dashboards 0755 grafana grafana -"
   ];
 
   # Firewall configuration for monitoring services

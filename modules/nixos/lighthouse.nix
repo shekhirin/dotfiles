@@ -3,7 +3,8 @@
 {
   # Create lighthouse data directories with correct permissions
   systemd.tmpfiles.rules = [
-    "d /mnt/nvme/lighthouse/mainnet 2755 lighthouse-mainnet lighthouse-mainnet -"
+    "d /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
+    "Z /mnt/nvme/lighthouse/mainnet 0755 lighthouse-mainnet lighthouse-mainnet -"
   ];
 
   # Create static lighthouse user

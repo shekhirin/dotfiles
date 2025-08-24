@@ -3,7 +3,8 @@
 {
   # Create reth data directories with correct permissions
   systemd.tmpfiles.rules = [
-    "d /mnt/nvme/reth/mainnet 2755 reth-mainnet reth-mainnet -"
+    "d /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
+    "Z /mnt/nvme/reth/mainnet 0755 reth-mainnet reth-mainnet -"
   ];
 
   # Create static reth user

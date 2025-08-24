@@ -11,7 +11,8 @@ in
 
   # Create media directory with correct permissions
   systemd.tmpfiles.rules = [
-    "d /mnt/nvme/media 2755 root ${group} -"
+    "d /mnt/nvme/media 0755 root ${group} -"
+    "Z /mnt/nvme/media 0755 root ${group} -"
   ];
 
   # Media services configuration
