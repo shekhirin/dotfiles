@@ -37,17 +37,6 @@ in
       permissions.isAdministrator = true;
       hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
     };
-
-    system = {
-      pluginRepositories = [
-        {
-          content = {
-            Name = "Shokofin Stable";
-            Url = "https://raw.githubusercontent.com/ShokoAnime/Shokofin/metadata/stable/manifest.json";
-          };
-        }
-      ];
-    };
   };
 
   # Configure Jellyfin user to access media directory
