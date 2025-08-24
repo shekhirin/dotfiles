@@ -22,24 +22,10 @@ in
     openFirewall = true;
   };
 
-  # Use autobrr secret file from SOPS
-  sops.secrets.autobrr-session-secret = {
-    group = "${group}";
-  };
-
-  services.autobrr = {
+  # Prowlarr service configuration
+  services.prowlarr = {
     enable = true;
     openFirewall = true;
-    secretFile = config.sops.secrets.autobrr-session-secret.path;
-    settings = {
-      host = "0.0.0.0";
-      port = 7474;
-    };
-  };
-
-  # Configure autobrr user to access media directory
-  systemd.services.autobrr.serviceConfig = {
-    SupplementaryGroups = [ "${group}" ];
   };
 
   # qBittorrent service configuration
