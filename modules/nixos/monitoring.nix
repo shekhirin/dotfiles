@@ -52,8 +52,10 @@ let
             end;
           normalize
         ' "$src" \
-        ${lib.optionalString (extraSedCommands != [ ]) "| ${pkgs.gnused}/bin/sed -E "}
-        ${lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands} \
+        ${lib.optionalString (extraSedCommands != [ ])
+          ("| ${pkgs.gnused}/bin/sed -E "
+            + lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands)
+        } \
         > "$out"
       '';
 in
