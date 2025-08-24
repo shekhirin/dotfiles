@@ -34,6 +34,7 @@ in
 
     users.admin = {
       mutable = false;
+      permissions.isAdministrator = true;
       hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
     };
   };
