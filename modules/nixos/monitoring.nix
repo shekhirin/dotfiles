@@ -29,6 +29,20 @@ let
     if lighthouseMetricsEnabled then lighthouseConfig.args.metrics.address else null;
   lighthouseMetricsPort =
     if lighthouseMetricsEnabled then toString lighthouseConfig.args.metrics.port else null;
+
+  # Helper function to process Grafana dashboard JSON files
+  processDashboard =
+    name: src: extraSedCommands:
+    pkgs.runCommand "${name}-dashboard.json"
+      {
+        inherit src;
+      }
+      ''
+        ${pkgs.gnused}/bin/sed -E \
+          -e 's/"datasource":\s*(".*"|\{[\s\S]*?\})/"datasource": null/g' \
+          ${lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands} \
+          $src > $out
+      '';
 in
 {
   # SOPS secret for qBittorrent password
@@ -197,30 +211,28 @@ in
   };
 
   environment.etc = {
-    "grafana-dashboards/node.json".source = builtins.fetchurl {
+    "grafana-dashboards/node.json".source = processDashboard "node" (builtins.fetchurl {
       url = "https://grafana.com/api/dashboards/1860/revisions/41/download";
       name = "node.json";
       sha256 = "sha256:0fwm95q12pjsc342ckdbvbixv8p7s87riliv314073xj8v220b0k";
-    };
+    }) [ ];
+
     "grafana-dashboards/reth.json".source =
-      pkgs.runCommand "reth-dashboard.json"
-        {
-          src = builtins.fetchurl {
-            url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
-            name = "reth.json";
-            sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
-          };
-        }
-        ''
-          ${pkgs.gnused}/bin/sed \
-            -e 's/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/' \
-            $src > $out
-        '';
-    "grafana-dashboards/qbittorrent.json".source = builtins.fetchurl {
+      processDashboard "reth"
+        (builtins.fetchurl {
+          url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
+          name = "reth.json";
+          sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
+        })
+        [
+          ''s/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/''
+        ];
+
+    "grafana-dashboards/qbittorrent.json".source = processDashboard "qbittorrent" (builtins.fetchurl {
       url = "https://grafana.com/api/dashboards/15116/revisions/3/download";
       name = "qbittorrent.json";
       sha256 = "sha256:1a0gh607x15xni7f5m96wlym4m2a6ism1zpk7npv2b6pc8g928gm";
-    };
+    }) [ ];
   };
 
   # Node Exporter for system metrics
