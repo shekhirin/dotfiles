@@ -1,0 +1,9 @@
+keys:
+  - &darwin age15lt4mej9w0dacrk087wqpnj0emu9llzyx89376u77fp3xcgkrgzq73kvcy
+  - &nixos age1avrmxdzg2s63c9qa3qp0239xcdqdnuce8ta7h5phch90na7at4cstnnxtx
+creation_rules:
+  - path_regex: nixos/secrets.yaml$
+    key_groups:
+      - age:
+          - *darwin
+          - *nixos

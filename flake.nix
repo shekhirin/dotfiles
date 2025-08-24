@@ -34,14 +34,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Secret management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # macOS-specific
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
     dock-module = {
       url = "github:dustinlyons/nixos-config";
       flake = false;
     };
-
   };
 
   outputs =
@@ -50,11 +54,12 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      nix-homebrew,
-      dock-module,
       ethereum-nix,
       nixpkgs-shoko,
       declarative-jellyfin,
+      sops-nix,
+      nix-homebrew,
+      dock-module,
       ...
     }:
     let
@@ -141,6 +146,7 @@
           ./hosts/nixos/default.nix
           "${nixpkgs-shoko}/nixos/modules/services/misc/shoko.nix"
           declarative-jellyfin.nixosModules.default
+          sops-nix.nixosModules.sops
         ];
       };
 

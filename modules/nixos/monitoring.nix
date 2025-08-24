@@ -98,11 +98,20 @@ in
     ];
   };
 
+  # Use Grafana admin password from SOPS
+  sops.secrets.grafana-password = {
+    owner = config.users.users.grafana.name;
+  };
+
   # Grafana service for visualization
   services.grafana = {
     enable = true;
 
     settings = {
+      security = {
+        admin_password = "$__file{${config.sops.secrets.grafana-password.path}}";
+      };
+
       server = {
         http_addr = "0.0.0.0";
         http_port = 3000;

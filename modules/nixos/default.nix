@@ -9,5 +9,6 @@
     ./lighthouse.nix
     ./monitoring.nix
     ./media.nix
+    ./sops.nix
   ];
 }
