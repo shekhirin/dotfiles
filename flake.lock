@@ -92,16 +92,15 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1755872214,
-        "narHash": "sha256-4UucuByfM1AHnS8FetRuyqYL+gVoMb1xYIfwq5np2RU=",
-        "owner": "shekhirin",
+        "lastModified": 1756024297,
+        "narHash": "sha256-Bgj+cz85PO5eddeACB+UE6D+oK9+sbpqFybHTGRxwVU=",
+        "owner": "nix-community",
         "repo": "ethereum.nix",
-        "rev": "367f9b2dcf779fde6aa42a1bc8aee9b00f9a39a2",
+        "rev": "a86f9bb6e98a28063e28059a3ad0de7b446f2759",
         "type": "github"
       },
       "original": {
-        "owner": "shekhirin",
-        "ref": "fix-reth-datadir-duplication",
+        "owner": "nix-community",
         "repo": "ethereum.nix",
         "type": "github"
       }
@@ -196,11 +195,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755810213,
-        "narHash": "sha256-QdenO8f0PTg+tC6HuSvngKcbRZA5oZKmjUT+MXKOLQg=",
+        "lastModified": 1756022458,
+        "narHash": "sha256-J1i35r4HfNDdPpwL0vOBaZopQudAUVtartEerc1Jryc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6911d3e7f475f7b3558b4f5a6aba90fa86099baa",
+        "rev": "9e3a33c0bcbc25619e540b9dfea372282f8a9740",
         "type": "github"
       },
       "original": {
@@ -250,11 +249,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1755736253,
-        "narHash": "sha256-jlIQRypNhB1PcB1BE+expE4xZeJxzoAGr1iUbHQta8s=",
+        "lastModified": 1755829505,
+        "narHash": "sha256-4/Jd+LkQ2ssw8luQVkqVs9spDBVE6h/u/hC/tzngsPo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "596312aae91421d6923f18cecce934a7d3bfd6b8",
+        "rev": "f937f8ecd1c70efd7e9f90ba13dfb400cf559de4",
         "type": "github"
       },
       "original": {

@@ -19,7 +19,7 @@
 
     # Ethereum.nix for blockchain node configurations
     ethereum-nix = {
-      url = "github:shekhirin/ethereum.nix/fix-reth-datadir-duplication";
+      url = "github:nix-community/ethereum.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
