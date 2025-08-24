@@ -42,6 +42,26 @@ in
     SupplementaryGroups = [ "${group}" ];
   };
 
+  # qBittorrent service configuration
+  services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
+    serverConfig = {
+      LegalNotice.Accepted = true;
+      Preferences = {
+        WebUI = {
+          Username = "admin";
+          Password_PBKDF2 = "j5UlZYIvzsAsBS/KNRLm4w==:oGQ8qydG5D4Vydo8nImOvPIzYZtNzlOUUe4WllKLqAyNCNK55AOh9h6YTFNPZxO2cT3OVq/Ysi7xK5ynmP1Ymg==";
+        };
+      };
+    };
+  };
+
+  # Configure qbittorrent user to access media directory
+  systemd.services.qbittorrent.serviceConfig = {
+    SupplementaryGroups = [ "${group}" ];
+  };
+
   # Use Jellyfin admin password from SOPS
   sops.secrets.jellyfin-password = {
     owner = config.services.jellyfin.user;
