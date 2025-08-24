@@ -83,6 +83,7 @@
           (final: prev: {
             shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
             shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui;
+            qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix {};
           })
         ];
         config.allowUnfree = true;

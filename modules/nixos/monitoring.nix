@@ -10,6 +10,11 @@ let
   nodeExporterPort = toString config.services.prometheus.exporters.node.port;
   prometheusPort = toString config.services.prometheus.port;
 
+  # Get qBittorrent exporter configuration
+  qbittorrentExporterEnabled = config.services.qbittorrent-exporter.enable or false;
+  qbittorrentExporterPort =
+    if qbittorrentExporterEnabled then toString config.services.qbittorrent-exporter.port else null;
+
   # Get reth metrics configuration
   rethConfig = config.services.ethereum.reth.mainnet or null;
   rethMetricsEnabled = rethConfig != null && rethConfig.enable && rethConfig.args.metrics.enable;
@@ -26,6 +31,23 @@ let
     if lighthouseMetricsEnabled then toString lighthouseConfig.args.metrics.port else null;
 in
 {
+  # SOPS secret for qBittorrent password
+  sops.secrets.qbittorrent-password = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
+  # Enable qBittorrent exporter
+  services.qbittorrent-exporter = {
+    enable = true;
+    port = 9042;
+    qbittorrentHost = "localhost";
+    qbittorrentPort = 8080;
+    qbittorrentUsername = "admin";
+    environmentFile = config.sops.secrets.qbittorrent-password.path;
+  };
+
   # Prometheus service for metrics collection
   services.prometheus = {
     enable = true;
@@ -58,6 +80,19 @@ in
         static_configs = [
           {
             targets = [ "localhost:${prometheusPort}" ];
+          }
+        ];
+      }
+    ]
+    ++ lib.optionals qbittorrentExporterEnabled [
+      {
+        job_name = "qbittorrent";
+        static_configs = [
+          {
+            targets = [ "localhost:${qbittorrentExporterPort}" ];
+            labels = {
+              instance = "qbittorrent-exporter";
+            };
           }
         ];
       }

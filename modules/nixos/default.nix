@@ -10,5 +10,6 @@
     ./monitoring.nix
     ./media.nix
     ./sops.nix
+    ./qbittorrent-exporter.nix
   ];
 }
