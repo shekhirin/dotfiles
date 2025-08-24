@@ -216,6 +216,11 @@ in
             -e 's/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/' \
             $src > $out
         '';
+    "grafana-dashboards/qbittorrent.json".source = builtins.fetchurl {
+      url = "https://grafana.com/api/dashboards/15116/revisions/3/download";
+      name = "qbittorrent.json";
+      sha256 = "sha256:1a0gh607x15xni7f5m96wlym4m2a6ism1zpk7npv2b6pc8g928gm";
+    };
   };
 
   # Node Exporter for system metrics
