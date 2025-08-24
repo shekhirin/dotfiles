@@ -17,8 +17,7 @@
 
   # Create monero data directory with correct permissions
   systemd.tmpfiles.rules = [
-    "d /mnt/nvme/monero 0755 monero monero -"
-    "Z /mnt/nvme/monero 0755 monero monero -"
+    "d /mnt/nvme/monero 2755 monero monero -"
   ];
 
   # Open firewall ports for Monero P2P
