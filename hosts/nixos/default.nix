@@ -83,6 +83,7 @@ in
       imports = [
         ../../modules/shared/packages.nix
         ../../modules/shared/shell.nix
+        ../../modules/nixos/shell.nix
       ];
       home.stateVersion = "25.05";
     };
