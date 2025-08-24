@@ -32,7 +32,10 @@ in
     enable = true;
     openFirewall = true;
 
-    users.admin.hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
+    users.admin = {
+      mutable = false;
+      hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
+    };
   };
 
   # Configure Jellyfin user to access media directory
