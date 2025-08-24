@@ -45,6 +45,7 @@ in
     qbittorrentHost = "localhost";
     qbittorrentPort = 8080;
     qbittorrentUsername = "admin";
+    enableHighCardinality = true;
     environmentFile = config.sops.secrets.qbittorrent-password.path;
   };
 

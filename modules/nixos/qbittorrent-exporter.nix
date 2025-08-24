@@ -51,6 +51,12 @@ in
       description = "Open firewall port for the exporter";
     };
 
+    enableHighCardinality = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Enable high cardinality metrics (qbittorrent_torrent_info, qbittorrent_tracker_info)";
+    };
+
     extraArgs = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -68,6 +74,7 @@ in
         QBITTORRENT_BASE_URL = "http://${cfg.qbittorrentHost}:${toString cfg.qbittorrentPort}";
         QBITTORRENT_USERNAME = cfg.qbittorrentUsername;
         EXPORTER_PORT = toString cfg.port;
+        ENABLE_HIGH_CARDINALITY = if cfg.enableHighCardinality then "true" else "false";
       } // (if cfg.qbittorrentPassword != null then {
         QBITTORRENT_PASSWORD = cfg.qbittorrentPassword;
       } else {});
