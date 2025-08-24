@@ -46,8 +46,8 @@ let
             if type == "object" then
               # Set any datasource fields to null to use Grafana defaults
               (.datasource? = null)
-              # Fix reth dashboard variable: replace ${VAR_INSTANCE_LABEL} with "instance"
-              | (if (.query? // null) == "${VAR_INSTANCE_LABEL}" then .query = "instance" else . end)
+              # Fix reth dashboard variable: replace ''${VAR_INSTANCE_LABEL} with "instance"
+              | (if (.query? // null) == "''\${VAR_INSTANCE_LABEL}" then .query = "instance" else . end)
               # Recurse
               | with_entries(.value |= normalize)
             elif type == "array" then
