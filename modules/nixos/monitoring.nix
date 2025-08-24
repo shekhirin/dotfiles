@@ -119,12 +119,6 @@ in
         root_url = "http://${config.networking.hostName}:3000";
       };
 
-      # Allow anonymous access for local viewing
-      "auth.anonymous" = {
-        enabled = true;
-        org_role = "Viewer";
-      };
-
       # Disable user sign up
       users = {
         allow_sign_up = false;
