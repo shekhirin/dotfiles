@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
@@ -59,7 +64,7 @@ in
 
     extraArgs = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
       description = "Extra command line arguments for the exporter";
     };
   };
@@ -75,9 +80,15 @@ in
         QBITTORRENT_USERNAME = cfg.qbittorrentUsername;
         EXPORTER_PORT = toString cfg.port;
         ENABLE_HIGH_CARDINALITY = if cfg.enableHighCardinality then "true" else "false";
-      } // (if cfg.qbittorrentPassword != null then {
-        QBITTORRENT_PASSWORD = cfg.qbittorrentPassword;
-      } else {});
+      }
+      // (
+        if cfg.qbittorrentPassword != null then
+          {
+            QBITTORRENT_PASSWORD = cfg.qbittorrentPassword;
+          }
+        else
+          { }
+      );
 
       serviceConfig = {
         Type = "simple";

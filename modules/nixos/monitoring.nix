@@ -57,9 +57,10 @@ let
             end;
           normalize
         ' "$src" \
-        ${lib.optionalString (extraSedCommands != [ ])
-          ("| ${pkgs.gnused}/bin/sed -E "
-            + lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands)
+        ${
+          lib.optionalString (extraSedCommands != [ ]) (
+            "| ${pkgs.gnused}/bin/sed -E " + lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands
+          )
         } \
         > "$out"
       '';
@@ -237,14 +238,11 @@ in
       sha256 = "sha256:0fwm95q12pjsc342ckdbvbixv8p7s87riliv314073xj8v220b0k";
     }) [ ];
 
-    "grafana-dashboards/reth.json".source =
-      processDashboard "reth"
-        (builtins.fetchurl {
-          url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
-          name = "reth.json";
-          sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
-        })
-        [ ];
+    "grafana-dashboards/reth.json".source = processDashboard "reth" (builtins.fetchurl {
+      url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
+      name = "reth.json";
+      sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
+    }) [ ];
 
     "grafana-dashboards/qbittorrent.json".source = processDashboard "qbittorrent" (builtins.fetchurl {
       url = "https://grafana.com/api/dashboards/15116/revisions/3/download";

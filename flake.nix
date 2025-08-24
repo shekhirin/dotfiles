@@ -89,7 +89,7 @@
           (final: prev: {
             shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
             shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui;
-            qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix {};
+            qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
           })
         ];
         config.allowUnfree = true;
@@ -158,7 +158,12 @@
           declarative-jellyfin.nixosModules.default
           sops-nix.nixosModules.sops
           # Pass inputs to Home Manager in NixOS as well
-          ({ ... }: { home-manager.extraSpecialArgs = { inherit inputs; }; })
+          (
+            { ... }:
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+          )
         ];
       };
 
