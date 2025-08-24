@@ -36,6 +36,15 @@ in
       mutable = false;
       hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
     };
+
+    plugins = [
+      {
+        name = "Shokofin";
+        url = "https://github.com/ShokoAnime/Shokofin/releases/download/v5.0.4/shoko_5.0.4.0.zip";
+        version = "5.0.4";
+        sha256 = "sha256:2e59ea22c3588790a356a88ac8c6cbbd1f2867225570a24e74f38ecd8c7bf91d";
+      }
+    ];
   };
 
   # Configure Jellyfin user to access media directory
