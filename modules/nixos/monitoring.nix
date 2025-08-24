@@ -31,6 +31,8 @@ let
     if lighthouseMetricsEnabled then toString lighthouseConfig.args.metrics.port else null;
 
   # Helper function to process Grafana dashboard JSON files
+  # - Normalizes any "datasource" field (string or object) to null using jq
+  # - Applies any additional sed tweaks passed via extraSedCommands
   processDashboard =
     name: src: extraSedCommands:
     pkgs.runCommand "${name}-dashboard.json"
@@ -38,10 +40,21 @@ let
         inherit src;
       }
       ''
-        ${pkgs.gnused}/bin/sed -E \
-          -e 's/"datasource":\s*(".*"|\{[\s\S]*?\})/"datasource": null/g' \
-          ${lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands} \
-          $src > $out
+        # First, use jq to recursively set all .datasource fields to null
+        ${pkgs.jq}/bin/jq '
+          def normalize:
+            if type == "object" then
+              (.datasource? = null) | with_entries(.value |= normalize)
+            elif type == "array" then
+              map(normalize)
+            else
+              .
+            end;
+          normalize
+        ' "$src" \
+        ${lib.optionalString (extraSedCommands != [ ]) "| ${pkgs.gnused}/bin/sed -E "}
+        ${lib.concatMapStringsSep " " (cmd: "-e '${cmd}'") extraSedCommands} \
+        > "$out"
       '';
 in
 {
