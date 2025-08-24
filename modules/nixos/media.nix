@@ -28,6 +28,17 @@ in
     openFirewall = true;
   };
 
+  # Bazarr service configuration
+  services.bazarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  # Configure Bazarr to access media directory
+  systemd.services.bazarr.serviceConfig = {
+    SupplementaryGroups = [ "${group}" ];
+  };
+
   # qBittorrent service configuration
   services.qbittorrent = {
     enable = true;
