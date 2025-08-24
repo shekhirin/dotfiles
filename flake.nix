@@ -82,6 +82,7 @@
           ethereum-nix.overlays.default
           (final: prev: {
             shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
+            shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui;
           })
         ];
         config.allowUnfree = true;
