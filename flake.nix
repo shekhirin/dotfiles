@@ -87,8 +87,24 @@
         overlays = [
           ethereum-nix.overlays.default
           (final: prev: {
-            shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
-            shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui;
+            # Track latest master for Shoko components instead of tags
+            shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko.overrideAttrs (_old: {
+              src = prev.fetchFromGitHub {
+                owner = "ShokoAnime";
+                repo = "ShokoServer";
+                rev = "51cd20aa49d7e37106500e1f49e07061aa18ed4a";
+                fetchSubmodules = true;
+                hash = "sha256-HEHNreazsJ38W7DSZ4Bl0k+RueprExDMfqqMsvoREYo=";
+              };
+            });
+            shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui.overrideAttrs (_old: {
+              src = prev.fetchFromGitHub {
+                owner = "ShokoAnime";
+                repo = "Shoko-WebUI";
+                rev = "88a6b8ae5d81d69610a8f71947cea7807612f2ce";
+                hash = "sha256-j6Q+YjhQEgAuNW0FxIM2k7OAFsZLI0UtKD9wqq2eZbc=";
+              };
+            });
             qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
           })
         ];
