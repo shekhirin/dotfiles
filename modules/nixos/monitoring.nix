@@ -44,7 +44,12 @@ let
         ${pkgs.jq}/bin/jq '
           def normalize:
             if type == "object" then
-              (.datasource? = null) | with_entries(.value |= normalize)
+              # Set any datasource fields to null to use Grafana defaults
+              (.datasource? = null)
+              # Fix reth dashboard variable: replace ${VAR_INSTANCE_LABEL} with "instance"
+              | (if (.query? // null) == "${VAR_INSTANCE_LABEL}" then .query = "instance" else . end)
+              # Recurse
+              | with_entries(.value |= normalize)
             elif type == "array" then
               map(normalize)
             else
@@ -239,9 +244,7 @@ in
           name = "reth.json";
           sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
         })
-        [
-          ''s/"query": "$''\{VAR_INSTANCE_LABEL}",/"query": "instance",/''
-        ];
+        [ ];
 
     "grafana-dashboards/qbittorrent.json".source = processDashboard "qbittorrent" (builtins.fetchurl {
       url = "https://grafana.com/api/dashboards/15116/revisions/3/download";
