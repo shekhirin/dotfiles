@@ -5,6 +5,12 @@
     # Core packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # nixpkgs with codex packages (from PR #435576)
+    nixpkgs-codex = {
+      # Tracks the PR branch; used only to source codex packages
+      url = "github:NixOS/nixpkgs/pull/435576/head";
+    };
+
     # Darwin support
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -112,6 +118,8 @@
             nixpkgs = {
               system = "aarch64-darwin";
             };
+            # Allow shared modules to access flake inputs
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
@@ -149,6 +157,8 @@
           "${nixpkgs-shoko}/nixos/modules/services/misc/shoko.nix"
           declarative-jellyfin.nixosModules.default
           sops-nix.nixosModules.sops
+          # Pass inputs to Home Manager in NixOS as well
+          ({ ... }: { home-manager.extraSpecialArgs = { inherit inputs; }; })
         ];
       };
 

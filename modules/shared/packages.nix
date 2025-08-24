@@ -1,32 +1,39 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  home.packages = with pkgs; [
-    # Core tools
-    vim
-    git
-    git-lfs
-    gh
-    just
+  # Pull codex from the nixpkgs PR input for the current system
+  # Fallback: if attribute names change, adjust below (e.g., codex-cli)
+  home.packages =
+    let
+      codexPkgs = builtins.getAttr pkgs.system inputs.nixpkgs-codex.legacyPackages;
+    in
+    (with pkgs; [
+      # Core tools
+      vim
+      git
+      git-lfs
+      gh
+      just
 
-    # CLI utilities
-    bat
-    eza
-    ripgrep
-    fd
-    btop
-    direnv
-    starship
-    fastfetch
-    glow
+      # CLI utilities
+      bat
+      eza
+      ripgrep
+      fd
+      btop
+      direnv
+      starship
+      fastfetch
+      glow
 
-    # Terminal multiplexer
-    zellij
+      # Terminal multiplexer
+      zellij
 
-    # Nix development
-    nil
-    nixd
-  ];
+      # Nix development
+      nil
+      nixd
+    ])
+    ++ [ codexPkgs.codex ];
 
   programs.zellij = {
     enable = true;
