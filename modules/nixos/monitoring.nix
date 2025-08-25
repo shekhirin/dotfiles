@@ -73,162 +73,194 @@ in
     mode = "0400";
   };
 
-  # Enable qBittorrent exporter
-  services.qbittorrent-exporter = {
-    enable = true;
-    port = 9042;
-    qbittorrentHost = "localhost";
-    qbittorrentPort = 8080;
-    qbittorrentUsername = "admin";
-    enableHighCardinality = true;
-    environmentFile = config.sops.secrets.qbittorrent-password.path;
-  };
-
-  # Prometheus service for metrics collection
-  services.prometheus = {
-    enable = true;
-    port = 9090;
-
-    # Configure data retention
-    retentionTime = "30d";
-
-    # Global scrape configuration
-    globalConfig = {
-      scrape_interval = "15s";
-      evaluation_interval = "15s";
+  services = {
+    # Enable qBittorrent exporter
+    qbittorrent-exporter = {
+      enable = true;
+      port = 9042;
+      qbittorrentHost = "localhost";
+      qbittorrentPort = 8080;
+      qbittorrentUsername = "admin";
+      enableHighCardinality = true;
+      environmentFile = config.sops.secrets.qbittorrent-password.path;
     };
 
-    # Scrape configurations for various services
-    scrapeConfigs = [
-      {
-        job_name = "node";
-        static_configs = [
+    # Prometheus service for metrics collection
+    prometheus = {
+      enable = true;
+      port = 9090;
+
+      # Configure data retention
+      retentionTime = "30d";
+
+      # Global scrape configuration
+      globalConfig = {
+        scrape_interval = "15s";
+        evaluation_interval = "15s";
+      };
+
+      # Scrape configurations for various services
+      scrapeConfigs = [
+        {
+          job_name = "node";
+          static_configs = [
+            {
+              targets = [ "localhost:${nodeExporterPort}" ];
+              labels = {
+                instance = config.networking.hostName;
+              };
+            }
+          ];
+        }
+        {
+          job_name = "prometheus";
+          static_configs = [
+            {
+              targets = [ "localhost:${prometheusPort}" ];
+            }
+          ];
+        }
+      ]
+      ++ lib.optionals qbittorrentExporterEnabled [
+        {
+          job_name = "qbittorrent";
+          static_configs = [
+            {
+              targets = [ "localhost:${qbittorrentExporterPort}" ];
+              labels = {
+                instance = "qbittorrent-exporter";
+              };
+            }
+          ];
+        }
+      ]
+      ++ lib.optionals rethMetricsEnabled [
+        {
+          job_name = "reth";
+          static_configs = [
+            {
+              targets = [
+                "${if rethMetricsAddr == "0.0.0.0" then "localhost" else rethMetricsAddr}:${rethMetricsPort}"
+              ];
+              labels = {
+                instance = "reth-mainnet";
+                chain = "mainnet";
+              };
+            }
+          ];
+        }
+      ]
+      ++ lib.optionals lighthouseMetricsEnabled [
+        {
+          job_name = "lighthouse";
+          static_configs = [
+            {
+              targets = [
+                "${
+                  if lighthouseMetricsAddr == "0.0.0.0" then "localhost" else lighthouseMetricsAddr
+                }:${lighthouseMetricsPort}"
+              ];
+              labels = {
+                instance = "lighthouse-mainnet";
+                chain = "mainnet";
+              };
+            }
+          ];
+        }
+      ];
+    };
+
+    # Grafana service for visualization
+    grafana = {
+      enable = true;
+
+      settings = {
+        security = {
+          admin_password = "$__file{${config.sops.secrets.grafana-password.path}}";
+        };
+
+        server = {
+          http_addr = "0.0.0.0";
+          http_port = 3000;
+          domain = config.networking.hostName;
+          root_url = "http://${config.networking.hostName}:3000";
+        };
+
+        # Disable user sign up
+        users = {
+          allow_sign_up = false;
+        };
+      };
+
+      # Configure Prometheus as datasource
+      provision = {
+        enable = true;
+
+        datasources.settings.datasources = [
           {
-            targets = [ "localhost:${nodeExporterPort}" ];
-            labels = {
-              instance = config.networking.hostName;
+            name = "Prometheus";
+            type = "prometheus";
+            access = "proxy";
+            url = "http://localhost:${prometheusPort}";
+            isDefault = true;
+            jsonData = {
+              timeInterval = "15s";
             };
           }
         ];
-      }
-      {
-        job_name = "prometheus";
-        static_configs = [
+
+        # Provision dashboards
+        dashboards.settings.providers = [
           {
-            targets = [ "localhost:${prometheusPort}" ];
-          }
-        ];
-      }
-    ]
-    ++ lib.optionals qbittorrentExporterEnabled [
-      {
-        job_name = "qbittorrent";
-        static_configs = [
-          {
-            targets = [ "localhost:${qbittorrentExporterPort}" ];
-            labels = {
-              instance = "qbittorrent-exporter";
+            name = "default";
+            orgId = 1;
+            folder = "";
+            type = "file";
+            disableDeletion = false;
+            updateIntervalSeconds = 10;
+            options = {
+              path = "/etc/grafana-dashboards";
+              foldersFromFilesStructure = true;
             };
           }
         ];
-      }
-    ]
-    ++ lib.optionals rethMetricsEnabled [
-      {
-        job_name = "reth";
-        static_configs = [
-          {
-            targets = [
-              "${if rethMetricsAddr == "0.0.0.0" then "localhost" else rethMetricsAddr}:${rethMetricsPort}"
-            ];
-            labels = {
-              instance = "reth-mainnet";
-              chain = "mainnet";
-            };
-          }
-        ];
-      }
-    ]
-    ++ lib.optionals lighthouseMetricsEnabled [
-      {
-        job_name = "lighthouse";
-        static_configs = [
-          {
-            targets = [
-              "${
-                if lighthouseMetricsAddr == "0.0.0.0" then "localhost" else lighthouseMetricsAddr
-              }:${lighthouseMetricsPort}"
-            ];
-            labels = {
-              instance = "lighthouse-mainnet";
-              chain = "mainnet";
-            };
-          }
-        ];
-      }
-    ];
+      };
+    };
+
+    # Node Exporter for system metrics
+    prometheus.exporters.node = {
+      enable = true;
+      port = 9100;
+
+      enabledCollectors = [
+        "cpu"
+        "diskstats"
+        "filesystem"
+        "loadavg"
+        "meminfo"
+        "netdev"
+        "stat"
+        "time"
+        "uname"
+        "systemd"
+        "logind"
+        "interrupts"
+        "ksmd"
+        "processes"
+        "hwmon"
+        "thermal_zone"
+      ];
+
+      extraFlags = [
+        "--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|tmp|var/lib/(docker|lxc|containers))($|/)"
+        "--collector.netdev.device-exclude=^(veth|br|docker|virbr|lo).*"
+      ];
+    };
   };
 
   # Use Grafana admin password from SOPS
   sops.secrets.grafana-password = {
     owner = config.users.users.grafana.name;
-  };
-
-  # Grafana service for visualization
-  services.grafana = {
-    enable = true;
-
-    settings = {
-      security = {
-        admin_password = "$__file{${config.sops.secrets.grafana-password.path}}";
-      };
-
-      server = {
-        http_addr = "0.0.0.0";
-        http_port = 3000;
-        domain = config.networking.hostName;
-        root_url = "http://${config.networking.hostName}:3000";
-      };
-
-      # Disable user sign up
-      users = {
-        allow_sign_up = false;
-      };
-    };
-
-    # Configure Prometheus as datasource
-    provision = {
-      enable = true;
-
-      datasources.settings.datasources = [
-        {
-          name = "Prometheus";
-          type = "prometheus";
-          access = "proxy";
-          url = "http://localhost:${prometheusPort}";
-          isDefault = true;
-          jsonData = {
-            timeInterval = "15s";
-          };
-        }
-      ];
-
-      # Provision dashboards
-      dashboards.settings.providers = [
-        {
-          name = "default";
-          orgId = 1;
-          folder = "";
-          type = "file";
-          disableDeletion = false;
-          updateIntervalSeconds = 10;
-          options = {
-            path = "/etc/grafana-dashboards";
-            foldersFromFilesStructure = true;
-          };
-        }
-      ];
-    };
   };
 
   environment.etc = {
@@ -251,54 +283,26 @@ in
     }) [ ];
   };
 
-  # Node Exporter for system metrics
-  services.prometheus.exporters.node = {
-    enable = true;
-    port = 9100;
-
-    enabledCollectors = [
-      "cpu"
-      "diskstats"
-      "filesystem"
-      "loadavg"
-      "meminfo"
-      "netdev"
-      "stat"
-      "time"
-      "uname"
-      "systemd"
-      "logind"
-      "interrupts"
-      "ksmd"
-      "processes"
-      "hwmon"
-      "thermal_zone"
+  systemd = {
+    # Create dashboard directory with proper permissions
+    tmpfiles.rules = [
+      "d /var/lib/grafana/dashboards 0755 grafana grafana -"
     ];
 
-    extraFlags = [
-      "--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|tmp|var/lib/(docker|lxc|containers))($|/)"
-      "--collector.netdev.device-exclude=^(veth|br|docker|virbr|lo).*"
-    ];
+    # Ensure services start in correct order
+    services.grafana = {
+      after = [ "prometheus.service" ];
+      wants = [ "prometheus.service" ];
+    };
+
+    services.prometheus = {
+      after = [ "prometheus-node-exporter.service" ];
+      wants = [ "prometheus-node-exporter.service" ];
+    };
   };
-
-  # Create dashboard directory with proper permissions
-  systemd.tmpfiles.rules = [
-    "d /var/lib/grafana/dashboards 0755 grafana grafana -"
-  ];
 
   # Firewall configuration for monitoring services
   networking.firewall.allowedTCPPorts = [
     config.services.grafana.settings.server.http_port # Grafana
   ];
-
-  # Ensure services start in correct order
-  systemd.services.grafana = {
-    after = [ "prometheus.service" ];
-    wants = [ "prometheus.service" ];
-  };
-
-  systemd.services.prometheus = {
-    after = [ "prometheus-node-exporter.service" ];
-    wants = [ "prometheus-node-exporter.service" ];
-  };
 }

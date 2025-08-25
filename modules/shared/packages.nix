@@ -26,6 +26,7 @@
     # Nix development
     nil
     nixd
+    statix
   ];
 
   programs.zellij = {

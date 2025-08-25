@@ -23,12 +23,16 @@
     args = {
       network = "mainnet";
       datadir = "/mnt/nvme/lighthouse/mainnet";
-      http.enable = true;
-      http.address = "0.0.0.0";
-      http.port = 5052;
-      metrics.enable = true;
-      metrics.address = "0.0.0.0";
-      metrics.port = 5054;
+      http = {
+        enable = true;
+        address = "0.0.0.0";
+        port = 5052;
+      };
+      metrics = {
+        enable = true;
+        address = "0.0.0.0";
+        port = 5054;
+      };
       execution-endpoint = "http://127.0.0.1:8551";
       execution-jwt = "/mnt/nvme/reth/mainnet/jwt.hex";
       checkpoint-sync-url = "https://sync-mainnet.beaconcha.in";

@@ -11,8 +11,14 @@ in
   _module.args = { inherit user; };
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
-  system.stateVersion = 6;
-  system.primaryUser = user;
+  system = {
+    stateVersion = 6;
+    primaryUser = user;
+    defaults = {
+      screencapture.location = "~/Pictures/Screenshots";
+      dock.autohide = true;
+    };
+  };
 
   ## Nix settings
   # Let Determinate Nix handle Nix configuration
@@ -29,12 +35,6 @@ in
 
   ## Touch‑ID sudo
   security.pam.services.sudo_local.touchIdAuth = true;
-
-  ## System defaults
-  system.defaults = {
-    screencapture.location = "~/Pictures/Screenshots";
-    dock.autohide = true;
-  };
 
   ## Dock configuration
   local.dock = {

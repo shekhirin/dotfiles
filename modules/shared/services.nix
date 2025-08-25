@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Shared services configuration for both Darwin and NixOS

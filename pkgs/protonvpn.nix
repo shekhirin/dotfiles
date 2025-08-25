@@ -34,6 +34,5 @@ stdenv.mkDerivation rec {
     homepage = "https://protonvpn.com/";
     license = licenses.unfree;
     platforms = platforms.darwin;
-    maintainers = with maintainers; [ ];
   };
 }

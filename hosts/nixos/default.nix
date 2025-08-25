@@ -21,9 +21,11 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "box";
-  networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking = {
+    hostName = "box";
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 22 ];
+  };
 
   # Locale and timezone
   time.timeZone = "Europe/London";

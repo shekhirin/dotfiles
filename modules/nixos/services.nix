@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Services specific to NixOS

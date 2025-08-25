@@ -98,24 +98,26 @@
             nixpkgs = {
               system = "aarch64-darwin";
             };
-            # Allow shared modules to access flake inputs
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.shekhirin = {
-              imports = [
-                # Common modules (shared between all machines)
-                ./modules/shared/packages.nix
-                ./modules/shared/shell.nix
+            home-manager = {
+              # Allow shared modules to access flake inputs
+              extraSpecialArgs = { inherit inputs; };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.shekhirin = {
+                imports = [
+                  # Common modules (shared between all machines)
+                  ./modules/shared/packages.nix
+                  ./modules/shared/shell.nix
 
-                # Darwin-specific modules
-                ./modules/darwin/development.nix
-                ./modules/darwin/gpg.nix
-                ./modules/darwin/apps.nix
-              ];
+                  # Darwin-specific modules
+                  ./modules/darwin/development.nix
+                  ./modules/darwin/gpg.nix
+                  ./modules/darwin/apps.nix
+                ];
 
-              home.stateVersion = "25.05";
+                home.stateVersion = "25.05";
+              };
             };
           }
 
@@ -146,12 +148,9 @@
           declarative-jellyfin.nixosModules.default
           sops-nix.nixosModules.sops
           # Pass inputs to Home Manager in NixOS as well
-          (
-            { ... }:
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-            }
-          )
+          (_: {
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          })
         ];
       };
 

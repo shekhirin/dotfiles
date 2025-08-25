@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Monero node service
