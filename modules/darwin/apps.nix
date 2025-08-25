@@ -152,6 +152,11 @@
       };
   };
 
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+  };
+
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;

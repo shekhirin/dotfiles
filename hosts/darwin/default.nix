@@ -41,7 +41,7 @@ in
     enable = true;
     username = user;
     entries = [
-      { path = "/Applications/Dia.app"; }
+      { path = "${pkgs.brave}/Applications/Brave Browser.app"; }
       { path = "/System/Applications/Mail.app"; }
       { path = "/System/Applications/Calendar.app"; }
       { path = "/System/Applications/Messages.app"; }

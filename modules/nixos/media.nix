@@ -46,28 +46,21 @@ in
   services.sonarr = {
     enable = true;
     openFirewall = true;
-  };
-
-  # Configure Sonarr to access media directory
-  systemd.services.sonarr.serviceConfig = {
-    SupplementaryGroups = [ "${group}" ];
+    group = "${group}";
   };
 
   # Bazarr service configuration
   services.bazarr = {
     enable = true;
     openFirewall = true;
-  };
-
-  # Configure Bazarr to access media directory
-  systemd.services.bazarr.serviceConfig = {
-    SupplementaryGroups = [ "${group}" ];
+    group = "${group}";
   };
 
   # qBittorrent service configuration
   services.qbittorrent = {
     enable = true;
     openFirewall = true;
+    group = "${group}";
     serverConfig = {
       LegalNotice.Accepted = true;
       Preferences = {
@@ -79,11 +72,6 @@ in
     };
   };
 
-  # Configure qbittorrent user to access media directory
-  systemd.services.qbittorrent.serviceConfig = {
-    SupplementaryGroups = [ "${group}" ];
-  };
-
   # Use Jellyfin admin password from SOPS
   sops.secrets.jellyfin-password = {
     owner = config.services.jellyfin.user;
@@ -92,17 +80,13 @@ in
   services.declarative-jellyfin = {
     enable = true;
     openFirewall = true;
+    group = "${group}";
 
     users.admin = {
       mutable = false;
       permissions.isAdministrator = true;
       hashedPasswordFile = config.sops.secrets.jellyfin-password.path;
     };
-  };
-
-  # Configure Jellyfin user to access media directory
-  systemd.services.jellyfin.serviceConfig = {
-    SupplementaryGroups = [ "${group}" ];
   };
 
   # Open firewall for Shoko
