@@ -29,11 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Shoko packages (temporary until merged to nixpkgs)
-    nixpkgs-shoko = {
-      url = "github:diniamo/nixpkgs/shokoanime";
-    };
-
     # Declarative Jellyfin configuration
     declarative-jellyfin = {
       url = "github:Sveske-Juice/declarative-jellyfin";
@@ -61,7 +56,6 @@
       nix-darwin,
       home-manager,
       ethereum-nix,
-      nixpkgs-shoko,
       declarative-jellyfin,
       sops-nix,
       nix-homebrew,
@@ -87,8 +81,6 @@
         overlays = [
           ethereum-nix.overlays.default
           (final: prev: {
-            shoko = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko;
-            shoko-webui = nixpkgs-shoko.legacyPackages.x86_64-linux.shoko-webui;
             qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
           })
         ];
@@ -154,7 +146,6 @@
 
         modules = [
           ./hosts/nixos/default.nix
-          "${nixpkgs-shoko}/nixos/modules/services/misc/shoko.nix"
           declarative-jellyfin.nixosModules.default
           sops-nix.nixosModules.sops
           # Pass inputs to Home Manager in NixOS as well

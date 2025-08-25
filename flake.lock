@@ -92,11 +92,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1756024297,
-        "narHash": "sha256-Bgj+cz85PO5eddeACB+UE6D+oK9+sbpqFybHTGRxwVU=",
+        "lastModified": 1756042834,
+        "narHash": "sha256-BRyI1uA7OyQ+nga2+MiHUQ75vivlKrtOnNxJBLoi4kw=",
         "owner": "nix-community",
         "repo": "ethereum.nix",
-        "rev": "a86f9bb6e98a28063e28059a3ad0de7b446f2759",
+        "rev": "533d4aa2c86e0b067ba41b6b1de3a4d8b19884da",
         "type": "github"
       },
       "original": {
@@ -281,11 +281,11 @@
     },
     "nixpkgs-codex": {
       "locked": {
-        "lastModified": 1756023964,
-        "narHash": "sha256-+15WmtTsDOHjvB+RMJgaf/l7VMZJTmJOvUY19Qx3KfA=",
+        "lastModified": 1756078287,
+        "narHash": "sha256-JwDYudPm3GK56B6FnMMzr46i+w/QyByu/96iFclwDco=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6f36c55c8a99f8740843d249e1ce90a40dd15dd2",
+        "rev": "dc5fe36e8b05c98eeccc5c9336f308a670813158",
         "type": "github"
       },
       "original": {
@@ -295,29 +295,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-shoko": {
-      "locked": {
-        "lastModified": 1754105476,
-        "narHash": "sha256-8zE/x5yvZ2MAtROHyM1Co2Af1G4XpNlesD63CpbqouE=",
-        "owner": "diniamo",
-        "repo": "nixpkgs",
-        "rev": "68835b06378a799c94f9c27290df9b131c2455f1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "diniamo",
-        "ref": "shokoanime",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1747790854,
-        "narHash": "sha256-8TpwOtr0T016HNlVuDcDNq4q+GMKfLStOSwdabrz+rk=",
+        "lastModified": 1755829505,
+        "narHash": "sha256-4/Jd+LkQ2ssw8luQVkqVs9spDBVE6h/u/hC/tzngsPo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f0d925b947cca0bbe7f2d25115cbaf021844aba7",
+        "rev": "f937f8ecd1c70efd7e9f90ba13dfb400cf559de4",
         "type": "github"
       },
       "original": {
@@ -337,7 +321,6 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "nixpkgs-codex": "nixpkgs-codex",
-        "nixpkgs-shoko": "nixpkgs-shoko",
         "sops-nix": "sops-nix"
       }
     },

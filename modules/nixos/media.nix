@@ -15,11 +15,28 @@ in
     "Z /mnt/nvme/media 0775 root ${group} -"
   ];
 
-  # Media services configuration
-  services.shoko = {
-    enable = true;
-    package = pkgs.shoko;
-    openFirewall = true;
+  # Enable Docker for containers
+  virtualisation.docker.enable = true;
+
+  # Shoko using Docker container
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.shoko = {
+      image = "shokoanime/server:daily";
+      ports = [ "8111:8111" ];
+      volumes = [
+        "/mnt/nvme/media:/media:rw"
+        "shoko-config:/home/shoko/.shoko"
+      ];
+      environment = {
+        TZ = "UTC";
+        PUID = "1000";
+        PGID = "1000";
+      };
+      extraOptions = [
+        "--restart=unless-stopped"
+      ];
+    };
   };
 
   # Prowlarr service configuration
@@ -79,4 +96,7 @@ in
   systemd.services.jellyfin.serviceConfig = {
     SupplementaryGroups = [ "${group}" ];
   };
+
+  # Open firewall for Shoko
+  networking.firewall.allowedTCPPorts = [ 8111 ];
 }
