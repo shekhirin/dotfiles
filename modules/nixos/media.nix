@@ -45,6 +45,17 @@ in
     openFirewall = true;
   };
 
+  # Sonarr service configuration
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  # Configure Sonarr to access media directory
+  systemd.services.sonarr.serviceConfig = {
+    SupplementaryGroups = [ "${group}" ];
+  };
+
   # Bazarr service configuration
   services.bazarr = {
     enable = true;
