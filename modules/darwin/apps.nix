@@ -136,9 +136,8 @@
               alt-equal = "resize smart +50";
               alt-shift-e = "balance-sizes";
 
-              alt-c = "exec-and-forget open -a /Applications/Google\\ Chrome.app";
-              alt-t = "exec-and-forget open -a /Applications/Ghostty.app";
-              alt-z = "exec-and-forget open -a /Applications/Zed.app";
+              alt-t = "exec-and-forget open -a ${pkgs.ghostty-bin}/Applications/Ghostty.app";
+              alt-z = "exec-and-forget open -a ${pkgs.zed-editor}/Applications/Zed.app";
 
               alt-shift-semicolon = "mode service";
             };
