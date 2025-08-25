@@ -63,9 +63,6 @@
       ...
     }:
     let
-      # Detect if we're evaluating on the Linux host matching our NixOS system
-      isLinuxHost = (builtins ? currentSystem) && builtins.currentSystem == "x86_64-linux";
-
       # System-specific package sets
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
@@ -77,17 +74,6 @@
         ];
         config.allowUnfree = true;
       };
-
-      nixosPkgs = if isLinuxHost then (import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          ethereum-nix.overlays.default
-          (final: prev: {
-            qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
-          })
-        ];
-        config.allowUnfree = true;
-      }) else null;
     in
     {
       # macOS configuration
@@ -141,36 +127,38 @@
       };
 
       # NixOS configuration for the box
-      # Only expose this on Linux hosts to avoid evaluating/building Linux outputs on macOS.
-      nixosConfigurations =
-        nixpkgs.lib.optionalAttrs (
-          (builtins ? currentSystem) && builtins.currentSystem == "x86_64-linux"
-        ) {
-          box = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            pkgs = nixosPkgs;
-            specialArgs = { inherit inputs; };
-
-            modules = [
-              ./hosts/nixos/default.nix
-              declarative-jellyfin.nixosModules.default
-              sops-nix.nixosModules.sops
-              # Pass inputs to Home Manager in NixOS as well
-              (
-                { ... }:
-                {
-                  home-manager.extraSpecialArgs = { inherit inputs; };
-                }
-              )
-            ];
-          };
+      nixosConfigurations.box = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [
+            ethereum-nix.overlays.default
+            (final: prev: {
+              qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
+            })
+          ];
+          config.allowUnfree = true;
         };
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./hosts/nixos/default.nix
+          declarative-jellyfin.nixosModules.default
+          sops-nix.nixosModules.sops
+          # Pass inputs to Home Manager in NixOS as well
+          (
+            { ... }:
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+          )
+        ];
+      };
 
       # Formatters for each system
-      formatter =
-        { aarch64-darwin = darwinPkgs.nixfmt-tree; }
-        // nixpkgs.lib.optionalAttrs isLinuxHost {
-          x86_64-linux = nixosPkgs.nixfmt-tree;
-        };
+      formatter = {
+        aarch64-darwin = darwinPkgs.nixfmt-tree;
+        x86_64-linux = (import nixpkgs { system = "x86_64-linux"; }).nixfmt-tree;
+      };
     };
 }
