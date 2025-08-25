@@ -195,6 +195,19 @@
 
     zed-editor = {
       enable = true;
+      extensions = [
+        "html"
+        "catpuccin"
+        "toml"
+        "dockerfile"
+        "make"
+        "zig"
+        "nix"
+        "justfile"
+        "nu"
+        "solidity"
+        "helm"
+      ];
       userSettings = {
         agent = {
           default_profile = "write";
