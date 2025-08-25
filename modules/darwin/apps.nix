@@ -44,6 +44,7 @@
           "mail"
           "messages"
           "signal"
+          "1password"
         ];
         # Number of workspaces that you can switch between
         workspaceCount = 9;
