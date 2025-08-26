@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # GUI applications and macOS-specific packages
@@ -234,6 +234,14 @@
           dark = "Catppuccin Mocha - No Italics";
         };
         lsp = {
+          nil = {
+            settings = {
+              nix.flake.autoArchive = true;
+              formatting = {
+                command = [ "${lib.getExe pkgs.nixfmt}" ];
+              };
+            };
+          };
           rust-analyzer = {
             initialization_options = {
               cargo = {
