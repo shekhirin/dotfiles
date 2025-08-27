@@ -1,4 +1,4 @@
-_:
+{ pkgs, lib, ... }:
 
 {
   programs = {
@@ -152,7 +152,7 @@ _:
       };
       configFile.text = builtins.readFile ./config.nu;
       environmentVariables = {
-        EDITOR = "vim";
+        EDITOR = "${lib.getExe pkgs.vim}";
       };
     };
 
