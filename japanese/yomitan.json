@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2025-08-30 22:44:05",
+    "date": "2025-08-30 22:52:57",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -419,7 +419,7 @@
                                         "overwriteMode": "coalesce"
                                     },
                                     "MainDefinition": {
-                                        "value": "{single-glossary-jitendexorg-2025-03-31}",
+                                        "value": "{single-glossary-jitendexorg-2025-03-31}<br>{single-glossary-日本語文法辞典全集}",
                                         "overwriteMode": "coalesce"
                                     },
                                     "Sentence": {
