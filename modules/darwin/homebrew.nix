@@ -27,7 +27,6 @@
       "bambu-studio"
       "orbstack"
       "telegram"
-      "thebrowsercompany-dia"
       "vuescan"
     ];
     masApps = {
