@@ -11,5 +11,6 @@
     ./media.nix
     ./sops.nix
     ./qbittorrent-exporter.nix
+    ./wild-linker.nix
   ];
 }

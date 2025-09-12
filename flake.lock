@@ -17,6 +17,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1755993354,
+        "narHash": "sha256-FCRRAzSaL/+umLIm3RU3O/+fJ2ssaPHseI2SSFL8yZU=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "25bd41b24426c7734278c2ff02e53258851db914",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "declarative-jellyfin": {
       "inputs": {
         "nixpkgs": [
@@ -316,7 +331,8 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "nixpkgs-codex": "nixpkgs-codex",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "wild": "wild"
       }
     },
     "sops-nix": {
@@ -407,6 +423,27 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wild": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757368979,
+        "narHash": "sha256-eG9kszMMokWcvh0znAYf27ibxzYyT+nVbcS1yex+JDc=",
+        "owner": "davidlattimore",
+        "repo": "wild",
+        "rev": "8cc735f02ea5cafc43b892b46a05833efe079ddf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "davidlattimore",
+        "repo": "wild",
         "type": "github"
       }
     }
