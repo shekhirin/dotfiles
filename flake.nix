@@ -41,12 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Wild linker
-    wild = {
-      url = "github:davidlattimore/wild";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # macOS-specific
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     dock-module = {
@@ -64,7 +58,6 @@
       ethereum-nix,
       declarative-jellyfin,
       sops-nix,
-      wild,
       nix-homebrew,
       dock-module,
       ...
@@ -145,7 +138,6 @@
             (final: prev: {
               qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
             })
-            wild.overlays.default
           ];
           config.allowUnfree = true;
         };
