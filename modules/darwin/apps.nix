@@ -164,7 +164,7 @@
       installBatSyntax = true;
       settings = {
         auto-update-channel = "tip";
-        theme = "dark:catppuccin-mocha,light:catppuccin-latte";
+        theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
 
         font-family = "JetBrains Mono";
         font-family-bold = "JetBrains Mono";
