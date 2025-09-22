@@ -180,7 +180,7 @@
         macos-option-as-alt = "left";
 
         command = "/bin/zsh -l -c 'zellij attach main || zellij -s main'";
-        shell-integration-features = "sudo";
+        shell-integration-features = "sudo,ssh-env,ssh-terminfo";
 
         keybind = [
           "ctrl+q=esc:q"
