@@ -13,11 +13,11 @@
 
 stdenv.mkDerivation rec {
   pname = "protonvpn";
-  version = "5.0.0";
+  version = "6.0.0";
 
   src = fetchurl {
     url = "https://github.com/ProtonVPN/ios-mac-app/releases/download/mac%2F${version}/ProtonVPN_mac_v${version}.dmg";
-    sha256 = "10anz8q1121jnscbkccf8y7ak965w92hayf7kd5364rr817ar0wp";
+    sha256 = "16n6qzq04jasvqxlyhrdiqnd1ai4wb7ch0xkj7g613wcdviv9l0j";
   };
 
   nativeBuildInputs = [ undmg ];
