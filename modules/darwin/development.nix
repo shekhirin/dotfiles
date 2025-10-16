@@ -9,11 +9,7 @@
   home = {
     packages =
       # Pull codex from the nixpkgs PR input for the current system
-      let
-        codexPkgs = builtins.getAttr pkgs.system inputs.nixpkgs-codex.legacyPackages;
-      in
-      with pkgs;
-      [
+      with pkgs; [
         # Heavy development tools (macOS only)
         rustup
         lldb
@@ -41,8 +37,9 @@
 
         # Additional CLI tools
         claude-code
-      ]
-      ++ [ codexPkgs.codex ];
+        codex
+        amp-cli
+      ];
 
     sessionVariables = {
       # Append brew to PATH. We're not using `home.sessionPath` because it's prepending, and we want nix binaries to take precedence.

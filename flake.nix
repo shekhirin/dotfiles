@@ -5,12 +5,6 @@
     # Core packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # nixpkgs with codex packages (from PR #435576)
-    nixpkgs-codex = {
-      # Tracks the PR branch; used only to source codex packages
-      url = "github:NixOS/nixpkgs/pull/435576/head";
-    };
-
     # Darwin support
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
