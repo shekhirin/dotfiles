@@ -19,8 +19,10 @@
     starship
     fastfetch
     glow
+    dust
 
     # Terminal multiplexer
+    tmux
     zellij
 
     # Nix development
