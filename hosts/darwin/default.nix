@@ -41,18 +41,18 @@ in
     enable = true;
     username = user;
     entries = [
-      { path = "${pkgs.brave}/Applications/Brave Browser.app"; }
+      { path = "/Applications/Brave Browser.app"; }
       { path = "/System/Applications/Mail.app"; }
       { path = "/System/Applications/Calendar.app"; }
       { path = "/System/Applications/Messages.app"; }
-      { path = "${pkgs.signal-desktop-bin}/Applications/Signal.app"; }
-      { path = "${pkgs.slack}/Applications/Slack.app"; }
+      { path = "/Applications/Signal.app"; }
+      { path = "/Applications/Slack.app"; }
       { path = "/Applications/Telegram.app"; }
-      { path = "${pkgs.spotify}/Applications/Spotify.app"; }
-      { path = "${pkgs.notion-app}/Applications/Notion.app"; }
+      { path = "/Applications/Spotify.app"; }
+      { path = "/Applications/Linear.app"; }
       { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
       { path = "${pkgs.zed-editor}/Applications/Zed.app"; }
-      { path = "${pkgs.anki-bin}/Applications/Anki.app"; }
+      { path = "/Applications/Anki.app"; }
       { path = "/System/Applications/System Settings.app"; }
     ];
   };

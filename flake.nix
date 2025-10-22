@@ -62,7 +62,6 @@
         system = "aarch64-darwin";
         overlays = [
           (import ./overlays/spotify.nix)
-          (import ./overlays/notion.nix)
           (import ./overlays/protonvpn.nix)
         ];
         config.allowUnfree = true;
@@ -80,7 +79,6 @@
 
           # Homebrew
           nix-homebrew.darwinModules.nix-homebrew
-          ./modules/darwin/homebrew.nix
 
           # Dock configuration
           "${dock-module}/modules/darwin/dock"
