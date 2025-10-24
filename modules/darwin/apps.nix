@@ -38,6 +38,7 @@
             "messages"
             "signal"
             "1password"
+            "protonvpn"
           ];
           # Number of workspaces that you can switch between
           workspaceCount = 9;
