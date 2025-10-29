@@ -36,7 +36,6 @@
     };
 
     # macOS-specific
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     dock-module = {
       url = "github:dustinlyons/nixos-config";
       flake = false;
@@ -52,7 +51,6 @@
       ethereum-nix,
       declarative-jellyfin,
       sops-nix,
-      nix-homebrew,
       dock-module,
       ...
     }:
@@ -76,9 +74,6 @@
 
         modules = [
           ./hosts/darwin/default.nix
-
-          # Homebrew
-          nix-homebrew.darwinModules.nix-homebrew
 
           # Dock configuration
           "${dock-module}/modules/darwin/dock"
