@@ -14,7 +14,6 @@ build-macbook *ARGS:
 update-macbook *ARGS:
     nix flake update
     sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
-    brew upgrade --cask --greedy
 
 # Switch box
 switch-box *ARGS:

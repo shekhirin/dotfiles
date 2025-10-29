@@ -151,6 +151,8 @@
 
       installBatSyntax = true;
       settings = {
+        auto-update = "off";
+
         theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
 
         font-family = "JetBrains Mono";
