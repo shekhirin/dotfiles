@@ -8,6 +8,11 @@
     protonmail-bridge
   ];
 
+  # Reload aerospace config on activation
+  home.activation.aerospaceReload = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${lib.getExe pkgs.aerospace} reload-config
+  '';
+
   # ProtonMail Bridge service
   launchd.agents.protonmail-bridge = {
     enable = true;
