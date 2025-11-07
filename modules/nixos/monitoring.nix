@@ -278,9 +278,9 @@ in
     }) [ ];
 
     "grafana-dashboards/reth.json".source = processDashboard "reth" (builtins.fetchurl {
-      url = "https://grafana.com/api/dashboards/22941/revisions/3/download";
+      url = "https://grafana.com/api/dashboards/22941/revisions/4/download";
       name = "reth.json";
-      sha256 = "sha256:032i5q7vb4v2k5kwsnpyw9m2blmqy5k852l2qizh9jyymayxjqxk";
+      sha256 = "sha256:1cz2xl61bvf3qq6ywx832vpgw49x618m17gadvvmpimsp49r86vk";
     }) [ ];
 
     "grafana-dashboards/qbittorrent.json".source = processDashboard "qbittorrent" (builtins.fetchurl {
