@@ -26,7 +26,6 @@
         kubectx
 
         # Specialized tools
-        foundry
         uv
         bun
         yt-dlp

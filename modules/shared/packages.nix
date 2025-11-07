@@ -20,6 +20,7 @@
     fastfetch
     glow
     dust
+    foundry
 
     # Terminal multiplexer
     tmux
