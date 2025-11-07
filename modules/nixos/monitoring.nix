@@ -144,7 +144,14 @@ in
               ];
               labels = {
                 instance = "reth-mainnet";
-                chain = "mainnet";
+              };
+            }
+            {
+              targets = [
+                "localhost:9002"
+              ];
+              labels = {
+                instance = "tmp";
               };
             }
           ];
