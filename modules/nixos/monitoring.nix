@@ -9,6 +9,7 @@ let
   # Dynamically get ports from service configurations
   nodeExporterPort = toString config.services.prometheus.exporters.node.port;
   prometheusPort = toString config.services.prometheus.port;
+  tempoPort = toString config.services.tempo.settings.server.http_listen_port;
 
   # Get qBittorrent exporter configuration
   qbittorrentExporterEnabled = config.services.qbittorrent-exporter.enable or false;
@@ -214,6 +215,12 @@ in
               timeInterval = "15s";
             };
           }
+          {
+            name = "Tempo";
+            type = "tempo";
+            access = "proxy";
+            url = "http://localhost:${tempoPort}";
+          }
         ];
 
         # Provision dashboards
@@ -231,6 +238,30 @@ in
             };
           }
         ];
+      };
+    };
+
+    # Tempo service for distributed tracing
+    tempo = {
+      enable = true;
+
+      settings = {
+        server = {
+          http_listen_port = 3200;
+          grpc_listen_port = 3201;
+        };
+        distributor.receivers.otlp.protocols.grpc.endpoint = "127.0.0.1:4317";
+        storage = {
+          trace = {
+            backend = "local";
+            local = {
+              path = "/var/lib/tempo";
+            };
+            wal = {
+              path = "/var/lib/tempo/wal";
+            };
+          };
+        };
       };
     };
 
