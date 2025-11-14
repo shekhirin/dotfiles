@@ -135,7 +135,7 @@
               alt-shift-e = "balance-sizes";
 
               alt-t = "exec-and-forget open -a ${pkgs.ghostty-bin}/Applications/Ghostty.app";
-              alt-z = "exec-and-forget open -a ${pkgs.zed-editor}/Applications/Zed.app";
+              alt-z = "exec-and-forget open -a ${pkgs.zed-editor-preview-bin}/Applications/Zed.app";
 
               alt-shift-semicolon = "mode service";
             };
@@ -188,6 +188,7 @@
 
     zed-editor = {
       enable = true;
+      package = pkgs.zed-editor-preview-bin;
       extensions = [
         "html"
         "catpuccin"

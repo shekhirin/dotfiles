@@ -40,6 +40,12 @@
       url = "github:dustinlyons/nixos-config";
       flake = false;
     };
+
+    # Zed Editor preview builds
+    zed-editor-flake = {
+      url = "github:shekhirin/zed-editor-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -52,6 +58,7 @@
       declarative-jellyfin,
       sops-nix,
       dock-module,
+      zed-editor-flake,
       ...
     }:
     let
@@ -61,6 +68,9 @@
         overlays = [
           (import ./overlays/spotify.nix)
           (import ./overlays/protonvpn.nix)
+          (final: prev: {
+            zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
+          })
         ];
         config.allowUnfree = true;
       };
