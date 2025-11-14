@@ -69,19 +69,7 @@
           (import ./overlays/spotify.nix)
           (import ./overlays/protonvpn.nix)
           (final: prev: {
-            zed-editor-preview-bin = zed-editor-flake.lib.overrideVersion {
-              pkgs = final;
-              package = "zed-editor-preview-bin";
-              version = "0.213.0-pre";
-              hash = ""; # Not needed for binary packages
-              assets = {
-                "aarch64-darwin" = {
-                  url = "https://github.com/zed-industries/zed/releases/download/v0.213.0-pre/Zed-aarch64.dmg";
-                  sha256 = "sha256-0wxxg13ryjzg7rhkizhl8qr1pip0p2dsz15j9qsahwkrslxw2sfi";
-                  type = "dmg";
-                };
-              };
-            };
+            zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
           })
         ];
         config.allowUnfree = true;
