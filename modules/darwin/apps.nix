@@ -275,6 +275,9 @@
             program = "nu";
           };
         };
+        sticky_scroll = {
+          enabled = true;
+        };
       };
     };
   };
