@@ -135,7 +135,7 @@
               alt-shift-e = "balance-sizes";
 
               alt-t = "exec-and-forget open -a ${pkgs.ghostty-bin}/Applications/Ghostty.app";
-              alt-z = "exec-and-forget open -a ${pkgs.zed-editor-preview-bin}/Applications/Zed.app";
+              alt-z = "exec-and-forget open -a \"${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app\"";
 
               alt-shift-semicolon = "mode service";
             };
