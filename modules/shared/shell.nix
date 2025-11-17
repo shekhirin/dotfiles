@@ -15,7 +15,6 @@
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/adb/adb-completions.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/aerospace/aerospace-completions.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/bat/bat-completions.nu *
-        use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/cargo/cargo-completions.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/curl/curl-completions.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/fastboot/fastboot-completions.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/gh/gh-completions.nu *
