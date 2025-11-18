@@ -71,6 +71,16 @@
           (final: prev: {
             zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
           })
+          # TODO: Remove after https://github.com/NixOS/nixpkgs/pull/461779 is resolved upstream.
+          (_self: super: {
+            fish = super.fish.overrideAttrs (oldAttrs: {
+              doCheck = false;
+              checkPhase = "";
+              cmakeFlags = (oldAttrs.cmakeFlags or [ ]) ++ [
+                "-DBUILD_TESTING=OFF"
+              ];
+            });
+          })
         ];
         config.allowUnfree = true;
       };
