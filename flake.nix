@@ -66,8 +66,6 @@
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         overlays = [
-          (import ./overlays/spotify.nix)
-          (import ./overlays/protonvpn.nix)
           (final: prev: {
             zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
           })

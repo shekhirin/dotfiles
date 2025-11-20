@@ -48,7 +48,6 @@ in
       { path = "/Applications/Signal.app"; }
       { path = "/Applications/Slack.app"; }
       { path = "/Applications/Telegram.app"; }
-      { path = "/Applications/Spotify.app"; }
       { path = "/Applications/Linear.app"; }
       { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
