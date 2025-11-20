@@ -13,6 +13,10 @@ in
     ../../modules/shared
     inputs.home-manager.nixosModules.home-manager
     inputs.ethereum-nix.nixosModules.default
+    # NixOS system-level modules (services, packages, sops, etc.)
+    ../../modules/nixos/services
+    ../../modules/nixos/packages.nix
+    ../../modules/nixos/sops.nix
   ];
 
   # Bootloader
@@ -86,8 +90,8 @@ in
         # Shared home-manager configuration (packages and programs)
         ../../modules/shared/home.nix
 
-        # NixOS-specific configuration
-        ../../modules/nixos
+        # NixOS-specific home-manager configuration (shell)
+        ../../modules/nixos/shell.nix
       ];
       home.stateVersion = "25.05";
     };
