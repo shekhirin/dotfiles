@@ -82,7 +82,10 @@ in
     useUserPackages = true;
     users.${user} = {
       imports = [
-        ../../modules/shared/packages.nix
+        # Shared home-manager configuration (packages and programs)
+        ../../modules/shared/home.nix
+
+        # NixOS-specific shell configuration
         ../../modules/nixos/shell.nix
       ];
       home.stateVersion = "25.05";

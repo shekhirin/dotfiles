@@ -112,17 +112,8 @@
               backupFileExtension = "backup";
               users.shekhirin = {
                 imports = [
-                  # Common modules (shared between all machines)
-                  ./modules/shared/packages.nix
-
-                  # Shared programs
-                  ./modules/shared/programs/git.nix
-                  ./modules/shared/programs/delta.nix
-                  ./modules/shared/programs/zellij.nix
-                  ./modules/shared/programs/nushell.nix
-                  ./modules/shared/programs/starship.nix
-                  ./modules/shared/programs/zoxide.nix
-                  ./modules/shared/programs/direnv.nix
+                  # Shared home-manager configuration (packages and programs)
+                  ./modules/shared/home.nix
 
                   # Darwin-specific modules
                   ./modules/darwin/development.nix
