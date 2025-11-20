@@ -9,11 +9,6 @@ let
   nodeExporterPort = toString config.services.prometheus.exporters.node.port;
   prometheusPort = toString config.services.prometheus.port;
 
-  # Get qBittorrent exporter configuration
-  qbittorrentExporterEnabled = config.services.qbittorrent-exporter.enable or false;
-  qbittorrentExporterPort =
-    if qbittorrentExporterEnabled then toString config.services.qbittorrent-exporter.port else null;
-
   # Get reth metrics configuration
   rethConfig = config.services.ethereum.reth.mainnet or null;
   rethMetricsEnabled = rethConfig != null && rethConfig.enable && rethConfig.args.metrics.enable;
@@ -63,19 +58,6 @@ in
           static_configs = [
             {
               targets = [ "localhost:${prometheusPort}" ];
-            }
-          ];
-        }
-      ]
-      ++ lib.optionals qbittorrentExporterEnabled [
-        {
-          job_name = "qbittorrent";
-          static_configs = [
-            {
-              targets = [ "localhost:${qbittorrentExporterPort}" ];
-              labels = {
-                instance = "qbittorrent-exporter";
-              };
             }
           ];
         }

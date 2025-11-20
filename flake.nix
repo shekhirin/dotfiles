@@ -157,9 +157,6 @@
           system = "x86_64-linux";
           overlays = [
             ethereum-nix.overlays.default
-            (final: prev: {
-              qbittorrent-exporter = final.callPackage ./pkgs/qbittorrent-exporter.nix { };
-            })
           ];
           config.allowUnfree = true;
         };

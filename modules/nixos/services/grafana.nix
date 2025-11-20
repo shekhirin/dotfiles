@@ -126,12 +126,6 @@ in
       name = "reth.json";
       sha256 = "sha256:1cz2xl61bvf3qq6ywx832vpgw49x618m17gadvvmpimsp49r86vk";
     }) [ ];
-
-    "grafana-dashboards/qbittorrent.json".source = processDashboard "qbittorrent" (builtins.fetchurl {
-      url = "https://grafana.com/api/dashboards/15116/revisions/3/download";
-      name = "qbittorrent.json";
-      sha256 = "sha256:1a0gh607x15xni7f5m96wlym4m2a6ism1zpk7npv2b6pc8g928gm";
-    }) [ ];
   };
 
   systemd = {
