@@ -114,12 +114,28 @@
                 imports = [
                   # Common modules (shared between all machines)
                   ./modules/shared/packages.nix
-                  ./modules/shared/shell.nix
+
+                  # Shared programs
+                  ./modules/shared/programs/git.nix
+                  ./modules/shared/programs/delta.nix
+                  ./modules/shared/programs/zellij.nix
+                  ./modules/shared/programs/nushell.nix
+                  ./modules/shared/programs/starship.nix
+                  ./modules/shared/programs/zoxide.nix
+                  ./modules/shared/programs/direnv.nix
 
                   # Darwin-specific modules
                   ./modules/darwin/development.nix
                   ./modules/darwin/gpg.nix
                   ./modules/darwin/apps.nix
+
+                  # Darwin programs
+                  ./modules/darwin/programs/aerospace.nix
+                  ./modules/darwin/programs/ghostty.nix
+                  ./modules/darwin/programs/zed-editor.nix
+
+                  # Darwin services
+                  ./modules/darwin/services/protonmail-bridge.nix
                 ];
 
                 home.stateVersion = "25.05";

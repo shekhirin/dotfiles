@@ -3,6 +3,8 @@
 {
   imports = [
     ./nix-settings.nix
-    ./services.nix
+
+    # Services
+    ./services/tailscale.nix
   ];
 }
