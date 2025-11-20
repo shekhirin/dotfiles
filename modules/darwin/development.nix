@@ -6,38 +6,24 @@
 
 {
   home = {
-    packages =
-      # Pull codex from the nixpkgs PR input for the current system
-      with pkgs; [
-        # Heavy development tools (macOS only)
-        rustup
-        lldb
-        go
+    packages = with pkgs; [
+      rustup
+      lldb
+      go
+      uv
+      bun
 
-        # Build tools
-        cmake
-        protobuf
-        ccache
-        pkg-config
-        ffmpeg
+      cmake
+      protobuf
+      ccache
+      pkg-config
 
-        # Deployment and orchestration
-        kubectl
-        kubectx
+      docker
+      kubectl
+      kubectx
 
-        # Specialized tools
-        uv
-        bun
-        yt-dlp
-
-        # Containerization
-        docker
-
-        # Additional CLI tools
-        claude-code
-        codex
-        amp-cli
-      ];
+      claude-code
+    ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
       ${lib.getExe pkgs.rustup} toolchain install stable nightly

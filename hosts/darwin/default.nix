@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+inputs@{ pkgs, ... }:
 
 let
   user = "shekhirin";
@@ -54,5 +54,23 @@ in
       { path = "/Applications/Anki.app"; }
       { path = "/System/Applications/System Settings.app"; }
     ];
+  };
+
+  home-manager = {
+    # Allow shared modules to access flake inputs
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    users.shekhirin = {
+      imports = [
+        # Shared home-manager configuration (packages and programs)
+        ../../modules/shared/home.nix
+        # Darwin-specific configuration
+        ../../modules/darwin
+      ];
+
+      home.stateVersion = "25.05";
+    };
   };
 }

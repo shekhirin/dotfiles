@@ -3,7 +3,9 @@
 {
   # Reload aerospace config on activation
   home.activation.aerospaceReload = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run ${lib.getExe pkgs.aerospace} reload-config
+    if pgrep -x "AeroSpace" > /dev/null; then
+      run ${lib.getExe pkgs.aerospace} reload-config
+    fi
   '';
 
   programs.aerospace = {

@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./git.nix
     ./delta.nix
-    ./zellij.nix
+    ./direnv.nix
+    ./git.nix
     ./nushell.nix
     ./starship.nix
+    ./zellij.nix
     ./zoxide.nix
-    ./direnv.nix
   ];
 }

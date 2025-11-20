@@ -98,39 +98,6 @@
 
           # Home-Manager
           home-manager.darwinModules.home-manager
-          {
-            nixpkgs = {
-              system = "aarch64-darwin";
-            };
-            home-manager = {
-              # Allow shared modules to access flake inputs
-              extraSpecialArgs = { inherit inputs; };
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.shekhirin = {
-                imports = [
-                  # Shared home-manager configuration (packages and programs)
-                  ./modules/shared/home.nix
-
-                  # Darwin-specific modules
-                  ./modules/darwin/development.nix
-                  ./modules/darwin/gpg.nix
-                  ./modules/darwin/apps.nix
-
-                  # Darwin programs
-                  ./modules/darwin/programs/aerospace.nix
-                  ./modules/darwin/programs/ghostty.nix
-                  ./modules/darwin/programs/zed-editor.nix
-
-                  # Darwin services
-                  ./modules/darwin/services/protonmail-bridge.nix
-                ];
-
-                home.stateVersion = "25.05";
-              };
-            };
-          }
 
           # Set system revision
           {
