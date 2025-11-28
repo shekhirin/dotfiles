@@ -74,11 +74,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1763631204,
-        "narHash": "sha256-qK7FBvCUYIiRFwD3rZi+spfZHaYag9lLsLu5/KQ8eGY=",
+        "lastModified": 1764174664,
+        "narHash": "sha256-CYAjcXbI6RzQ3cWKiW/u3ZiJCeVX9PQd2J0+V8zX7c8=",
         "owner": "nix-community",
         "repo": "ethereum.nix",
-        "rev": "1643bcdabdfa04c93a669c2d463f9e8b29d9fd71",
+        "rev": "e3a1e2d86a6bc1ef25bdb395d9c770b471d53e7f",
         "type": "github"
       },
       "original": {
@@ -199,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764034279,
-        "narHash": "sha256-hZH6EHQYFifVg0bmSBYT8Art5BWhXBXE307uPLnexY0=",
+        "lastModified": 1764304195,
+        "narHash": "sha256-bO7FN/bF6gG7TlZpKAZjO3VvfsLaPFkefeUfJJ7F/7w=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "381f4f8a3a5f773cb80d2b7eb8f8d733b8861434",
+        "rev": "86ff0ef506c209bb397849706e85cc3a913cb577",
         "type": "github"
       },
       "original": {
@@ -219,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763505477,
-        "narHash": "sha256-nJRd4LY2kT3OELfHqdgWjvToNZ4w+zKCMzS2R6z4sXE=",
+        "lastModified": 1764161084,
+        "narHash": "sha256-HN84sByg9FhJnojkGGDSrcjcbeioFWoNXfuyYfJ1kBE=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "3bda9f6b14161becbd07b3c56411f1670e19b9b5",
+        "rev": "e95de00a471d07435e0527ff4db092c84998698e",
         "type": "github"
       },
       "original": {
@@ -317,11 +317,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1763934636,
-        "narHash": "sha256-9glbI7f1uU+yzQCq5LwLgdZqx6svOhZWkd4JRY265fc=",
+        "lastModified": 1764230294,
+        "narHash": "sha256-Z63xl5Scj3Y/zRBPAWq1eT68n2wBWGCIEF4waZ0bQBE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ee09932cedcef15aaf476f9343d1dea2cb77e261",
+        "rev": "0d59e0290eefe0f12512043842d7096c4070f30e",
         "type": "github"
       },
       "original": {
@@ -464,11 +464,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763973970,
-        "narHash": "sha256-ljRyl1h+7UXEhPX3XXStJk7wSOH8563b+9JzYooDgP4=",
+        "lastModified": 1764328036,
+        "narHash": "sha256-h0Fi8R4/ko7ihT5pj//T8EcjVdFFY3ipApS25ZDsoCs=",
         "owner": "shekhirin",
         "repo": "zed-editor-flake",
-        "rev": "5f2084b50c1bb1592cfefff19bda0ab704ffd44a",
+        "rev": "5dbae87c4ddf95c38993abb7778876212778999a",
         "type": "github"
       },
       "original": {
