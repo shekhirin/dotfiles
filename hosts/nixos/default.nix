@@ -67,6 +67,7 @@ in
     description = "Alexey Shekhirin";
     shell = pkgs.nushell;
     extraGroups = [
+      "media"
       "networkmanager"
       "wheel"
     ];
