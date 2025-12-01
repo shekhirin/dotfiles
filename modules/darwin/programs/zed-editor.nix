@@ -18,6 +18,7 @@
       "helm"
     ];
     userSettings = {
+      auto_update = false;
       agent = {
         default_profile = "write";
         always_allow_tool_actions = false;
