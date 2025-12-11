@@ -12,7 +12,7 @@
     enable = true; # installs & configures AeroSpace
     launchd.enable = true; # manage it via launchd (autostart)
 
-    userSettings =
+    settings =
       let
         # List of always floating apps
         floaters = [

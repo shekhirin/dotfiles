@@ -23,6 +23,7 @@
       kubectx
 
       claude-code
+      amp-cli
     ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
