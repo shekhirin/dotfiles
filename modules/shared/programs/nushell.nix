@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 
+let
+  cargoUpdateDepNu = ../nu/cargo_update_dep.nu;
+  layoutNu = ../nu/layout.nu;
+in
 {
   programs.nushell = {
     enable = true;
@@ -8,8 +12,9 @@
       cd = "z";
       cat = "bat";
     };
-    configFile.text = builtins.readFile ../config.nu;
+    configFile.text = builtins.readFile ../nu/config.nu;
     extraConfig = ''
+      use ${cargoUpdateDepNu} *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/ack/ack-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/adb/adb-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/aerospace/aerospace-completions.nu *
@@ -38,7 +43,8 @@
       use ${pkgs.nu_scripts}/share/nu_scripts/aliases/git/git-aliases.nu *
 
       export alias gl = git pull
-    '';
+    ''
+    + lib.optionalString pkgs.stdenv.isDarwin "use ${layoutNu} *";
     environmentVariables = {
       EDITOR = "${lib.getExe pkgs.vim}";
     };
