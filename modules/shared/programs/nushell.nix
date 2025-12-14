@@ -2,7 +2,6 @@
 
 let
   cargoUpdateDepNu = ../nu/cargo_update_dep.nu;
-  layoutNu = ../nu/layout.nu;
 in
 {
   programs.nushell = {
@@ -43,8 +42,7 @@ in
       use ${pkgs.nu_scripts}/share/nu_scripts/aliases/git/git-aliases.nu *
 
       export alias gl = git pull
-    ''
-    + lib.optionalString pkgs.stdenv.isDarwin "use ${layoutNu} *";
+    '';
     environmentVariables = {
       EDITOR = "${lib.getExe pkgs.vim}";
     };
