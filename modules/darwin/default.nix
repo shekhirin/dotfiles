@@ -6,6 +6,5 @@
     ./development.nix
     ./gpg.nix
     ./programs
-    ./services
   ];
 }

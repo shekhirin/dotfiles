@@ -42,7 +42,7 @@ in
     username = user;
     entries = [
       { path = "/Applications/Brave Browser.app"; }
-      { path = "/System/Applications/Mail.app"; }
+      { path = "/Applications/Proton Mail.app"; }
       { path = "/System/Applications/Calendar.app"; }
       { path = "/System/Applications/Messages.app"; }
       { path = "/Applications/Signal.app"; }
