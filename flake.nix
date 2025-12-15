@@ -63,9 +63,34 @@
     }:
     let
       # System-specific package sets
+      mescOverlay = final: prev: {
+        mesc = prev.rustPlatform.buildRustPackage rec {
+          pname = "mesc";
+          version = "0.3.0";
+
+          src = prev.fetchFromGitHub {
+            owner = "paradigmxyz";
+            repo = "mesc";
+            rev = version;
+            hash = "sha256-5aejGa1RR4Vvqyd8kQyUfKaD8yQLdQrS0PosSW9TrIU=";
+          };
+
+          sourceRoot = "${src.name}/rust";
+          cargoHash = "sha256-kwr0InBMFyrsAM43X1PGIIviIlsFQcGow/y2E+nPyoU=";
+
+          nativeBuildInputs = [ prev.pkg-config ];
+          buildInputs =
+            [ prev.openssl ]
+            ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
+              prev.apple-sdk_15
+            ];
+        };
+      };
+
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         overlays = [
+          mescOverlay
           (final: prev: {
             zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
           })
