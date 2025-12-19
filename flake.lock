@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "aerospace-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766171217,
+        "narHash": "sha256-7mpXLdVW0V1j2GxmECDF9FOXgGTG6x/7Bs65sTz8C2I=",
+        "owner": "shekhirin",
+        "repo": "AeroSpace",
+        "rev": "7bed91bf96942352fc0ff260c892a6f652549efe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shekhirin",
+        "ref": "release",
+        "repo": "AeroSpace",
+        "type": "github"
+      }
+    },
     "declarative-jellyfin": {
       "inputs": {
         "nix-fast-build": "nix-fast-build",
@@ -333,6 +354,7 @@
     },
     "root": {
       "inputs": {
+        "aerospace-flake": "aerospace-flake",
         "declarative-jellyfin": "declarative-jellyfin",
         "dock-module": "dock-module",
         "ethereum-nix": "ethereum-nix",

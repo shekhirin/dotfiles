@@ -7,7 +7,7 @@ const LAYOUTS = [
             { monitor: $MONITOR_EXTERNAL, workspaces: 1..9 }
             { monitor: $MONITOR_BUILTIN, workspace: 10 }
         ]
-        apps: [
+        workspaces: [
             { workspace: 1, app: "Brave Browser" }
             { workspace: 2, apps: ["Ghostty", "Zed Preview"] }
             { workspace: 3, app: "Spotify" }
@@ -18,7 +18,7 @@ const LAYOUTS = [
         monitors: [
             { monitor: $MONITOR_BUILTIN, workspaces: 1..10 }
         ]
-        apps: [
+        workspaces: [
             { workspace: 1, app: "Brave Browser" }
             { workspace: 2, apps: ["Ghostty", "Zed Preview"] }
             { workspace: 3, apps: ["Slack", "Telegram"] }
@@ -34,8 +34,8 @@ export def layout [variant: int] {
     let initial_workspace = aerospace list-workspaces --focused | str trim
     let config = $LAYOUTS | get ($variant - 1)
 
-    # Expand apps config to flat list of {app, workspace}
-    let apps_flat = $config.apps | each { |item|
+    # Expand workspaces config to flat list of {app, workspace}
+    let apps_flat = $config.workspaces | each { |item|
         let app_list = if ($item | get -o apps | is-not-empty) {
             $item.apps
         } else {

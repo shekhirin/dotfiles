@@ -22,7 +22,6 @@
           "messages"
           "signal"
           "1password"
-          "ghostty"
         ];
         # Number of workspaces that you can switch between
         workspaceCount = 9;

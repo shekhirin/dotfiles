@@ -24,7 +24,7 @@
 
       macos-option-as-alt = "left";
 
-      command = "/bin/zsh -l -c 'zellij attach main || zellij -s main'";
+      command = "${pkgs.bash}/bin/bash --login -c '${pkgs.nushell}/bin/nu --login --interactive'";
       shell-integration-features = "sudo,ssh-env,ssh-terminfo";
 
       keybind = [

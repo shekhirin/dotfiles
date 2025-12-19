@@ -46,6 +46,12 @@
       url = "github:shekhirin/zed-editor-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # AeroSpace custom fork with tabs support
+    aerospace-flake = {
+      url = "github:shekhirin/AeroSpace/release";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -59,6 +65,7 @@
       sops-nix,
       dock-module,
       zed-editor-flake,
+      aerospace-flake,
       ...
     }:
     let
@@ -79,11 +86,12 @@
           cargoHash = "sha256-kwr0InBMFyrsAM43X1PGIIviIlsFQcGow/y2E+nPyoU=";
 
           nativeBuildInputs = [ prev.pkg-config ];
-          buildInputs =
-            [ prev.openssl ]
-            ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
-              prev.apple-sdk_15
-            ];
+          buildInputs = [
+            prev.openssl
+          ]
+          ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
+            prev.apple-sdk_15
+          ];
         };
       };
 
@@ -93,6 +101,7 @@
           mescOverlay
           (final: prev: {
             zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
+            aerospace = aerospace-flake.packages.aarch64-darwin.aerospace;
           })
           # TODO: Remove after https://github.com/NixOS/nixpkgs/pull/461779 is resolved upstream.
           (_self: super: {

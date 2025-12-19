@@ -94,6 +94,7 @@
       sticky_scroll = {
         enabled = true;
       };
+      use_system_window_tabs = true;
     };
   };
 }
