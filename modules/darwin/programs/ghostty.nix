@@ -8,6 +8,7 @@
     installBatSyntax = true;
     settings = {
       auto-update = "off";
+      auto-update-channel = "tip";
 
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
 
