@@ -22,15 +22,7 @@
       agent = {
         default_profile = "write";
         always_allow_tool_actions = false;
-        default_model = {
-          provider = "zed.dev";
-          model = "claude-opus-4";
-        };
         model_parameters = [ ];
-        inline_assistant_model = {
-          provider = "zed.dev";
-          model = "claude-opus-4";
-        };
       };
       vim_mode = true;
       ui_font_size = 14;
