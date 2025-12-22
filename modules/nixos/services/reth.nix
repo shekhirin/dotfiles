@@ -44,7 +44,7 @@
         port = 9001;
       };
     };
-    extraArgs = "--debug.rpc-consensus-url https://reth-ethereum.ithaca.xyz/rpc";
+    extraArgs = ["--debug.rpc-consensus-url wss://reth-ethereum.ithaca.xyz/ws"];
     openFirewall = false;
   };
 
