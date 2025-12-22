@@ -31,49 +31,48 @@ in
     };
 
     # Scrape configurations for various services
-    scrapeConfigs =
-      [
-        {
-          job_name = "node";
-          static_configs = [
-            {
-              targets = [ "localhost:${nodeExporterPort}" ];
-              labels = {
-                instance = config.networking.hostName;
-              };
-            }
-          ];
-        }
-        {
-          job_name = "prometheus";
-          static_configs = [
-            {
-              targets = [ "localhost:${prometheusPort}" ];
-            }
-          ];
-        }
-      ]
-      ++ lib.optionals rethMetricsEnabled [
-        {
-          job_name = "reth";
-          static_configs = [
-            {
-              targets = [
-                "${if rethMetricsAddr == "0.0.0.0" then "localhost" else rethMetricsAddr}:${rethMetricsPort}"
-              ];
-              labels = {
-                instance = "reth-mainnet";
-              };
-            }
-            {
-              targets = [ "localhost:9002" ];
-              labels = {
-                instance = "tmp";
-              };
-            }
-          ];
-        }
-      ];
+    scrapeConfigs = [
+      {
+        job_name = "node";
+        static_configs = [
+          {
+            targets = [ "localhost:${nodeExporterPort}" ];
+            labels = {
+              instance = config.networking.hostName;
+            };
+          }
+        ];
+      }
+      {
+        job_name = "prometheus";
+        static_configs = [
+          {
+            targets = [ "localhost:${prometheusPort}" ];
+          }
+        ];
+      }
+    ]
+    ++ lib.optionals rethMetricsEnabled [
+      {
+        job_name = "reth";
+        static_configs = [
+          {
+            targets = [
+              "${if rethMetricsAddr == "0.0.0.0" then "localhost" else rethMetricsAddr}:${rethMetricsPort}"
+            ];
+            labels = {
+              instance = "reth-mainnet";
+            };
+          }
+          {
+            targets = [ "localhost:9002" ];
+            labels = {
+              instance = "tmp";
+            };
+          }
+        ];
+      }
+    ];
   };
 
   # Node Exporter for system metrics
