@@ -95,24 +95,25 @@
         };
       };
 
+      overlays = [
+        mescOverlay
+      ];
+
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
-        overlays = [
-          mescOverlay
+        overlays = overlays ++ [
           (final: prev: {
             zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
             aerospace = aerospace-flake.packages.aarch64-darwin.aerospace;
           })
-          # TODO: Remove after https://github.com/NixOS/nixpkgs/pull/461779 is resolved upstream.
-          (_self: super: {
-            fish = super.fish.overrideAttrs (oldAttrs: {
-              doCheck = false;
-              checkPhase = "";
-              cmakeFlags = (oldAttrs.cmakeFlags or [ ]) ++ [
-                "-DBUILD_TESTING=OFF"
-              ];
-            });
-          })
+        ];
+        config.allowUnfree = true;
+      };
+
+      boxPkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = overlays ++ [
+          ethereum-nix.overlays.default
         ];
         config.allowUnfree = true;
       };
@@ -143,13 +144,7 @@
       # NixOS configuration for the box
       nixosConfigurations.box = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          overlays = [
-            ethereum-nix.overlays.default
-          ];
-          config.allowUnfree = true;
-        };
+        pkgs = boxPkgs;
         specialArgs = { inherit inputs; };
 
         modules = [
