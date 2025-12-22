@@ -14,15 +14,6 @@ let
   rethMetricsEnabled = rethConfig != null && rethConfig.enable && rethConfig.args.metrics.enable;
   rethMetricsAddr = if rethMetricsEnabled then rethConfig.args.metrics.addr else null;
   rethMetricsPort = if rethMetricsEnabled then toString rethConfig.args.metrics.port else null;
-
-  # Get lighthouse metrics configuration
-  lighthouseConfig = config.services.ethereum.lighthouse-beacon.mainnet or null;
-  lighthouseMetricsEnabled =
-    lighthouseConfig != null && lighthouseConfig.enable && lighthouseConfig.args.metrics.enable;
-  lighthouseMetricsAddr =
-    if lighthouseMetricsEnabled then lighthouseConfig.args.metrics.address else null;
-  lighthouseMetricsPort =
-    if lighthouseMetricsEnabled then toString lighthouseConfig.args.metrics.port else null;
 in
 {
   # Prometheus service for metrics collection
@@ -78,24 +69,6 @@ in
               targets = [ "localhost:9002" ];
               labels = {
                 instance = "tmp";
-              };
-            }
-          ];
-        }
-      ]
-      ++ lib.optionals lighthouseMetricsEnabled [
-        {
-          job_name = "lighthouse";
-          static_configs = [
-            {
-              targets = [
-                "${
-                  if lighthouseMetricsAddr == "0.0.0.0" then "localhost" else lighthouseMetricsAddr
-                }:${lighthouseMetricsPort}"
-              ];
-              labels = {
-                instance = "lighthouse-mainnet";
-                chain = "mainnet";
               };
             }
           ];

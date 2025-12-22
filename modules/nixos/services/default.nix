@@ -5,7 +5,6 @@
     # Blockchain
     ./monero.nix
     ./reth.nix
-    ./lighthouse.nix
 
     # Monitoring
     ./prometheus.nix
