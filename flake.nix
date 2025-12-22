@@ -24,8 +24,8 @@
     };
 
     # Declarative Jellyfin configuration
-    declarative-jellyfin = {
-      url = "github:Sveske-Juice/declarative-jellyfin";
+    jellarr = {
+      url = "github:venkyr77/jellarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -61,7 +61,7 @@
       nix-darwin,
       home-manager,
       ethereum-nix,
-      declarative-jellyfin,
+      jellarr,
       sops-nix,
       dock-module,
       zed-editor-flake,
@@ -149,7 +149,7 @@
 
         modules = [
           ./hosts/nixos/default.nix
-          declarative-jellyfin.nixosModules.default
+          jellarr.nixosModules.default
           sops-nix.nixosModules.sops
           # Pass inputs to Home Manager in NixOS as well
           (_: {
