@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766410291,
-        "narHash": "sha256-Iwd89gFcg+bD4ADwZHqkYuRbjYP3CggUPVExZbOtL0E=",
+        "lastModified": 1766418834,
+        "narHash": "sha256-ugdhytISM0fjdDYEHzSIvOjCM1/a3+o+rUX4WmKe9Vs=",
         "owner": "shekhirin",
         "repo": "AeroSpace",
-        "rev": "c238348b4cf26319ab67c8d54bf39ccda826433c",
+        "rev": "40bb69a8833fdfcdfb9ac52ca09774bb09012162",
         "type": "github"
       },
       "original": {

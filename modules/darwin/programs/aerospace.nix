@@ -125,6 +125,8 @@
             ];
           };
         };
+
+        experimental-native-tabs = true;
       };
   };
 }
