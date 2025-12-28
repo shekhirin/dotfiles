@@ -67,6 +67,12 @@
           run = "layout floating";
         }) floaters;
 
+        enable-tabs-for-apps = [
+          "com.mitchellh.ghostty"
+          "dev.zed.Zed-Preview"
+          "dev.zed.Zed"
+        ];
+
         key-mapping.preset = "qwerty";
 
         gaps = {
@@ -125,8 +131,6 @@
             ];
           };
         };
-
-        experimental-native-tabs = true;
       };
   };
 }
