@@ -52,6 +52,9 @@
       url = "github:shekhirin/AeroSpace/release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # jj-starship
+    jj-starship.url = "github:dmmulroy/jj-starship";
   };
 
   outputs =
@@ -66,6 +69,7 @@
       dock-module,
       zed-editor-flake,
       aerospace-flake,
+      jj-starship,
       ...
     }:
     let
@@ -97,6 +101,7 @@
 
       overlays = [
         mescOverlay
+        jj-starship.overlays.default
       ];
 
       darwinPkgs = import nixpkgs {

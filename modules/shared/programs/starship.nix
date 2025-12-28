@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.starship = {
@@ -11,6 +11,24 @@ _:
       docker_context = {
         disabled = true;
       };
+      custom = {
+        jj = {
+          command = "jj-starship";
+          detect_folders = [
+            ".jj"
+            ".git"
+          ];
+          shell = [ "sh" ];
+          format = "$output ";
+        };
+      };
+      git_branch.disabled = true;
+      git_status.disabled = true;
+      package.disabled = true;
     };
   };
+
+  home.packages = with pkgs; [
+    jj-starship
+  ];
 }
