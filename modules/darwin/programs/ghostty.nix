@@ -12,10 +12,6 @@
 
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
 
-      font-family = "JetBrains Mono";
-      font-family-bold = "JetBrains Mono";
-      font-family-italic = "JetBrains Mono";
-      font-family-bold-italic = "JetBrains Mono";
       font-size = 12;
       font-feature = "-calt";
 
