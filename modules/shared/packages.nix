@@ -8,7 +8,6 @@
     git-lfs
     gh
     just
-    jujutsu
 
     # CLI utilities
     bat
