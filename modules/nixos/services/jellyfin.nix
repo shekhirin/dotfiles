@@ -11,6 +11,12 @@ in
     "Z /mnt/nvme/media 0775 root ${group} -"
   ];
 
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    group = "${group}";
+  };
+
   sops.secrets.jellarr-api-key = { };
   sops.secrets.jellyfin-password = { };
 
