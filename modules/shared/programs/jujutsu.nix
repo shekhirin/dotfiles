@@ -4,9 +4,8 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        name = "Alexey Shekhirin";
-        email = "github@shekhirin.com";
+      signing = {
+        backend = "gpg";
       };
       ui = {
         diff-formatter = [
@@ -15,6 +14,10 @@
           "$left"
           "$right"
         ];
+      };
+      user = {
+        name = "Alexey Shekhirin";
+        email = "github@shekhirin.com";
       };
     };
   };
