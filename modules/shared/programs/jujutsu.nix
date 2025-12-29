@@ -6,8 +6,7 @@
 }:
 
 let
-  cfg = config.programs.jujutsu;
-  packageVersion = lib.getVersion cfg.package;
+  packageVersion = lib.getVersion config.programs.jujutsu.package;
   schemaUrl = "https://docs.jj-vcs.dev/v${packageVersion}/config-schema.json";
 
   configDir =
