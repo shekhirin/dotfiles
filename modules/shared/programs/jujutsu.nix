@@ -6,7 +6,7 @@
     settings = {
       user = {
         name = "Alexey Shekhirin";
-        email = "5773434+shekhirin@users.noreply.github.com";
+        email = "github@shekhirin.com";
       };
       ui = {
         diff-formatter = [
