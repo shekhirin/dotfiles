@@ -21,6 +21,14 @@ in
   programs.jujutsu = {
     enable = true;
     settings = {
+      remotes = {
+        origin = {
+          auto-track-bookmarks = "glob:alexey/*";
+        };
+        upstream = {
+          auto-track-bookmarks = "main";
+        };
+      };
       signing = {
         behavior = "own";
         backend = "gpg";
