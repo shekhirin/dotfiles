@@ -5,6 +5,7 @@
     enable = true;
     settings = {
       signing = {
+        behaviour = "own";
         backend = "gpg";
       };
       ui = {
