@@ -168,5 +168,31 @@
         aarch64-darwin = darwinPkgs.nixfmt-tree;
         x86_64-linux = (import nixpkgs { system = "x86_64-linux"; }).nixfmt-tree;
       };
+
+      # Checks for each system
+      checks = {
+        aarch64-darwin = {
+          fmt = darwinPkgs.runCommand "fmt-check" { } ''
+            export HOME=$TMPDIR
+            ${darwinPkgs.lib.getExe self.formatter.aarch64-darwin} --ci ${./.}
+            touch $out
+          '';
+          statix = darwinPkgs.runCommand "statix-check" { } ''
+            ${darwinPkgs.lib.getExe darwinPkgs.statix} check ${./.}
+            touch $out
+          '';
+        };
+        x86_64-linux = {
+          fmt = boxPkgs.runCommand "fmt-check" { } ''
+            export HOME=$TMPDIR
+            ${boxPkgs.lib.getExe self.formatter.x86_64-linux} --ci ${./.}
+            touch $out
+          '';
+          statix = boxPkgs.runCommand "statix-check" { } ''
+            ${boxPkgs.lib.getExe boxPkgs.statix} check ${./.}
+            touch $out
+          '';
+        };
+      };
     };
 }

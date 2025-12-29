@@ -1,0 +1,32 @@
+name: Flake Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v14
+
+      - name: Setup Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Run flake checks (macOS)
+        if: matrix.os == 'macos-latest'
+        run: nix flake check --accept-flake-config --system aarch64-darwin
+
+      - name: Run flake checks (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: nix flake check --accept-flake-config --system x86_64-linux

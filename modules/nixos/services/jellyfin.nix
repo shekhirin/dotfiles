@@ -17,15 +17,17 @@ in
     group = "${group}";
   };
 
-  sops.secrets.jellarr-api-key = { };
-  sops.secrets.jellyfin-password = { };
+  sops = {
+    secrets.jellarr-api-key = { };
+    secrets.jellyfin-password = { };
 
-  sops.templates.jellarr-env = {
-    content = ''
-      JELLARR_API_KEY=${config.sops.placeholder.jellarr-api-key}
-    '';
-    owner = config.services.jellarr.user;
-    inherit (config.services.jellarr) group;
+    templates.jellarr-env = {
+      content = ''
+        JELLARR_API_KEY=${config.sops.placeholder.jellarr-api-key}
+      '';
+      owner = config.services.jellarr.user;
+      inherit (config.services.jellarr) group;
+    };
   };
 
   services.jellarr = {
