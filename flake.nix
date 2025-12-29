@@ -108,8 +108,8 @@
         system = "aarch64-darwin";
         overlays = overlays ++ [
           (final: prev: {
-            zed-editor-preview-bin = zed-editor-flake.packages.aarch64-darwin.zed-editor-preview-bin;
-            aerospace = aerospace-flake.packages.aarch64-darwin.aerospace;
+            inherit (zed-editor-flake.packages.aarch64-darwin) zed-editor-preview-bin;
+            inherit (aerospace-flake.packages.aarch64-darwin) aerospace;
           })
         ];
         config.allowUnfree = true;

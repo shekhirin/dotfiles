@@ -25,7 +25,7 @@ in
       JELLARR_API_KEY=${config.sops.placeholder.jellarr-api-key}
     '';
     owner = config.services.jellarr.user;
-    group = config.services.jellarr.group;
+    inherit (config.services.jellarr) group;
   };
 
   services.jellarr = {

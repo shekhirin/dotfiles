@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 let
   layoutNu = ../nu/layout.nu;
