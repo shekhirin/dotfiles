@@ -34,6 +34,7 @@ in
         backend = "gpg";
       };
       ui = {
+        default-command = "log";
         diff-formatter = [
           "${pkgs.difftastic}/bin/difft"
           "--color=always"
