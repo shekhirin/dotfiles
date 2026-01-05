@@ -54,7 +54,16 @@
     };
 
     # jj-starship
-    jj-starship.url = "github:dmmulroy/jj-starship";
+    jj-starship = {
+      url = "github:dmmulroy/jj-starship";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # OpenCode
+    opencode = {
+      url = "github:anomalyco/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -70,6 +79,7 @@
       zed-editor-flake,
       aerospace-flake,
       jj-starship,
+      opencode,
       ...
     }:
     let
@@ -99,9 +109,14 @@
         };
       };
 
+      opencodeOverlay = final: prev: {
+        opencode = opencode.packages.${final.system}.default;
+      };
+
       overlays = [
         mescOverlay
         jj-starship.overlays.default
+        opencodeOverlay
       ];
 
       darwinPkgs = import nixpkgs {

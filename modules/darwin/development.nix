@@ -24,6 +24,7 @@
 
       claude-code
       amp-cli
+      opencode
     ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
