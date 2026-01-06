@@ -18,6 +18,7 @@
       ccache
       pkg-config
 
+      argo-workflows
       docker
       kubectl
       kubectx
