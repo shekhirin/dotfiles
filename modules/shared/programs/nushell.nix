@@ -22,6 +22,7 @@ in
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/fastboot/fastboot-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/gh/gh-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
+      use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/jj/jj-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/just/just-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/make/make-completions.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/man/man-completions.nu *
