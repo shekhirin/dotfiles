@@ -38,6 +38,13 @@ in
           "@-"
         ];
       };
+      git = {
+        fetch = [
+          "upstream"
+          "origin"
+        ];
+        push = "origin";
+      };
       remotes = {
         origin = {
           auto-track-bookmarks = "glob:alexey/*";
@@ -45,6 +52,9 @@ in
         upstream = {
           auto-track-bookmarks = "main";
         };
+      };
+      revset-aliases = {
+        "trunk()" = "main@upstream";
       };
       signing = {
         behavior = "own";
