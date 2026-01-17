@@ -6,9 +6,10 @@
     ./sync.nix
   ];
 
-  # Add docker to clawdbot-gateway service PATH
+  # Add docker to clawdbot-gateway service PATH and use rootless docker socket
   systemd.user.services.clawdbot-gateway.Service.Environment = [
     "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
+    "DOCKER_HOST=unix:///run/user/1000/docker.sock"
   ];
 
   programs.clawdbot = {
