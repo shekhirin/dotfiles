@@ -10,6 +10,11 @@
     # Documents managed separately in private repo: github.com/shekhirin/clawdbot-documents
     # Bidirectional sync via systemd timer (pulls remote, pushes local changes)
     # Using workspaceDir instead of documents to avoid build-time validation
+
+    # Disable macOS-only plugins
+    firstParty.peekaboo.enable = false;
+    firstParty.summarize.enable = false;
+
     instances.default = {
       enable = true;
       workspaceDir = "${config.home.homeDirectory}/clawdbot-documents";
