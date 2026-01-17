@@ -126,10 +126,13 @@
           nativeBuildInputs = [ prev.pkg-config ];
           buildInputs = [
             prev.openssl
+            prev.oniguruma
           ]
           ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
             prev.apple-sdk_15
           ];
+
+          RUSTONIG_SYSTEM_LIBONIG = true;
         };
       };
 
