@@ -101,6 +101,13 @@ in
     };
   };
 
+  # Workaround for nix-clawdbot using hardcoded /bin/mkdir
+  # TODO: report upstream
+  system.activationScripts.binMkdir = ''
+    mkdir -p /bin
+    ln -sfn ${pkgs.coreutils}/bin/mkdir /bin/mkdir
+  '';
+
   # State version
   system.stateVersion = "25.05";
 }
