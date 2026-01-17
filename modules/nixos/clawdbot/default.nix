@@ -6,10 +6,13 @@
     ./sync.nix
   ];
 
-  # Add docker to clawdbot-gateway service PATH for sandbox mode
-  systemd.user.services.clawdbot-gateway.Service.Environment = [
-    "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
-  ];
+  # Add docker to clawdbot-gateway service PATH and grant docker socket access
+  systemd.user.services.clawdbot-gateway.Service = {
+    Environment = [
+      "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
+    ];
+    SupplementaryGroups = [ "docker" ];
+  };
 
   programs.clawdbot = {
     # Documents managed separately in private repo: github.com/shekhirin/clawdbot-documents
