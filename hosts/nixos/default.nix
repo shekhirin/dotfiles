@@ -93,6 +93,9 @@ in
 
         # NixOS-specific home-manager configuration (shell)
         ../../modules/nixos/shell.nix
+
+        # Clawdbot (Telegram AI assistant)
+        ../../modules/nixos/clawdbot
       ];
       home.stateVersion = "25.05";
     };

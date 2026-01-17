@@ -17,16 +17,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Shared utilities
+    systems.url = "github:nix-systems/default";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     # Ethereum.nix for blockchain node configurations
     ethereum-nix = {
       url = "github:nix-community/ethereum.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
 
     # Declarative Jellyfin configuration
     jellarr = {
       url = "github:venkyr77/jellarr";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
 
     # Secret management
@@ -45,6 +58,7 @@
     zed-editor-flake = {
       url = "github:shekhirin/zed-editor-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # AeroSpace custom fork with tabs support
@@ -57,12 +71,21 @@
     jj-starship = {
       url = "github:dmmulroy/jj-starship";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     # OpenCode
     opencode = {
       url = "github:anomalyco/opencode";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Clawdbot
+    nix-clawdbot = {
+      url = "github:clawdbot/nix-clawdbot";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -80,6 +103,7 @@
       aerospace-flake,
       jj-starship,
       opencode,
+      nix-clawdbot,
       ...
     }:
     let
@@ -134,6 +158,7 @@
         system = "x86_64-linux";
         overlays = overlays ++ [
           ethereum-nix.overlays.default
+          nix-clawdbot.overlays.default
         ];
         config.allowUnfree = true;
       };
