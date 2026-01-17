@@ -24,7 +24,7 @@
       };
       # ChatGPT OAuth via Codex
       # Run on box: clawdbot onboard --auth-choice openai-codex
-      model.primary = "openai-codex/gpt-4.1";
+      agent.model = "openai-codex/gpt-4.1";
     };
   };
 }
