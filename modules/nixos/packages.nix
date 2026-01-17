@@ -6,10 +6,9 @@
     ghostty.terminfo
   ];
 
-  # Docker for clawdbot sandboxing
+  # Docker for clawdbot sandboxing (rootless only, no system daemon)
   virtualisation.docker = {
-    enable = true;
-    # Enable rootless docker so user services can access docker without root
+    enable = false;
     rootless = {
       enable = true;
       setSocketVariable = true;
