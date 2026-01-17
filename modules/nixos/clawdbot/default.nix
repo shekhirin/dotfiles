@@ -35,6 +35,8 @@
       # Override wizard settings
       configOverrides = {
         gateway.mode = "local";
+        # Run all sessions in Docker sandbox
+        agents.defaults.sandbox.mode = "all";
       };
     };
   };
