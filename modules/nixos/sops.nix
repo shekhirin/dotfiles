@@ -5,5 +5,7 @@ _:
   sops.defaultSopsFile = ./secrets.yaml;
 
   # Clawdbot secrets
-  sops.secrets."clawdbot/telegram-bot-token" = { };
+  sops.secrets."clawdbot/telegram-bot-token" = {
+    owner = "shekhirin";
+  };
 }
