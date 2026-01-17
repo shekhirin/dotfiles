@@ -101,11 +101,15 @@ in
     };
   };
 
-  # Workaround for nix-clawdbot using hardcoded /bin/mkdir
+  # Workaround for nix-clawdbot using hardcoded /bin paths
   # TODO: report upstream
-  system.activationScripts.binMkdir = ''
+  system.activationScripts.binCompat = ''
     mkdir -p /bin
     ln -sfn ${pkgs.coreutils}/bin/mkdir /bin/mkdir
+    ln -sfn ${pkgs.coreutils}/bin/ln /bin/ln
+    ln -sfn ${pkgs.coreutils}/bin/cat /bin/cat
+    ln -sfn ${pkgs.coreutils}/bin/rm /bin/rm
+    ln -sfn ${pkgs.coreutils}/bin/chmod /bin/chmod
   '';
 
   # State version
