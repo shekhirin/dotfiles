@@ -30,7 +30,7 @@
       };
       # ChatGPT OAuth via Codex
       # Run on box: clawdbot onboard --auth-choice openai-codex
-      agent.model = "openai-codex/gpt-4.1";
+      agent.model = "openai-codex/gpt-5.2";
 
       # Override wizard settings
       configOverrides = {
