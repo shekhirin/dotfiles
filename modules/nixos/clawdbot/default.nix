@@ -9,9 +9,10 @@
   programs.clawdbot = {
     # Documents managed separately in private repo: github.com/shekhirin/clawdbot-documents
     # Bidirectional sync via systemd timer (pulls remote, pushes local changes)
-    documents = "${config.home.homeDirectory}/clawdbot-documents";
+    # Using workspaceDir instead of documents to avoid build-time validation
     instances.default = {
       enable = true;
+      workspaceDir = "${config.home.homeDirectory}/clawdbot-documents";
       providers.telegram = {
         enable = true;
         botTokenFile = "/run/secrets/clawdbot/telegram-bot-token";
