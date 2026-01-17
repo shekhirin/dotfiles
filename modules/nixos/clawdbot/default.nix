@@ -1,9 +1,14 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
     inputs.nix-clawdbot.homeManagerModules.clawdbot
     ./sync.nix
+  ];
+
+  # Add docker to clawdbot-gateway service PATH for sandbox mode
+  systemd.user.services.clawdbot-gateway.Service.Environment = [
+    "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
   ];
 
   programs.clawdbot = {
