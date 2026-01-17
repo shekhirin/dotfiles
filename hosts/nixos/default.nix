@@ -83,6 +83,9 @@ in
   # Allow passwordless sudo for deployment
   security.sudo.wheelNeedsPassword = false;
 
+  # Enable lingering for user services (preserves group membership)
+  users.users.${user}.linger = true;
+
   # Home Manager configuration
   home-manager = {
     useGlobalPkgs = true;

@@ -6,13 +6,10 @@
     ./sync.nix
   ];
 
-  # Add docker to clawdbot-gateway service PATH and grant docker socket access
-  systemd.user.services.clawdbot-gateway.Service = {
-    Environment = [
-      "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
-    ];
-    SupplementaryGroups = [ "docker" ];
-  };
+  # Add docker to clawdbot-gateway service PATH
+  systemd.user.services.clawdbot-gateway.Service.Environment = [
+    "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
+  ];
 
   programs.clawdbot = {
     # Documents managed separately in private repo: github.com/shekhirin/clawdbot-documents
