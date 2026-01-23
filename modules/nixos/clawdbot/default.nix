@@ -6,12 +6,6 @@
     ./sync.nix
   ];
 
-  # Add docker to clawdbot-gateway service PATH and use rootless docker socket
-  systemd.user.services.clawdbot-gateway.Service.Environment = [
-    "PATH=${pkgs.docker}/bin:/run/current-system/sw/bin:$PATH"
-    "DOCKER_HOST=unix:///run/user/1000/docker.sock"
-  ];
-
   programs.clawdbot = {
     # Documents managed separately in private repo: github.com/shekhirin/clawdbot-documents
     # Bidirectional sync via systemd timer (pulls remote, pushes local changes)
@@ -41,8 +35,6 @@
       # Override wizard settings
       configOverrides = {
         gateway.mode = "local";
-        # Run all sessions in Docker sandbox
-        agents.defaults.sandbox.mode = "all";
       };
     };
   };
