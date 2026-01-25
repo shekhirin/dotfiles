@@ -97,15 +97,11 @@ in
         # NixOS-specific home-manager configuration (shell)
         ../../modules/nixos/shell.nix
 
-        # Clawdbot (Telegram AI assistant)
-        ../../modules/nixos/clawdbot
       ];
       home.stateVersion = "25.05";
     };
   };
 
-  # Workaround for nix-clawdbot using hardcoded /bin paths
-  # TODO: report upstream
   system.activationScripts.binCompat = ''
     mkdir -p /bin
     ln -sfn ${pkgs.coreutils}/bin/mkdir /bin/mkdir

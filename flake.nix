@@ -80,13 +80,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Clawdbot
-    nix-clawdbot = {
-      url = "github:clawdbot/nix-clawdbot";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-utils.follows = "flake-utils";
-    };
   };
 
   outputs =
@@ -103,7 +96,6 @@
       aerospace-flake,
       jj-starship,
       opencode,
-      nix-clawdbot,
       ...
     }:
     let
@@ -161,7 +153,6 @@
         system = "x86_64-linux";
         overlays = overlays ++ [
           ethereum-nix.overlays.default
-          nix-clawdbot.overlays.default
         ];
         config.allowUnfree = true;
       };
