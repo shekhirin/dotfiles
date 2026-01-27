@@ -1,4 +1,4 @@
-inputs@{ pkgs, ... }:
+{ pkgs, llm-agents, ... }@inputs:
 
 let
   user = "shekhirin";
@@ -59,7 +59,7 @@ in
 
   home-manager = {
     # Allow shared modules to access flake inputs
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs llm-agents; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";

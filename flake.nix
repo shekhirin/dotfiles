@@ -1,6 +1,11 @@
 {
   description = "Alexey's multi-machine configuration";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.numtide.com" ];
+    extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
+  };
+
   inputs = {
     # Core packages
     # Pinned to avoid Swift build failure with clang 21 (NixOS/nixpkgs#483584)
@@ -75,9 +80,9 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    # OpenCode
-    opencode = {
-      url = "github:anomalyco/opencode";
+    # LLM coding agents (daily updated)
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -96,7 +101,7 @@
       zed-editor-flake,
       aerospace-flake,
       jj-starship,
-      opencode,
+      llm-agents,
       ...
     }:
     let
@@ -129,14 +134,9 @@
         };
       };
 
-      opencodeOverlay = final: prev: {
-        opencode = opencode.packages.${final.system}.default;
-      };
-
       overlays = [
         mescOverlay
         jj-starship.overlays.default
-        opencodeOverlay
       ];
 
       darwinPkgs = import nixpkgs {
@@ -163,7 +163,7 @@
       darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = darwinPkgs;
-        specialArgs = { inherit inputs dock-module; };
+        specialArgs = { inherit inputs dock-module llm-agents; };
 
         modules = [
           ./hosts/darwin/default.nix

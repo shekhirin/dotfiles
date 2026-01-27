@@ -1,9 +1,13 @@
 {
   pkgs,
   lib,
+  llm-agents,
   ...
 }:
 
+let
+  llm-agents-pkgs = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   home = {
     packages = with pkgs; [
@@ -23,9 +27,9 @@
       kubectl
       kubectx
 
-      claude-code
-      amp-cli
-      opencode
+      llm-agents-pkgs.claude-code
+      llm-agents-pkgs.amp
+      llm-agents-pkgs.opencode
     ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
