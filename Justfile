@@ -2,18 +2,31 @@
 default:
     @just --list
 
-# Switch macbook
-switch-macbook *ARGS:
-    sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
+# Switch personal macbook
+switch-personal *ARGS:
+    sudo darwin-rebuild switch --flake .#personal {{ARGS}}
 
-# Build macbook
-build-macbook *ARGS:
-    sudo darwin-rebuild build --flake .#macbook {{ARGS}}
+# Build personal macbook
+build-personal *ARGS:
+    sudo darwin-rebuild build --flake .#personal {{ARGS}}
 
-# Update and switch macbook
-update-macbook *ARGS:
+# Update and switch personal macbook
+update-personal *ARGS:
     nix flake update
-    sudo darwin-rebuild switch --flake .#macbook {{ARGS}}
+    sudo darwin-rebuild switch --flake .#personal {{ARGS}}
+
+# Switch work macbook
+switch-work *ARGS:
+    sudo darwin-rebuild switch --flake .#shekhirin-tempo {{ARGS}}
+
+# Build work macbook
+build-work *ARGS:
+    sudo darwin-rebuild build --flake .#shekhirin-tempo {{ARGS}}
+
+# Update and switch work macbook
+update-work *ARGS:
+    nix flake update
+    sudo darwin-rebuild switch --flake .#shekhirin-tempo {{ARGS}}
 
 # Switch box
 switch-box *ARGS:

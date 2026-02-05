@@ -159,17 +159,36 @@
       };
     in
     {
-      # macOS configuration
-      darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
+      # macOS configuration (personal)
+      darwinConfigurations.personal = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = darwinPkgs;
         specialArgs = { inherit inputs dock-module llm-agents; };
 
         modules = [
-          ./hosts/darwin/default.nix
+          ./hosts/darwin/personal/default.nix
 
           # Dock configuration
           "${dock-module}/modules/darwin/dock"
+
+          # Home-Manager
+          home-manager.darwinModules.home-manager
+
+          # Set system revision
+          {
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+          }
+        ];
+      };
+
+      # macOS configuration (work)
+      darwinConfigurations.shekhirin-tempo = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        pkgs = darwinPkgs;
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./hosts/darwin/work/default.nix
 
           # Home-Manager
           home-manager.darwinModules.home-manager

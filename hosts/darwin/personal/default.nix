@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ../../modules/shared
+    ../../../modules/shared
   ];
 
   _module.args = { inherit user; };
@@ -66,9 +66,9 @@ in
     users.shekhirin = {
       imports = [
         # Shared home-manager configuration (packages and programs)
-        ../../modules/shared/home.nix
+        ../../../modules/shared/home.nix
         # Darwin-specific configuration
-        ../../modules/darwin
+        ../../../modules/darwin
       ];
 
       home.stateVersion = "25.05";
