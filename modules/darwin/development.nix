@@ -27,9 +27,7 @@ in
       kubectl
       kubectx
 
-      llm-agents-pkgs.claude-code
       llm-agents-pkgs.amp
-      llm-agents-pkgs.opencode
     ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
