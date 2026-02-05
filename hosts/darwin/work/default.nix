@@ -55,6 +55,7 @@ in
       imports = [
         ../../../modules/shared/home.nix
         ../../../modules/darwin
+        ./home.nix
       ];
 
       home.stateVersion = "25.05";
