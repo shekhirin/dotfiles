@@ -30,7 +30,7 @@
       buffer_font_features = {
         calt = false;
       };
-      buffer_font_fallbacks = [ "JetBrains Mono" ];
+      buffer_font_fallbacks = [ "JetBrainsMono Nerd Font" ];
       theme = {
         mode = "system";
         light = "Catppuccin Latte - No Italics";

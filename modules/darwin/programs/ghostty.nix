@@ -12,6 +12,7 @@
 
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
 
+      font-family = "JetBrainsMono Nerd Font";
       font-size = 12;
       font-feature = "-calt";
 

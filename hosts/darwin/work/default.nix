@@ -7,6 +7,7 @@ in
   imports = [
     ../../../modules/shared
     ../../../modules/darwin/determinate-nix.nix
+    ../../../modules/darwin/fonts.nix
   ];
 
   _module.args = { inherit user; };
