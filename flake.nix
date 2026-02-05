@@ -182,7 +182,7 @@
       };
 
       # macOS configuration (work)
-      darwinConfigurations.shekhirin-tempo = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.work = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = darwinPkgs;
         specialArgs = { inherit inputs; };

@@ -8,6 +8,7 @@ in
 
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
+  networking.hostName = "shekhirin-tempo";
   system = {
     stateVersion = 6;
     primaryUser = user;

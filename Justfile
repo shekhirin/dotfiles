@@ -17,16 +17,16 @@ update-personal *ARGS:
 
 # Switch work macbook
 switch-work *ARGS:
-    sudo darwin-rebuild switch --flake .#shekhirin-tempo {{ARGS}}
+    sudo darwin-rebuild switch --flake .#work {{ARGS}}
 
 # Build work macbook
 build-work *ARGS:
-    sudo darwin-rebuild build --flake .#shekhirin-tempo {{ARGS}}
+    sudo darwin-rebuild build --flake .#work {{ARGS}}
 
 # Update and switch work macbook
 update-work *ARGS:
     nix flake update
-    sudo darwin-rebuild switch --flake .#shekhirin-tempo {{ARGS}}
+    sudo darwin-rebuild switch --flake .#work {{ARGS}}
 
 # Switch box
 switch-box *ARGS:

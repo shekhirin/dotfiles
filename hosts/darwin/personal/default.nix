@@ -11,6 +11,7 @@ in
   _module.args = { inherit user; };
   ## Core system
   nixpkgs.hostPlatform = "aarch64-darwin";
+  networking.hostName = "shekhirin";
   system = {
     stateVersion = 6;
     primaryUser = user;
