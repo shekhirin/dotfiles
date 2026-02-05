@@ -2,41 +2,63 @@
 default:
     @just --list
 
-# Switch personal macbook
-switch-personal *ARGS:
-    sudo darwin-rebuild switch --flake .#personal {{ARGS}}
+# Detect flake target and rebuild command based on hostname
+[private]
+detect:
+    #!/usr/bin/env bash
+    hostname=$(hostname -s)
+    case "$hostname" in
+        shekhirin)
+            echo "darwin:personal"
+            ;;
+        shekhirin-tempo)
+            echo "darwin:work"
+            ;;
+        box)
+            echo "nixos:box"
+            ;;
+        *)
+            echo "Unknown hostname: $hostname" >&2
+            exit 1
+            ;;
+    esac
 
-# Build personal macbook
-build-personal *ARGS:
-    sudo darwin-rebuild build --flake .#personal {{ARGS}}
+# Switch current machine
+switch *ARGS:
+    #!/usr/bin/env bash
+    set -e
+    info=$(just detect)
+    type="${info%%:*}"
+    target="${info##*:}"
+    if [ "$type" = "darwin" ]; then
+        sudo darwin-rebuild switch --flake ".#$target" {{ARGS}}
+    else
+        sudo nixos-rebuild switch --flake ".#$target" {{ARGS}}
+    fi
 
-# Update and switch personal macbook
-update-personal *ARGS:
+# Build current machine
+build *ARGS:
+    #!/usr/bin/env bash
+    set -e
+    info=$(just detect)
+    type="${info%%:*}"
+    target="${info##*:}"
+    if [ "$type" = "darwin" ]; then
+        sudo darwin-rebuild build --flake ".#$target" {{ARGS}}
+    else
+        sudo nixos-rebuild build --flake ".#$target" {{ARGS}}
+    fi
+
+# Update flake and switch current machine
+update *ARGS:
+    #!/usr/bin/env bash
+    set -e
     nix flake update
-    sudo darwin-rebuild switch --flake .#personal {{ARGS}}
-
-# Switch work macbook
-switch-work *ARGS:
-    sudo darwin-rebuild switch --flake .#work {{ARGS}}
-
-# Build work macbook
-build-work *ARGS:
-    sudo darwin-rebuild build --flake .#work {{ARGS}}
-
-# Update and switch work macbook
-update-work *ARGS:
-    nix flake update
-    sudo darwin-rebuild switch --flake .#work {{ARGS}}
-
-# Switch box
-switch-box *ARGS:
-    sudo nixos-rebuild switch --flake .#box {{ARGS}}
-
-# Build box
-build-box *ARGS:
-    sudo nixos-rebuild build --flake .#box {{ARGS}}
-
-# Update and switch box
-update-box *ARGS:
-    nix flake update
-    sudo nixos-rebuild switch --flake .#box {{ARGS}}
+    info=$(just detect)
+    type="${info%%:*}"
+    target="${info##*:}"
+    if [ "$type" = "darwin" ]; then
+        sudo darwin-rebuild switch --flake ".#$target" {{ARGS}}
+    else
+        sudo nixos-rebuild switch --flake ".#$target" {{ARGS}}
+    fi
