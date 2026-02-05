@@ -49,7 +49,11 @@ export def layout [variant: int] {
     for item in $apps_flat {
         if not ($existing_windows | any { |w| $w == $item.app }) {
             print $"Opening ($item.app)..."
-            ^open -g -a $item.app
+            try {
+                ^open -g -a $item.app
+            } catch {
+                print $"  Warning: ($item.app) not found, skipping..."
+            }
         }
     }
 
