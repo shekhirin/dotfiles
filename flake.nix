@@ -185,7 +185,7 @@
       darwinConfigurations.work = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = darwinPkgs;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs llm-agents; };
 
         modules = [
           ./hosts/darwin/work/default.nix
