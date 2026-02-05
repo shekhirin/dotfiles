@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../../../modules/shared
+    ../../../modules/darwin/determinate-nix.nix
   ];
 
   _module.args = { inherit user; };
@@ -24,9 +25,6 @@ in
   ## Nix settings
   # Let Determinate Nix handle Nix configuration
   nix.enable = false;
-  nix.extraOptions = ''
-    extra-platforms = aarch64-darwin
-  '';
 
   ## Users
   users.users.${user} = {

@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../../../modules/shared
+    ../../../modules/darwin/determinate-nix.nix
   ];
 
   _module.args = { inherit user; };
