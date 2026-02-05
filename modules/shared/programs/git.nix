@@ -7,6 +7,11 @@ _:
       core = {
         editor = "vim";
       };
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github.com/";
+        };
+      };
     };
   };
 }
