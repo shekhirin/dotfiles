@@ -42,6 +42,7 @@ in
       { path = "/Applications/Linear.app"; }
       { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
+      { path = "/System/Applications/System Settings.app"; }
     ];
   };
 
