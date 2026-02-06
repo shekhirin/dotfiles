@@ -46,6 +46,7 @@ in
     '';
     environmentVariables = {
       EDITOR = "${lib.getExe pkgs.vim}";
+      ETH_RPC_URL = "https://ethereum.reth.rs/rpc";
     };
   };
 }
