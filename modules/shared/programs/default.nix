@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./cargo.nix
     # ./delta.nix
     ./difftastic.nix
     ./direnv.nix
