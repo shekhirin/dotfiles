@@ -6,7 +6,7 @@
     package = pkgs.zed-editor-preview-bin;
     extensions = [
       "html"
-      "catpuccin"
+      "catppuccin"
       "toml"
       "dockerfile"
       "make"
