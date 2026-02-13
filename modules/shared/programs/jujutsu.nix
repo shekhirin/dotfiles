@@ -45,9 +45,6 @@ in
           auto-track-bookmarks = "main";
         };
       };
-      revset-aliases = {
-        "trunk()" = "main@upstream";
-      };
       signing = {
         behavior = "own";
         backend = "gpg";

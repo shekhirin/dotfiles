@@ -4,7 +4,6 @@
   imports = [
     ./amp.nix
     ./cargo.nix
-    # ./delta.nix
     ./difftastic.nix
     ./direnv.nix
     ./git.nix
