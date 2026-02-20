@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   home.file.".config/amp/settings.json".text = builtins.toJSON {

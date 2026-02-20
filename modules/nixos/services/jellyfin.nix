@@ -40,13 +40,14 @@ in
     };
 
     config = {
+      version = 1;
       base_url = "http://localhost:8096";
       users = [
         {
           name = "admin";
           passwordFile = config.sops.secrets.jellyfin-password.path;
           policy = {
-            IsAdministrator = true;
+            isAdministrator = true;
           };
         }
       ];
