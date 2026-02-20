@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # System-level shared configuration

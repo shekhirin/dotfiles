@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Home-Manager-level shared configuration
