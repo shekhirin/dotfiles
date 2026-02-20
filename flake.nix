@@ -34,18 +34,22 @@
     # Ethereum.nix for blockchain node configurations
     ethereum-nix = {
       url = "github:nix-community/ethereum.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
 
     # Declarative Jellyfin configuration
     jellarr = {
       url = "github:venkyr77/jellarr";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
 
     # Secret management
@@ -63,8 +67,10 @@
     # Zed Editor preview builds
     zed-editor-flake = {
       url = "github:shekhirin/zed-editor-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     # AeroSpace custom fork with tabs support
