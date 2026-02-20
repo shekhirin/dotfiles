@@ -47,7 +47,7 @@ in
           name = "admin";
           passwordFile = config.sops.secrets.jellyfin-password.path;
           policy = {
-            IsAdministrator = true;
+            isAdministrator = true;
           };
         }
       ];
