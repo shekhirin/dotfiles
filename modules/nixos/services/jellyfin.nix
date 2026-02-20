@@ -40,6 +40,7 @@ in
     };
 
     config = {
+      version = 1;
       base_url = "http://localhost:8096";
       users = [
         {
