@@ -7,9 +7,7 @@
   };
 
   inputs = {
-    # Core packages
-    # Pinned to avoid Swift build failure with clang 21 (NixOS/nixpkgs#483584)
-    nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Darwin support
     nix-darwin = {
