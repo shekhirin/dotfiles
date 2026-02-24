@@ -53,6 +53,7 @@ in
     settings = {
       security = {
         admin_password = "$__file{${config.sops.secrets.grafana-password.path}}";
+        secret_key = "SW2YcwTIb9zpOOhoPsMm";
       };
 
       server = {
