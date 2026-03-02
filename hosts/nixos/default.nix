@@ -17,6 +17,7 @@ in
     ../../modules/nixos/services
     ../../modules/nixos/packages.nix
     ../../modules/nixos/sops.nix
+    ../../modules/nixos/virtualisation.nix
   ];
 
   # Bootloader
@@ -69,6 +70,7 @@ in
     linger = true; # Enable lingering for user services (preserves group membership)
     extraGroups = [
       "docker"
+      "libvirtd"
       "media"
       "networkmanager"
       "wheel"
