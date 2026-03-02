@@ -37,5 +37,9 @@
     '';
   };
 
+  systemd.tmpfiles.rules = [
+    "d /var/lib/libvirt/boot 0755 root root -"
+  ];
+
   programs.virt-manager.enable = true;
 }
