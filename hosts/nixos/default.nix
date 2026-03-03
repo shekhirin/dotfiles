@@ -28,7 +28,10 @@ in
   networking = {
     hostName = "box";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedTCPPorts = [
+      22
+      18789
+    ];
   };
 
   # Locale and timezone
