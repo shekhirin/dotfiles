@@ -26,7 +26,7 @@
   ],
   "tests": [
     {
-      "src": "autogroup:member",
+      "src": "shekhirin@github",
       "accept": ["tag:openclaw:80"],
       "deny": ["tag:openclaw:22", "tag:openclaw:443"],
     },
