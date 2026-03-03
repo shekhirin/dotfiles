@@ -32,12 +32,7 @@
     # Ethereum.nix for blockchain node configurations
     ethereum-nix = {
       url = "github:nix-community/ethereum.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Declarative Jellyfin configuration
