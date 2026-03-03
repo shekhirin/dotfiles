@@ -46,7 +46,7 @@
     ];
     wants = [ "network-online.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.openssh}/bin/ssh -N -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -L 0.0.0.0:18789:localhost:18789 openclaw@192.168.122.25";
+      ExecStart = "${pkgs.openssh}/bin/ssh -N -i /home/shekhirin/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -L 0.0.0.0:18789:localhost:18789 openclaw@192.168.122.25";
       Restart = "always";
       RestartSec = 5;
       User = "shekhirin";
