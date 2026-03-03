@@ -37,6 +37,22 @@
     '';
   };
 
+  systemd.services.openclaw-tunnel = {
+    description = "SSH tunnel to OpenClaw dashboard in VM";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "network-online.target"
+      "libvirtd.service"
+    ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.openssh}/bin/ssh -N -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -L 0.0.0.0:18789:localhost:18789 openclaw@192.168.122.25";
+      Restart = "always";
+      RestartSec = 5;
+      User = "shekhirin";
+    };
+  };
+
   systemd.tmpfiles.rules = [
     "d /var/lib/libvirt/boot 0755 root root -"
   ];
