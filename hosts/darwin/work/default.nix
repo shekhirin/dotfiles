@@ -39,6 +39,7 @@ in
     entries = [
       { path = "/Applications/Brave Browser.app"; }
       { path = "/Applications/Notion Calendar.app"; }
+      { path = "/Applications/Discord.app"; }
       { path = "/Applications/Slack.app"; }
       { path = "/Applications/Telegram.app"; }
       { path = "/Applications/Linear.app"; }
