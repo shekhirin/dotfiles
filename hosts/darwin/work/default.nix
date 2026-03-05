@@ -18,6 +18,11 @@ in
   system = {
     stateVersion = 6;
     primaryUser = user;
+    defaults = {
+      NSGlobalDomain.ApplePressAndHoldEnabled = false;
+      screencapture.location = "~/Pictures/Screenshots";
+      dock.autohide = true;
+    };
   };
 
   ## Nix settings
