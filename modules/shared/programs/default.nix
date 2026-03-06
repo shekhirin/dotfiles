@@ -10,7 +10,6 @@ _:
     ./jujutsu.nix
     ./nushell.nix
     ./starship.nix
-    ./zellij.nix
     ./zoxide.nix
   ];
 }

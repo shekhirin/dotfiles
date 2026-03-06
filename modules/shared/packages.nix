@@ -25,7 +25,6 @@
 
     # Terminal multiplexer
     tmux
-    zellij
 
     # Nix development
     nil
