@@ -30,6 +30,7 @@ in
       llm-agents-pkgs.amp
       llm-agents-pkgs.claude-code
       llm-agents-pkgs.codex
+      llm-agents-pkgs.opencode
     ];
 
     activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
