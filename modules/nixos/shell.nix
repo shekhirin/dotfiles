@@ -5,7 +5,7 @@
   programs.nushell = {
     configFile.text = lib.mkAfter ("\n" + builtins.readFile ./config.nu);
     extraEnv = ''
-      $env.DOCKER_HOST = "unix:///run/user/1000/docker.sock"
+      $env.DOCKER_HOST = "unix:///var/run/docker.sock"
     '';
   };
 }
