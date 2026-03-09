@@ -11,4 +11,8 @@ in
   programs.nushell.extraConfig = ''
     use ${layoutNu} *
   '';
+
+  home.file.".ideavimrc".text = ''
+    set scrolloff=5
+  '';
 }
