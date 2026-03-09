@@ -4,8 +4,8 @@
     enable = true;
     role = "server";
     extraFlags = toString [
-      "--tls-san box" # Tailscale MagicDNS hostname
-      "--tls-san 100.122.53.116" # Tailscale IP
+      "--tls-san box" # Tailscale short hostname
+      "--tls-san box.taild6f5e0.ts.net" # Tailscale MagicDNS FQDN
       "--default-local-storage-path /mnt/nvme/k3s/storage"
       "--write-kubeconfig-mode 644"
     ];
