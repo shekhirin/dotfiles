@@ -17,6 +17,9 @@ _:
     # Networking
     ./cloudflared.nix
 
+    # Orchestration
+    ./k3s.nix
+
     # System
     ./openssh.nix
     ./mosh.nix
