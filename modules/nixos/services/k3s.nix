@@ -6,6 +6,7 @@
     extraFlags = toString [
       "--tls-san box" # Tailscale MagicDNS hostname
       "--default-local-storage-path /mnt/nvme/k3s/storage"
+      "--write-kubeconfig-mode 644"
     ];
   };
 
