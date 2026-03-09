@@ -14,6 +14,9 @@ _:
     # Media
     ./jellyfin.nix
 
+    # Networking
+    ./cloudflared.nix
+
     # System
     ./openssh.nix
     ./mosh.nix
