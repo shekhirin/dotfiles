@@ -127,11 +127,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1773075438,
-        "narHash": "sha256-1FbabriD18uCEnalGQV32ZEKcOlcObuSj+QKjvEWcLY=",
+        "lastModified": 1773161988,
+        "narHash": "sha256-bUewqA87w6nd397y2JgkhlfX3zC6KpYorGzoV0PVp0k=",
         "owner": "nix-community",
         "repo": "ethereum.nix",
-        "rev": "5dc0924aa4f1e2eec2241fe8a0acdcb9af7d6842",
+        "rev": "e683fd94c74ffd46c8d3a91510be8d30f324b7fd",
         "type": "github"
       },
       "original": {
@@ -206,11 +206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772985285,
-        "narHash": "sha256-wEEmvfqJcl9J0wyMgMrj1TixOgInBW/6tLPhWGoZE3s=",
+        "lastModified": 1773179137,
+        "narHash": "sha256-EdW2bwzlfme0vbMOcStnNmKlOAA05Bp6su2O8VLGT0k=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5be5d8245cbc7bc0c09fbb5f38f23f223c543f85",
+        "rev": "3f98e2bbc661ec0aaf558d8a283d6955f05f1d09",
         "type": "github"
       },
       "original": {
@@ -296,11 +296,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1773068014,
-        "narHash": "sha256-5WOIh+mgU1TLBVLOCgJDc3vSlx20saK+VYVZTl6MkSo=",
+        "lastModified": 1773158563,
+        "narHash": "sha256-VPvwW74LAdRnq0aFxft8aSn3dyX7cR4/y34orO1ey0g=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "51efc59e9d492d10a2d85d57ba764898df71d0b9",
+        "rev": "1b5bb4ebc886e51cc581eadd7926a47961951a1b",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769469829,
-        "narHash": "sha256-wFcr32ZqspCxk4+FvIxIL0AZktRs6DuF8oOsLt59YBU=",
+        "lastModified": 1773096132,
+        "narHash": "sha256-M3zEnq9OElB7zqc+mjgPlByPm1O5t2fbUrH3t/Hm5Ag=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "c5eebd4eb2e3372fe12a8d70a248a6ee9dd02eff",
+        "rev": "d1ff3b1034d5bab5d7d8086a7803c5a5968cd784",
         "type": "github"
       },
       "original": {
@@ -517,11 +517,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769447916,
-        "narHash": "sha256-BaTubSFv8SZfXq1mHE1jo5g2VypVUKIIpsLCI7jGt7g=",
+        "lastModified": 1772446726,
+        "narHash": "sha256-uI/aC+46Bz6tEbmvhhQu5Pbxbj7eN07HdGSlaeV9KOA=",
         "owner": "shekhirin",
         "repo": "zed-editor-flake",
-        "rev": "0790bdbf78d4043e441eed7e330117e920d9db74",
+        "rev": "6378d912bcddbe14ccdc4e926b553d2c38f28475",
         "type": "github"
       },
       "original": {
