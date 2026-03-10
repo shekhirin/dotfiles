@@ -14,5 +14,6 @@ in
 
   home.file.".ideavimrc".text = ''
     set scrolloff=5
+    set clipboard+=unnamed
   '';
 }
