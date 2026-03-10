@@ -14,9 +14,6 @@ _:
     # Media
     ./jellyfin.nix
 
-    # Networking
-    ./cloudflared.nix
-
     # Orchestration
     ./k3s.nix
 
