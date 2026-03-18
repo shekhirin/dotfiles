@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   llm-agents,
   ...
 }:
@@ -11,7 +10,6 @@ in
 {
   home = {
     packages = with pkgs; [
-      rustup
       lldb
       go
       uv
@@ -33,10 +31,5 @@ in
       llm-agents-pkgs.opencode
     ];
 
-    activation.rustupToolchains = lib.hm.dag.entryAfter [ "installPackages" ] ''
-      ${lib.getExe pkgs.rustup} toolchain install stable nightly
-      ${lib.getExe pkgs.rustup} default stable
-      ${lib.getExe pkgs.rustup} component add --toolchain nightly rust-analyzer
-    '';
   };
 }
