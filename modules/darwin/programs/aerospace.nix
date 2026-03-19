@@ -71,7 +71,6 @@
           "com.mitchellh.ghostty"
           "dev.zed.Zed-Preview"
           "dev.zed.Zed"
-          "com.jetbrains.rustrover-EAP"
         ];
 
         key-mapping.preset = "qwerty";

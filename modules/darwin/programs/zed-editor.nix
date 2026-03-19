@@ -19,10 +19,9 @@
     ];
     userSettings = {
       auto_update = false;
+      diff_view_style = "unified";
       agent = {
         default_profile = "write";
-        always_allow_tool_actions = false;
-        model_parameters = [ ];
       };
       vim_mode = true;
       ui_font_size = 14;
@@ -88,5 +87,14 @@
       };
       use_system_window_tabs = true;
     };
+    userKeymaps = [
+      {
+        context = "Workspace";
+        bindings = {
+          "alt-{" = "window::ShowPreviousWindowTab";
+          "alt-}" = "window::ShowNextWindowTab";
+        };
+      }
+    ];
   };
 }

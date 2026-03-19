@@ -9,7 +9,7 @@ const LAYOUTS = [
         ]
         workspaces: [
             { workspace: 1, app: "Brave Browser" }
-            { workspace: 2, apps: ["Ghostty", "RustRover 2026.1 EAP"] }
+            { workspace: 2, apps: ["Ghostty", "Zed Preview"] }
             { workspace: 3, app: "Spotify" }
             { workspace: 10, apps: ["Slack", "Telegram"] }
         ]
@@ -20,7 +20,7 @@ const LAYOUTS = [
         ]
         workspaces: [
             { workspace: 1, app: "Brave Browser" }
-            { workspace: 2, app: "RustRover 2026.1 EAP" }
+            { workspace: 2, app: "Zed Preview" }
             { workspace: 3, app: "Ghostty" }
             { workspace: 4, apps: ["Slack", "Telegram"] }
         ]
