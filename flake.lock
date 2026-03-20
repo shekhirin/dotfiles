@@ -517,11 +517,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772446726,
-        "narHash": "sha256-uI/aC+46Bz6tEbmvhhQu5Pbxbj7eN07HdGSlaeV9KOA=",
+        "lastModified": 1774001272,
+        "narHash": "sha256-cLHLTAnd2MtqIe8GUEsRg7L73V3PzrRTJEOKSNQpfnw=",
         "owner": "shekhirin",
         "repo": "zed-editor-flake",
-        "rev": "6378d912bcddbe14ccdc4e926b553d2c38f28475",
+        "rev": "0a9a3fa3fe71404d9d4868dbb1c4f7074d933077",
         "type": "github"
       },
       "original": {
