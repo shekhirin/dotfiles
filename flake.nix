@@ -85,6 +85,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # MESC (Multi-Endpoint Shared Configuration)
+    mesc-src = {
+      url = "github:paradigmxyz/mesc";
+      flake = false;
+    };
+
+    # IDÅSEN standing desk controller
+    idasen-control-src = {
+      url = "github:mitsuhiko/idasen-control";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -101,24 +113,20 @@
       aerospace-flake,
       jj-starship,
       llm-agents,
+      mesc-src,
+      idasen-control-src,
       ...
     }:
     let
       # System-specific package sets
       mescOverlay = final: prev: {
-        mesc = prev.rustPlatform.buildRustPackage rec {
+        mesc = prev.rustPlatform.buildRustPackage {
           pname = "mesc";
-          version = "0.3.0";
+          version = "0-unstable";
 
-          src = prev.fetchFromGitHub {
-            owner = "paradigmxyz";
-            repo = "mesc";
-            rev = version;
-            hash = "sha256-5aejGa1RR4Vvqyd8kQyUfKaD8yQLdQrS0PosSW9TrIU=";
-          };
-
-          sourceRoot = "${src.name}/rust";
-          cargoHash = "sha256-kwr0InBMFyrsAM43X1PGIIviIlsFQcGow/y2E+nPyoU=";
+          src = mesc-src;
+          sourceRoot = "source/rust";
+          cargoHash = "sha256-zklhgxA/rkbP1hb2PRYu8LqTw9BP0UPzK1x88xP31M4=";
 
           nativeBuildInputs = [ prev.pkg-config ];
           buildInputs = [
@@ -133,8 +141,19 @@
         };
       };
 
+      idasenControlOverlay = final: prev: {
+        idasen-control = prev.rustPlatform.buildRustPackage {
+          pname = "idasen-control";
+          version = "0-unstable";
+
+          src = idasen-control-src;
+          cargoHash = "sha256-vla47ObpzFq/wqf1xy4CllOrgHWn3AG5Hy6RG1tr3ZU=";
+        };
+      };
+
       overlays = [
         mescOverlay
+        idasenControlOverlay
         jj-starship.overlays.default
       ];
 

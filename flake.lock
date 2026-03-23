@@ -219,6 +219,22 @@
         "type": "github"
       }
     },
+    "idasen-control-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771545564,
+        "narHash": "sha256-KH7vexBu9j7BqvZyaVrlPj5JZI/+4tDO4ZL0kwVikQg=",
+        "owner": "mitsuhiko",
+        "repo": "idasen-control",
+        "rev": "da25ace92e96c1011e5ae3155fe356f91c4e27fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mitsuhiko",
+        "repo": "idasen-control",
+        "type": "github"
+      }
+    },
     "import-tree": {
       "locked": {
         "lastModified": 1763762820,
@@ -309,6 +325,22 @@
         "type": "github"
       }
     },
+    "mesc-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726858291,
+        "narHash": "sha256-7Ur6ak03hZ2axecOqMPjxI8th/LkzgIb+xrGOa1cQbM=",
+        "owner": "paradigmxyz",
+        "repo": "mesc",
+        "rev": "9bf6cb47e363bf78fe2106fce3abd6a5a340d068",
+        "type": "github"
+      },
+      "original": {
+        "owner": "paradigmxyz",
+        "repo": "mesc",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -369,9 +401,11 @@
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "idasen-control-src": "idasen-control-src",
         "jellarr": "jellarr",
         "jj-starship": "jj-starship",
         "llm-agents": "llm-agents",
+        "mesc-src": "mesc-src",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",

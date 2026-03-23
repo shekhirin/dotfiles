@@ -21,6 +21,7 @@
     glow
     dust
     foundry
+    idasen-control
     mesc
 
     # Terminal multiplexer
