@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
+  home.packages = [ pkgs.idasen-control ];
+
   home.activation.idasenConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ ! -f "$HOME/.idasen.json" ]; then
       echo '${
