@@ -51,7 +51,7 @@ in
 {
   programs.starship = {
     enable = true;
-    enableNushellIntegration = true;
+    enableFishIntegration = true;
     settings = {
       directory = {
         truncate_to_repo = false;

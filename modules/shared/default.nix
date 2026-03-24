@@ -8,4 +8,6 @@ _:
     ./nix-settings.nix
     ./services/tailscale.nix
   ];
+
+  programs.fish.enable = true;
 }

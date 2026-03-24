@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  home.file.".hushlogin".text = "";
+
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;
@@ -22,7 +24,7 @@
 
       macos-option-as-alt = "left";
 
-      command = "${pkgs.bash}/bin/bash --login -c '${pkgs.nushell}/bin/nu --login --interactive'";
+      command = "${pkgs.fish}/bin/fish --login --interactive";
       shell-integration-features = "sudo,ssh-env,ssh-terminfo";
 
       keybind = [

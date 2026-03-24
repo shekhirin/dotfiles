@@ -4,7 +4,7 @@ _:
   imports = [
     ./aerospace.nix
     ./ghostty.nix
-    ./nushell.nix
+    ./fish.nix
     ./zed-editor.nix
   ];
 }

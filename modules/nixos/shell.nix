@@ -1,11 +1,19 @@
-{ lib, ... }:
+_:
 
 {
-  # Extend nushell configuration with NixOS-specific config
-  programs.nushell = {
-    configFile.text = lib.mkAfter ("\n" + builtins.readFile ./config.nu);
-    extraEnv = ''
-      $env.DOCKER_HOST = "unix:///var/run/docker.sock"
+  # Extend fish configuration with NixOS-specific config
+  programs.fish = {
+    shellInit = ''
+      set -gx DOCKER_HOST "unix:///var/run/docker.sock"
     '';
+    functions = {
+      u = {
+        description = "Update NixOS from dotfiles";
+        body = ''
+          sudo nix flake prefetch github:shekhirin/dotfiles --refresh
+          sudo nixos-rebuild switch --flake github:shekhirin/dotfiles#box
+        '';
+      };
+    };
   };
 }

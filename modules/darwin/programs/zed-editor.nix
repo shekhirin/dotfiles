@@ -79,7 +79,7 @@
       autosave = "on_focus_change";
       terminal = {
         shell = {
-          program = "nu";
+          program = "fish";
         };
       };
       sticky_scroll = {

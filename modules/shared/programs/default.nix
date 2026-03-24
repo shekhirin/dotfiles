@@ -9,7 +9,7 @@ _:
     ./git.nix
     ./idasen.nix
     ./jujutsu.nix
-    ./nushell.nix
+    ./fish.nix
     ./starship.nix
     ./zoxide.nix
   ];

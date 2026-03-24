@@ -69,7 +69,7 @@ in
   users.users.${user} = {
     isNormalUser = true;
     description = "Alexey Shekhirin";
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
     linger = true; # Enable lingering for user services (preserves group membership)
     extraGroups = [
       "docker"
