@@ -10,6 +10,7 @@ _:
     ./idasen.nix
     ./jujutsu.nix
     ./fish.nix
+    ./nushell.nix
     ./starship.nix
     ./zoxide.nix
   ];
