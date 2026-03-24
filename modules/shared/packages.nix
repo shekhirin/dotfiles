@@ -15,7 +15,6 @@
     ripgrep
     fd
     btop
-    direnv
     starship
     fastfetch
     glow

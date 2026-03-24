@@ -151,9 +151,18 @@
         };
       };
 
+      direnvOverlay = final: prev: {
+        direnv = prev.direnv.overrideAttrs (old: {
+          env = (old.env or { }) // {
+            CGO_ENABLED = 1;
+          };
+        });
+      };
+
       overlays = [
         mescOverlay
         idasenControlOverlay
+        direnvOverlay
         jj-starship.overlays.default
       ];
 
