@@ -20,15 +20,8 @@ in
   programs.jujutsu = {
     enable = true;
     settings = {
-      aliases = {
-        tug = [
-          "bookmark"
-          "move"
-          "--from"
-          "heads(::@- & bookmarks())"
-          "--to"
-          "@-"
-        ];
+      revsets = {
+        bookmark-advance-to = "@-";
       };
       git = {
         fetch = [
