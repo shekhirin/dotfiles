@@ -66,12 +66,6 @@
       };
     };
 
-    # AeroSpace custom fork with tabs support
-    aerospace-flake = {
-      url = "github:shekhirin/AeroSpace/release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # jj-starship
     jj-starship = {
       url = "github:dmmulroy/jj-starship";
@@ -110,7 +104,6 @@
       sops-nix,
       dock-module,
       zed-editor-flake,
-      aerospace-flake,
       jj-starship,
       llm-agents,
       mesc-src,
@@ -166,12 +159,14 @@
         jj-starship.overlays.default
       ];
 
+      aerospaceOverlay = import ./overlays/aerospace.nix { };
+
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         overlays = overlays ++ [
+          aerospaceOverlay
           (final: prev: {
             inherit (zed-editor-flake.packages.aarch64-darwin) zed-editor-preview-bin;
-            inherit (aerospace-flake.packages.aarch64-darwin) aerospace;
           })
         ];
         config.allowUnfree = true;

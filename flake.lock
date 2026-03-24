@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "aerospace-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1766962322,
-        "narHash": "sha256-HK80WJWZd9fEK3njOCqUMWR8d+7FVkSGJpY3OO1bbLo=",
-        "owner": "shekhirin",
-        "repo": "AeroSpace",
-        "rev": "7095f3e6c68170ee19af5faadcf503349705e2d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "shekhirin",
-        "ref": "release",
-        "repo": "AeroSpace",
-        "type": "github"
-      }
-    },
     "blueprint": {
       "inputs": {
         "nixpkgs": [
@@ -395,7 +374,6 @@
     },
     "root": {
       "inputs": {
-        "aerospace-flake": "aerospace-flake",
         "dock-module": "dock-module",
         "ethereum-nix": "ethereum-nix",
         "flake-parts": "flake-parts",
