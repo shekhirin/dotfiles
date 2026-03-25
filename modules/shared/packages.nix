@@ -9,6 +9,9 @@
     gh
     just
 
+    # Kubernetes
+    k9s
+
     # CLI utilities
     bat
     eza
