@@ -1,5 +1,11 @@
 { pkgs, lib, ... }:
 
+let
+  kubectlAliasesFish = builtins.fetchurl {
+    url = "https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases.fish";
+    sha256 = "1xdgmyz0ykcq4gxpwzsfclcsdbs64kzf2ql7q6rwx8klmcxi871j";
+  };
+in
 {
   programs.fish = {
     enable = true;
@@ -20,6 +26,8 @@
       fish_add_path $HOME/.cargo/bin
     '';
     interactiveShellInit = ''
+      source ${kubectlAliasesFish}
+
       set -g fish_greeting
 
       # Catppuccin Mocha theme
