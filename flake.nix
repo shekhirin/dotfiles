@@ -29,12 +29,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # Ethereum.nix for blockchain node configurations
-    ethereum-nix = {
-      url = "github:nix-community/ethereum.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Declarative Jellyfin configuration
     jellarr = {
       url = "github:venkyr77/jellarr";
@@ -105,7 +99,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      ethereum-nix,
       jellarr,
       sops-nix,
       dock-module,
@@ -170,8 +163,9 @@
                   "shell::environment::env::env_shlvl_in_repl"
                   "shell::environment::env::env_shlvl_in_exec_repl"
                 ];
-                skippedTestsStr =
-                  prev.lib.concatStringsSep " " (prev.lib.map (testId: "--skip=${testId}") skippedTests);
+                skippedTestsStr = prev.lib.concatStringsSep " " (
+                  prev.lib.map (testId: "--skip=${testId}") skippedTests
+                );
               in
               ''
                 runHook preCheck
@@ -204,9 +198,7 @@
 
       boxPkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = overlays ++ [
-          ethereum-nix.overlays.default
-        ];
+        overlays = overlays;
         config.allowUnfree = true;
       };
     in

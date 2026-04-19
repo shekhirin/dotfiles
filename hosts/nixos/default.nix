@@ -12,7 +12,6 @@ in
     ./hardware-configuration.nix
     ../../modules/shared
     inputs.home-manager.nixosModules.home-manager
-    inputs.ethereum-nix.nixosModules.default
     # NixOS system-level modules (services, packages, sops, etc.)
     ../../modules/nixos/services
     ../../modules/nixos/packages.nix
