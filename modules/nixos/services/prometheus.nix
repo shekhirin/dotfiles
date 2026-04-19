@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   ...
 }:
 
@@ -8,12 +7,6 @@ let
   # Dynamically get ports from service configurations
   nodeExporterPort = toString config.services.prometheus.exporters.node.port;
   prometheusPort = toString config.services.prometheus.port;
-
-  # Get reth metrics configuration
-  rethConfig = config.services.ethereum.reth.mainnet or null;
-  rethMetricsEnabled = rethConfig != null && rethConfig.enable && rethConfig.args.metrics.enable;
-  rethMetricsAddr = if rethMetricsEnabled then rethConfig.args.metrics.addr else null;
-  rethMetricsPort = if rethMetricsEnabled then toString rethConfig.args.metrics.port else null;
 in
 {
   # Prometheus service for metrics collection
@@ -48,27 +41,6 @@ in
         static_configs = [
           {
             targets = [ "localhost:${prometheusPort}" ];
-          }
-        ];
-      }
-    ]
-    ++ lib.optionals rethMetricsEnabled [
-      {
-        job_name = "reth";
-        static_configs = [
-          {
-            targets = [
-              "${if rethMetricsAddr == "0.0.0.0" then "localhost" else rethMetricsAddr}:${rethMetricsPort}"
-            ];
-            labels = {
-              instance = "reth-mainnet";
-            };
-          }
-          {
-            targets = [ "localhost:9002" ];
-            labels = {
-              instance = "tmp";
-            };
           }
         ];
       }

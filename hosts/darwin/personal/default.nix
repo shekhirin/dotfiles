@@ -42,7 +42,7 @@ in
     enable = true;
     username = user;
     entries = [
-      { path = "/Applications/Brave Browser.app"; }
+      { path = "/Applications/Helium.app"; }
       { path = "/Applications/Proton Mail.app"; }
       { path = "/System/Applications/Calendar.app"; }
       { path = "/System/Applications/Messages.app"; }

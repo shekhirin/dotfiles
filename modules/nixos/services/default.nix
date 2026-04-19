@@ -4,7 +4,6 @@ _:
   imports = [
     # Blockchain
     ./monero.nix
-    ./reth.nix
 
     # Monitoring
     ./prometheus.nix

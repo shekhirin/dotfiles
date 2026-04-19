@@ -26,7 +26,7 @@ let
             if type == "object" then
               # Set any datasource fields to null to use Grafana defaults
               (.datasource? = null)
-              # Fix reth dashboard variable: replace ''${VAR_INSTANCE_LABEL} with "instance"
+              # Fix dashboard variable: replace ''${VAR_INSTANCE_LABEL} with "instance"
               | (if (.query? // null) == "''\${VAR_INSTANCE_LABEL}" then .query = "instance" else . end)
               # Recurse
               | with_entries(.value |= normalize)
@@ -122,11 +122,6 @@ in
       sha256 = "sha256:0fwm95q12pjsc342ckdbvbixv8p7s87riliv314073xj8v220b0k";
     }) [ ];
 
-    "grafana-dashboards/reth.json".source = processDashboard "reth" (builtins.fetchurl {
-      url = "https://grafana.com/api/dashboards/22941/revisions/4/download";
-      name = "reth.json";
-      sha256 = "sha256:1cz2xl61bvf3qq6ywx832vpgw49x618m17gadvvmpimsp49r86vk";
-    }) [ ];
   };
 
   systemd = {

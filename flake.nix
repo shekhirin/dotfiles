@@ -151,18 +151,43 @@
         };
       };
 
-      direnvOverlay = final: prev: {
-        direnv = prev.direnv.overrideAttrs (old: {
-          env = (old.env or { }) // {
-            CGO_ENABLED = 1;
-          };
-        });
-      };
+      # https://github.com/NixOS/nixpkgs/issues/510488
+      nushellDarwinOverlay =
+        final: prev:
+        prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
+          nushell = prev.nushell.overrideAttrs (old: {
+            checkPhase =
+              let
+                skippedTests = [
+                  "repl::test_config_path::test_default_config_path"
+                  "repl::test_config_path::test_xdg_config_bad"
+                  "repl::test_config_path::test_xdg_config_empty"
+                  "plugins::config::some"
+                  "plugins::stress_internals::test_exit_early_local_socket"
+                  "plugins::stress_internals::test_failing_local_socket_fallback"
+                  "plugins::stress_internals::test_local_socket"
+                  "shell::environment::env::path_is_a_list_in_repl"
+                  "shell::environment::env::env_shlvl_in_repl"
+                  "shell::environment::env::env_shlvl_in_exec_repl"
+                ];
+                skippedTestsStr =
+                  prev.lib.concatStringsSep " " (prev.lib.map (testId: "--skip=${testId}") skippedTests);
+              in
+              ''
+                runHook preCheck
+
+                cargo test -j $NIX_BUILD_CORES --offline -- \
+                  --test-threads=$NIX_BUILD_CORES ${skippedTestsStr}
+
+                runHook postCheck
+              '';
+          });
+        };
 
       overlays = [
         mescOverlay
         idasenControlOverlay
-        direnvOverlay
+        nushellDarwinOverlay
         jj-starship.overlays.default
       ];
 
