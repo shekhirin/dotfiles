@@ -8,7 +8,7 @@ const LAYOUTS = [
             { monitor: $MONITOR_BUILTIN, workspace: 10 }
         ]
         workspaces: [
-            { workspace: 1, app: "Brave Browser" }
+            { workspace: 1, app: "Helium" }
             { workspace: 2, apps: ["Ghostty", "Zed Preview"] }
             { workspace: 3, app: "Spotify" }
             { workspace: 10, apps: ["Slack", "Telegram"] }
@@ -19,7 +19,7 @@ const LAYOUTS = [
             { monitor: $MONITOR_BUILTIN, workspaces: 1..10 }
         ]
         workspaces: [
-            { workspace: 1, app: "Brave Browser" }
+            { workspace: 1, app: "Helium" }
             { workspace: 2, apps: ["Ghostty", "Zed Preview"] }
             { workspace: 3, apps: ["Slack", "Telegram"] }
             { workspace: 4, app: "Spotify" }
