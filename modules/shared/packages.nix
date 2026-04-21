@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     # Core tools
-    vim
     git
     git-lfs
     gh

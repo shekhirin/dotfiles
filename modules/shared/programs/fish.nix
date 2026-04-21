@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   kubectlAliasesFish = builtins.fetchurl {
@@ -19,7 +19,6 @@ in
         source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
       end
 
-      set -gx EDITOR ${lib.getExe pkgs.vim}
       set -gx ETH_RPC_URL "https://ethereum.reth.rs/rpc"
 
       # Add cargo bin to PATH

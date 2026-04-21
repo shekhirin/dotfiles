@@ -12,6 +12,7 @@ _:
     ./fish.nix
     ./nushell.nix
     ./starship.nix
+    ./vim.nix
     ./zoxide.nix
   ];
 }
