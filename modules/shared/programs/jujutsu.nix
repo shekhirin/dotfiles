@@ -51,6 +51,16 @@ in
           "$right"
         ];
       };
+      aliases = {
+        sync = [
+          "util"
+          "exec"
+          "--"
+          "sh"
+          "-c"
+          "jj git fetch && jj rebase -b @ -d 'trunk()'"
+        ];
+      };
       user = {
         name = "Alexey Shekhirin";
         email = "github@shekhirin.com";
