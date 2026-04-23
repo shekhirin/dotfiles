@@ -58,7 +58,7 @@ in
           "--"
           "sh"
           "-c"
-          "jj git fetch && jj rebase -b @ -d 'trunk()'"
+          "jj git fetch && jj rebase -d 'trunk()'"
         ];
       };
       user = {
