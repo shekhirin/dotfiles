@@ -5,11 +5,6 @@ _:
     # Blockchain
     ./monero.nix
 
-    # Monitoring
-    ./prometheus.nix
-    ./grafana.nix
-    ./tempo.nix
-
     # Media
     ./jellyfin.nix
 
