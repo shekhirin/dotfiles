@@ -198,7 +198,7 @@
 
       boxPkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = overlays;
+        inherit overlays;
         config.allowUnfree = true;
       };
     in
