@@ -28,6 +28,23 @@ in
   ## Nix settings
   nix.enable = false;
 
+  ## Launchd limits
+  launchd = {
+    daemons.ulimit-maxfiles = {
+      command = "/bin/launchctl limit maxfiles unlimited unlimited";
+      serviceConfig = {
+        RunAtLoad = true;
+      };
+    };
+
+    user.agents.ulimit-maxfiles = {
+      command = "/bin/launchctl limit maxfiles unlimited unlimited";
+      serviceConfig = {
+        RunAtLoad = true;
+      };
+    };
+  };
+
   ## Users
   users.users.${user} = {
     uid = 501;
