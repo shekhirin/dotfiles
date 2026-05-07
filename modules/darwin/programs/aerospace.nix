@@ -103,10 +103,10 @@
             alt-shift-k = "move up";
             alt-shift-l = "move right";
 
-            alt-ctrl-left = "join-with left";
-            alt-ctrl-down = "join-with down";
-            alt-ctrl-up = "join-with up";
-            alt-ctrl-right = "join-with right";
+            alt-ctrl-h = "join-with left";
+            alt-ctrl-j = "join-with down";
+            alt-ctrl-k = "join-with up";
+            alt-ctrl-l = "join-with right";
 
             alt-ctrl-shift-f = "fullscreen";
             alt-ctrl-f = "layout floating tiling";
