@@ -27,10 +27,7 @@ in
   networking = {
     hostName = "box";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [
-      22
-      30096 # opencode serve (k3s NodePort)
-    ];
+    firewall.allowedTCPPorts = [ 22 ];
   };
 
   # Locale and timezone

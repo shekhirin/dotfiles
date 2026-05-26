@@ -25,10 +25,7 @@ in
       kubectl
       kubectx
 
-      llm-agents-pkgs.amp
-      llm-agents-pkgs.claude-code
       llm-agents-pkgs.codex
-      llm-agents-pkgs.opencode
     ];
 
   };
