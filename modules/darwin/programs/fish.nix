@@ -6,7 +6,7 @@ in
 {
   programs.fish = {
     shellInit = lib.mkAfter ''
-      ulimit -n unlimited 2>/dev/null
+      ulimit -n 524288 10485760 2>/dev/null
     '';
 
     functions.layout = {

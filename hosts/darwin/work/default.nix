@@ -31,14 +31,14 @@ in
   ## Launchd limits
   launchd = {
     daemons.ulimit-maxfiles = {
-      command = "/bin/launchctl limit maxfiles unlimited unlimited";
+      command = "/bin/launchctl limit maxfiles 128000 524288";
       serviceConfig = {
         RunAtLoad = true;
       };
     };
 
     user.agents.ulimit-maxfiles = {
-      command = "/bin/launchctl limit maxfiles unlimited unlimited";
+      command = "/bin/launchctl limit maxfiles 128000 524288";
       serviceConfig = {
         RunAtLoad = true;
       };
