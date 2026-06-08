@@ -29,8 +29,22 @@ in
 
       set -g fish_greeting
 
-      # Catppuccin Mocha theme
-      fish_config theme choose catppuccin-mocha
+      # Use terminal ANSI colors so Ghostty's GitHub theme drives light/dark colors.
+      set -g fish_color_normal normal
+      set -g fish_color_command blue
+      set -g fish_color_keyword magenta
+      set -g fish_color_quote green
+      set -g fish_color_redirection cyan
+      set -g fish_color_end brblack
+      set -g fish_color_error red
+      set -g fish_color_param normal
+      set -g fish_color_comment brblack
+      set -g fish_color_operator cyan
+      set -g fish_color_escape magenta
+      set -g fish_color_autosuggestion brblack
+      set -g fish_color_cwd green
+      set -g fish_color_cwd_root red
+      set -g fish_color_valid_path --underline
 
       # Zellij tab renaming hooks
       if set -q ZELLIJ
