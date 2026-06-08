@@ -6,7 +6,7 @@
     package = pkgs.zed-editor-preview-bin;
     extensions = [
       "html"
-      "catppuccin"
+      "github-theme"
       "toml"
       "dockerfile"
       "make"
@@ -31,9 +31,9 @@
       };
       buffer_font_fallbacks = [ "JetBrainsMono Nerd Font" ];
       theme = {
-        mode = "system";
-        light = "Catppuccin Latte - No Italics";
-        dark = "Catppuccin Mocha - No Italics";
+        mode = "light";
+        light = "GitHub Light";
+        dark = "GitHub Dark";
       };
       lsp = {
         nil = {

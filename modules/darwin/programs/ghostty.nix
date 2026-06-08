@@ -12,7 +12,7 @@
       auto-update = "off";
       auto-update-channel = "tip";
 
-      theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
+      theme = "dark:GitHub Dark Default,light:GitHub Light Default";
 
       font-family = "JetBrainsMono Nerd Font";
       font-size = 12;
