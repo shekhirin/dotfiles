@@ -6,6 +6,18 @@
 }:
 
 let
+  bookmarkAi = pkgs.writeShellApplication {
+    name = "jj-bookmark-ai";
+    runtimeInputs = [
+      config.programs.jujutsu.package
+      pkgs.coreutils
+      pkgs.gawk
+      pkgs.gnugrep
+      pkgs.gnused
+    ];
+    text = builtins.readFile ./jujutsu-bookmark-ai.sh;
+  };
+
   packageVersion = lib.getVersion config.programs.jujutsu.package;
   schemaUrl = "https://docs.jj-vcs.dev/v${packageVersion}/config-schema.json";
 
@@ -52,6 +64,12 @@ in
         ];
       };
       aliases = {
+        bai = [
+          "util"
+          "exec"
+          "--"
+          "${bookmarkAi}/bin/jj-bookmark-ai"
+        ];
         sync = [
           "util"
           "exec"
