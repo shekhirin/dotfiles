@@ -1,21 +1,17 @@
 { pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager = {
-    defaultSession = "plasma";
-    sddm = {
-      enable = true;
-      enableHidpi = true;
-    };
+  services.xserver = {
+    enable = true;
+    desktopManager.xfce.enable = true;
+    displayManager.lightdm.enable = true;
   };
+  services.displayManager.defaultSession = "xfce";
 
   services.xrdp = {
     enable = true;
     audio.enable = true;
-    defaultWindowManager = "${pkgs.kdePackages.plasma-workspace}/bin/startplasma-x11";
+    defaultWindowManager = "${pkgs.xfce4-session}/bin/startxfce4";
     openFirewall = false;
     port = 3389;
   };
