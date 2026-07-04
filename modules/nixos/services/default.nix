@@ -15,6 +15,7 @@ _:
     ./k3s.nix
 
     # System
+    ./envfs.nix
     ./openssh.nix
     ./mosh.nix
   ];
