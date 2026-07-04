@@ -97,6 +97,7 @@ in
         ../../modules/shared/home.nix
 
         # NixOS-specific home-manager configuration
+        ../../modules/nixos/fpga-tools.nix
         ../../modules/nixos/gpg.nix
         ../../modules/nixos/shell.nix
 
