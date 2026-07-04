@@ -50,7 +50,7 @@ in
           auto-track-bookmarks = "main";
         };
       };
-      signing = {
+      signing = lib.mkIf pkgs.stdenv.isDarwin {
         behavior = "own";
         backend = "gpg";
       };
