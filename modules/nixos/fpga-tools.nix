@@ -3,6 +3,14 @@
 let
   version = "2025.2";
   root = "/mnt/nvme/Xilinx/${version}/Vivado";
+  vendorLibraryPath = lib.concatStringsSep ":" [
+    "${root}/lib/lnx64.o"
+    "${root}/lib/lnx64.o/SuSE"
+    "${root}/lib/lnx64.o/Rhel/10"
+    "${root}/lib/lnx64.o/Rhel/9"
+    "${root}/lib/lnx64.o/Ubuntu/24"
+    "${root}/lib/lnx64.o/Ubuntu/22"
+  ];
   launcher = pkgs.buildFHSEnv {
     name = "fpga-tools";
     targetPkgs =
@@ -31,7 +39,7 @@ let
         zlib
       ];
     runScript = ''
-      env LD_LIBRARY_PATH="${root}/lib/lnx64.o/SuSE:${root}/lib/lnx64.o''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
+      env LD_LIBRARY_PATH="${vendorLibraryPath}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
         LIBRARY_PATH=/usr/lib \
         C_INCLUDE_PATH=/usr/include \
         CPLUS_INCLUDE_PATH=/usr/include \
