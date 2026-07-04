@@ -20,6 +20,7 @@ _:
 
           sshfs \
             -o reconnect \
+            -o idmap=user \
             -o ServerAliveInterval=15 \
             -o ServerAliveCountMax=3 \
             shekhirin@100.80.35.112:/Users/shekhirin/projects/box \
