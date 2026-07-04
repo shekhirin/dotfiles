@@ -96,7 +96,8 @@ in
         # Shared home-manager configuration (packages and programs)
         ../../modules/shared/home.nix
 
-        # NixOS-specific home-manager configuration (shell)
+        # NixOS-specific home-manager configuration
+        ../../modules/nixos/gpg.nix
         ../../modules/nixos/shell.nix
 
       ];
