@@ -8,6 +8,20 @@
   };
   services.displayManager.defaultSession = "xfce";
 
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    IdleAction = "ignore";
+  };
+
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+
   services.xrdp = {
     enable = true;
     audio.enable = true;
