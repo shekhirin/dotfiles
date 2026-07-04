@@ -8,6 +8,9 @@ _:
     # Media
     ./jellyfin.nix
 
+    # Desktop
+    ./desktop.nix
+
     # Orchestration
     ./k3s.nix
 
