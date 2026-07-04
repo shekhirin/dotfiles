@@ -24,9 +24,11 @@ let
         graphviz
         gtk2
         gtk3
+        libpng
         libuuid
         ncurses5
         nettools
+        pixman
         stdenv.cc.cc
         unzip
         libx11
