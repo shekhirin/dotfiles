@@ -50,13 +50,26 @@ let
         ${root}/bin/vivado "$@"
     '';
   };
+  desktopLauncher = pkgs.writeShellApplication {
+    name = "vivado-desktop";
+    runtimeInputs = [
+      launcher
+      pkgs.coreutils
+    ];
+    text = ''
+      state_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/vivado"
+      mkdir -p "$state_dir"
+      cd "$state_dir"
+      exec ${lib.getExe launcher} -log "$state_dir/vivado.log" -journal "$state_dir/vivado.jou" "$@"
+    '';
+  };
   desktopEntry = ''
     [Desktop Entry]
     Type=Application
     Name=Vivado ${version}
     Comment=Vivado ${version}
     Icon=${root}/doc/images/vivado_logo.png
-    Exec=${lib.getExe launcher}
+    Exec=${lib.getExe desktopLauncher}
     Terminal=false
     Categories=Development;Engineering;
     StartupNotify=true
