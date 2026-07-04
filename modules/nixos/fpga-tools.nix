@@ -31,7 +31,8 @@ let
         zlib
       ];
     runScript = ''
-      env LIBRARY_PATH=/usr/lib \
+      env LD_LIBRARY_PATH="${root}/lib/lnx64.o/SuSE:${root}/lib/lnx64.o''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
+        LIBRARY_PATH=/usr/lib \
         C_INCLUDE_PATH=/usr/include \
         CPLUS_INCLUDE_PATH=/usr/include \
         CMAKE_LIBRARY_PATH=/usr/lib \
