@@ -65,7 +65,7 @@ in
       { path = "/Applications/Slack.app"; }
       { path = "/Applications/Telegram.app"; }
       { path = "/Applications/Linear.app"; }
-      { path = "/Applications/Codex.app"; }
+      { path = "/Applications/ChatGPT.app"; }
       { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
       { path = "/System/Applications/System Settings.app"; }
