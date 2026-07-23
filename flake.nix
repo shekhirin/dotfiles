@@ -144,6 +144,21 @@
         };
       };
 
+      # https://github.com/venkyr77/jellarr/pull/74
+      jellarrPnpmOverlay = _final: prev: {
+        fetchPnpmDeps =
+          args:
+          prev.fetchPnpmDeps (
+            args
+            //
+              prev.lib.optionalAttrs ((args.pname or null) == "jellarr" && (args.fetcherVersion or null) == 3)
+                {
+                  fetcherVersion = 4;
+                  hash = "sha256-jo1BjRAjjfNKF0xb5cLCuELSveHeJ98iLPhMDKP1QbI=";
+                }
+          );
+      };
+
       # https://github.com/NixOS/nixpkgs/issues/510488
       nushellDarwinOverlay =
         final: prev:
@@ -198,7 +213,7 @@
 
       boxPkgs = import nixpkgs {
         system = "x86_64-linux";
-        inherit overlays;
+        overlays = overlays ++ [ jellarrPnpmOverlay ];
         config.allowUnfree = true;
       };
     in
