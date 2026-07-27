@@ -22,7 +22,6 @@
     glow
     dust
     foundry
-    mesc
 
     # Terminal multiplexer
     tmux
