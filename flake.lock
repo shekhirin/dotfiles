@@ -165,33 +165,6 @@
         "type": "github"
       }
     },
-    "jellarr": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": "treefmt-nix"
-      },
-      "locked": {
-        "lastModified": 1784917356,
-        "narHash": "sha256-R3vrZsSPxcW1YP0voiGu7XCvnHjXgsGaaQP/+XbTiVY=",
-        "owner": "venkyr77",
-        "repo": "jellarr",
-        "rev": "0529b582c7303706a06d78736ed05dba49c1124e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "venkyr77",
-        "repo": "jellarr",
-        "type": "github"
-      }
-    },
     "jj-starship": {
       "inputs": {
         "flake-utils": [
@@ -223,7 +196,7 @@
           "nixpkgs"
         ],
         "systems": "systems",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix"
       },
       "locked": {
         "lastModified": 1785145739,
@@ -299,7 +272,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "idasen-control-src": "idasen-control-src",
-        "jellarr": "jellarr",
         "jj-starship": "jj-starship",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",
@@ -360,27 +332,6 @@
       }
     },
     "treefmt-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "jellarr",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784369104,
-        "narHash": "sha256-47cxbcZODibHv3rELFQ9vZly0vUNkND/atn/U7HLeb0=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "df3c0640565d04a0261253cdd89fce78ec50168a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
           "llm-agents",

@@ -29,16 +29,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # Declarative Jellyfin configuration
-    jellarr = {
-      url = "github:venkyr77/jellarr";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
-      };
-    };
-
     # Secret management
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -93,7 +83,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      jellarr,
       sops-nix,
       dock-module,
       zed-editor-flake,
@@ -225,7 +214,6 @@
 
         modules = [
           ./hosts/nixos/default.nix
-          jellarr.nixosModules.default
           sops-nix.nixosModules.sops
           # Pass inputs to Home Manager in NixOS as well
           (_: {

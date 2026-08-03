@@ -1,5 +1,3 @@
-{ config, ... }:
-
 let
   group = "media";
 in
@@ -15,42 +13,5 @@ in
     enable = true;
     openFirewall = true;
     group = "${group}";
-  };
-
-  sops = {
-    secrets.jellarr-api-key = { };
-    secrets.jellyfin-password = { };
-
-    templates.jellarr-env = {
-      content = ''
-        JELLARR_API_KEY=${config.sops.placeholder.jellarr-api-key}
-      '';
-      owner = config.services.jellarr.user;
-      inherit (config.services.jellarr) group;
-    };
-  };
-
-  services.jellarr = {
-    enable = true;
-    environmentFile = config.sops.templates.jellarr-env.path;
-
-    bootstrap = {
-      enable = true;
-      apiKeyFile = config.sops.secrets.jellarr-api-key.path;
-    };
-
-    config = {
-      version = 1;
-      base_url = "http://localhost:8096";
-      users = [
-        {
-          name = "admin";
-          passwordFile = config.sops.secrets.jellyfin-password.path;
-          policy = {
-            isAdministrator = true;
-          };
-        }
-      ];
-    };
   };
 }
