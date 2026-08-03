@@ -76,13 +76,17 @@ let
   '';
 in
 {
-  home.packages = [
-    launcher
-  ];
+  home = {
+    packages = [
+      launcher
+    ];
 
-  home.file.".local/share/applications/Vivado ${version}.desktop".text = desktopEntry;
-  home.file."Desktop/Vivado ${version}.desktop" = {
-    text = desktopEntry;
-    executable = true;
+    file = {
+      ".local/share/applications/Vivado ${version}.desktop".text = desktopEntry;
+      "Desktop/Vivado ${version}.desktop" = {
+        text = desktopEntry;
+        executable = true;
+      };
+    };
   };
 }
