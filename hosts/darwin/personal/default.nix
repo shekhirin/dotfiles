@@ -78,7 +78,9 @@ in
 
   home-manager = {
     # Allow shared modules to access flake inputs
-    extraSpecialArgs = { inherit inputs llm-agents; };
+    extraSpecialArgs = {
+      inherit inputs llm-agents;
+    };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";

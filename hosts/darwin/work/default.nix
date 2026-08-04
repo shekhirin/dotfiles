@@ -1,7 +1,13 @@
-{ pkgs, llm-agents, ... }@inputs:
+{
+  lib,
+  pkgs,
+  llm-agents,
+  ...
+}@inputs:
 
 let
   user = "shekhirin";
+  tailscalePackage = pkgs.tailscale-gui;
 in
 {
   imports = [
@@ -18,6 +24,20 @@ in
   system = {
     stateVersion = 6;
     primaryUser = user;
+    activationScripts.applications.text = lib.mkAfter ''
+      install -o root -g wheel -m0555 -d "/Applications/Tailscale.app"
+      rsyncFlags=(
+        --checksum
+        --copy-unsafe-links
+        --archive
+        --delete
+        --chmod=-w
+        --no-group
+        --no-owner
+      )
+      ${lib.getExe pkgs.rsync} "''${rsyncFlags[@]}" \
+        ${tailscalePackage}/Applications/Tailscale.app/ /Applications/Tailscale.app
+    '';
     defaults = {
       NSGlobalDomain.ApplePressAndHoldEnabled = false;
       screencapture.location = "~/Pictures/Screenshots";
@@ -27,6 +47,9 @@ in
 
   ## Nix settings
   nix.enable = false;
+
+  # The GUI provides its own System Extension and must be installed in /Applications.
+  services.tailscale.enable = lib.mkForce false;
 
   ## Launchd limits
   launchd = {
@@ -73,7 +96,9 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs llm-agents; };
+    extraSpecialArgs = {
+      inherit inputs llm-agents;
+    };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
