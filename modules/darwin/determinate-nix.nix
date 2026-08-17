@@ -11,6 +11,10 @@
         # Parallelizes nix eval, nix flake check, nix flake show, etc.
         # Set to 0 to use all cores, 1 to disable
         eval-cores = 0
+
+        # Numtide binary cache
+        extra-substituters = https://cache.numtide.com
+        extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=
       '';
     };
 

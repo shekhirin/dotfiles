@@ -22,7 +22,7 @@ let
   schemaUrl = "https://docs.jj-vcs.dev/v${packageVersion}/config-schema.json";
 
   configDir =
-    if pkgs.stdenv.isDarwin && !(lib.versionAtLeast packageVersion "0.29.0") then
+    if pkgs.stdenv.hostPlatform.isDarwin && !(lib.versionAtLeast packageVersion "0.29.0") then
       "${config.home.homeDirectory}/Library/Application Support"
     else
       config.xdg.configHome;
@@ -50,7 +50,7 @@ in
           auto-track-bookmarks = "main";
         };
       };
-      signing = lib.mkIf pkgs.stdenv.isDarwin {
+      signing = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         behavior = "own";
         backend = "gpg";
       };
