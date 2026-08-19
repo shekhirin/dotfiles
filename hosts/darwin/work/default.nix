@@ -130,6 +130,12 @@ in
           "moveWindowToMonitor.left" = "Option+Shift+S";
           "moveWindowToMonitor.right" = "Option+Shift+G";
 
+          "setContainerPrimarySpan.decrease10Percent" = "Control+Option+H";
+          "setContainerPrimarySpan.increase10Percent" = "Control+Option+L";
+          "setWindowSecondarySpan.decrease10Percent" = "Control+Option+J";
+          "setWindowSecondarySpan.increase10Percent" = "Control+Option+K";
+          balanceSizes = "Control+Option+B";
+
           expandContainerToAvailablePrimarySpan = "Unassigned";
           toggleFocusedWindowFloating = "Control+Option+F";
           toggleWorkspaceLayout = "Unassigned";
@@ -153,6 +159,8 @@ in
           { }
           { }
         ];
+
+        extraSettings.general.ipcEnabled = true;
       };
 
       home.stateVersion = "25.05";
