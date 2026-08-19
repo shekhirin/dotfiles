@@ -264,6 +264,22 @@
         "type": "github"
       }
     },
+    "omniwm-nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787065547,
+        "narHash": "sha256-l+lGO2Itx6uPxHTbA7Rn6B5WeuFi26VZsXf7cyrhHms=",
+        "owner": "DavSanchez",
+        "repo": "nix-dotfiles",
+        "rev": "b9b212d156dc978bb2a4fe0eaf78ddcc8c017374",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DavSanchez",
+        "repo": "nix-dotfiles",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "aerospace-flake": "aerospace-flake",
@@ -276,6 +292,7 @@
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "omniwm-nix": "omniwm-nix",
         "sops-nix": "sops-nix",
         "systems": "systems_2",
         "zed-editor-flake": "zed-editor-flake"

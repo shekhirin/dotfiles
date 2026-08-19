@@ -1,9 +1,10 @@
 {
   lib,
   pkgs,
+  inputs,
   llm-agents,
   ...
-}@inputs:
+}:
 
 let
   user = "shekhirin";
@@ -108,6 +109,51 @@ in
         ../../../modules/darwin
         ./home.nix
       ];
+
+      local.omniwm = {
+        enable = true;
+        borders.enable = false;
+
+        keybindings = {
+          "focus.left" = "Option+H";
+          "focus.down" = "Option+J";
+          "focus.up" = "Option+K";
+          "focus.right" = "Option+L";
+
+          "move.left" = "Option+Shift+H";
+          "move.down" = "Option+Shift+J";
+          "move.up" = "Option+Shift+K";
+          "move.right" = "Option+Shift+L";
+
+          focusMonitorPrevious = "Option+S";
+          focusMonitorNext = "Option+G";
+          "moveWindowToMonitor.left" = "Option+Shift+S";
+          "moveWindowToMonitor.right" = "Option+Shift+G";
+
+          expandContainerToAvailablePrimarySpan = "Unassigned";
+          toggleFocusedWindowFloating = "Control+Option+F";
+          toggleWorkspaceLayout = "Unassigned";
+        };
+
+        floatingApps = [
+          "com.apple.iCal"
+          "com.apple.finder"
+          "com.apple.mail"
+          "com.apple.MobileSMS"
+          "org.whispersystems.signal-desktop"
+          "com.1password.1password"
+          "com.cron.electron"
+          "com.linear"
+        ];
+
+        workspaces = [
+          { }
+          { }
+          { }
+          { }
+          { }
+        ];
+      };
 
       home.stateVersion = "25.05";
     };
