@@ -51,12 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # OmniWM
-    omniwm-nix = {
-      url = "github:DavSanchez/nix-dotfiles";
-      flake = false;
-    };
-
     # jj-starship
     jj-starship = {
       url = "github:dmmulroy/jj-starship";

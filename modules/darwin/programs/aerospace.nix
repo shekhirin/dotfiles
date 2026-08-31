@@ -1,19 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 
 {
   # Reload aerospace config on activation
-  home.activation.aerospaceReload = lib.mkIf config.programs.aerospace.enable (
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      if /usr/bin/pgrep -x "AeroSpace" > /dev/null; then
-        run ${lib.getExe pkgs.aerospace} reload-config
-      fi
-    ''
-  );
+  home.activation.aerospaceReload = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if /usr/bin/pgrep -x "AeroSpace" > /dev/null; then
+      run ${lib.getExe pkgs.aerospace} reload-config
+    fi
+  '';
 
   programs.aerospace = {
     enable = true; # installs & configures AeroSpace
