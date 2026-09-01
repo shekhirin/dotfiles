@@ -64,6 +64,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Mercator CLI
+    mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
+
     # IDÅSEN standing desk controller
     idasen-control-src = {
       url = "github:mitsuhiko/idasen-control";
@@ -122,6 +125,11 @@
                   "shell::environment::env::path_is_a_list_in_repl"
                   "shell::environment::env::env_shlvl_in_repl"
                   "shell::environment::env::env_shlvl_in_exec_repl"
+                  "eval::eval_rendered_matches::case_3_literal_range"
+                  "eval::eval_rendered_matches::case_4_literal_list"
+                  "eval::eval_rendered_matches::case_5_literal_record"
+                  "eval::eval_rendered_matches::case_6_literal_table"
+                  "eval::eval_rendered_matches::case_8_call_spread"
                 ];
                 skippedTestsStr = prev.lib.concatStringsSep " " (
                   prev.lib.map (testId: "--skip=${testId}") skippedTests

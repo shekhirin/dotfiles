@@ -31,7 +31,10 @@ switch *ARGS:
     type="${info%%:*}"
     target="${info##*:}"
     if [ "$type" = "darwin" ]; then
-        sudo darwin-rebuild switch --flake ".#$target" {{ARGS}}
+        darwin-rebuild build --flake ".#$target" {{ARGS}}
+        system_config=$(readlink -f result)
+        sudo nix-env -p /nix/var/nix/profiles/system --set "$system_config"
+        sudo "$system_config/sw/bin/darwin-rebuild" activate
     else
         sudo nixos-rebuild switch --flake ".#$target" {{ARGS}}
     fi
@@ -44,21 +47,12 @@ build *ARGS:
     type="${info%%:*}"
     target="${info##*:}"
     if [ "$type" = "darwin" ]; then
-        sudo darwin-rebuild build --flake ".#$target" {{ARGS}}
+        darwin-rebuild build --flake ".#$target" {{ARGS}}
     else
         sudo nixos-rebuild build --flake ".#$target" {{ARGS}}
     fi
 
 # Update flake and switch current machine
 update *ARGS:
-    #!/usr/bin/env bash
-    set -e
     nix flake update
-    info=$(just detect)
-    type="${info%%:*}"
-    target="${info##*:}"
-    if [ "$type" = "darwin" ]; then
-        sudo darwin-rebuild switch --flake ".#$target" {{ARGS}}
-    else
-        sudo nixos-rebuild switch --flake ".#$target" {{ARGS}}
-    fi
+    just switch {{ARGS}}
