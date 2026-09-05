@@ -19,5 +19,8 @@ let
   });
 in
 {
-  home.packages = [ openlogi ];
+  home.packages = [
+    openlogi
+    pkgs._1password-cli
+  ];
 }
