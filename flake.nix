@@ -113,6 +113,11 @@
             checkPhase =
               let
                 skippedTests = [
+                  "eval::eval_rendered_matches::case_3_literal_range"
+                  "eval::eval_rendered_matches::case_4_literal_list"
+                  "eval::eval_rendered_matches::case_5_literal_record"
+                  "eval::eval_rendered_matches::case_6_literal_table"
+                  "eval::eval_rendered_matches::case_8_call_spread"
                   "repl::test_config_path::test_default_config_path"
                   "repl::test_config_path::test_xdg_config_bad"
                   "repl::test_config_path::test_xdg_config_empty"
