@@ -17,6 +17,7 @@
     ripgrep
     fd
     btop
+    hwatch
     starship
     fastfetch
     glow
