@@ -5,6 +5,7 @@ _:
   # Import this in home-manager user configurations
   imports = [
     ./packages.nix
+    ./tempo.nix
     ./programs
   ];
 }
