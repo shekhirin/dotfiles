@@ -1,4 +1,8 @@
-{ buildGo126Module, src }:
+{
+  buildGo126Module,
+  installShellFiles,
+  src,
+}:
 
 buildGo126Module {
   pname = "boxctl";
@@ -11,6 +15,12 @@ buildGo126Module {
     "-s"
     "-w"
   ];
+
+  nativeBuildInputs = [ installShellFiles ];
+
+  postInstall = ''
+    installShellCompletion --cmd boxctl --fish <($out/bin/boxctl completion fish)
+  '';
 
   meta.mainProgram = "boxctl";
 }

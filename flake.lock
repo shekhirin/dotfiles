@@ -24,9 +24,11 @@
     "boxctl-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1790647208,
-        "narHash": "sha256-JeqkPetEcpyR3z3Yn8uyBTTnxx9rNGYCbSc7FI1W82s=",
-        "rev": "93ea4ef92950f987ae2f32f5c87e72af33fee55d",
+        "lastModified": 1790940568,
+        "narHash": "sha256-N7axzNZxPqPYK/H+hrZK3nfG69Opocye1F+JSB2NfNQ=",
+        "ref": "refs/heads/main",
+        "rev": "03e3754ec34a4129b2d7a481c392243c5cf51ee5",
+        "revCount": 31,
         "type": "git",
         "url": "ssh://git@github.com/tempoxyz/boxctl"
       },
