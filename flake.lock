@@ -21,6 +21,20 @@
         "type": "github"
       }
     },
+    "boxctl-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790647208,
+        "narHash": "sha256-JeqkPetEcpyR3z3Yn8uyBTTnxx9rNGYCbSc7FI1W82s=",
+        "rev": "93ea4ef92950f987ae2f32f5c87e72af33fee55d",
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/boxctl"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/boxctl"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -302,6 +316,7 @@
     "root": {
       "inputs": {
         "aerospace-flake": "aerospace-flake",
+        "boxctl-src": "boxctl-src",
         "dock-module": "dock-module",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",

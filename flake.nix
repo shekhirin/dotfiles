@@ -67,6 +67,11 @@
     # Mercator CLI
     mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
 
+    boxctl-src = {
+      url = "git+ssh://git@github.com/tempoxyz/boxctl";
+      flake = false;
+    };
+
     # IDÅSEN standing desk controller
     idasen-control-src = {
       url = "github:mitsuhiko/idasen-control";
