@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
+  boxctl = pkgs.callPackage ./boxctl.nix { src = inputs.boxctl-src; };
   openlogi = pkgs.openlogi.overrideAttrs (oldAttrs: {
     cargoBuildFlags = oldAttrs.cargoBuildFlags ++ [ "--package=openlogi-agent" ];
 
@@ -20,6 +21,7 @@ let
 in
 {
   home.packages = [
+    boxctl
     openlogi
     pkgs._1password-cli
   ];
