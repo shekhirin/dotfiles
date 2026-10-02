@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   mercatorPackage = inputs.mercator.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -20,6 +25,9 @@ in
     mercator
     pkgs.minio-client
   ];
+
+  programs.git.settings.user.email = lib.mkForce "alexey@tempo.xyz";
+  programs.jujutsu.settings.user.email = lib.mkForce "alexey@tempo.xyz";
 
   home.file.".ideavimrc".text = ''
     set scrolloff=5
