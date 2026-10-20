@@ -1,4 +1,9 @@
-{ pkgs, llm-agents, ... }@inputs:
+{
+  inputs,
+  pkgs,
+  llm-agents,
+  ...
+}:
 
 let
   user = "shekhirin";

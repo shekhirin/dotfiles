@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # OpenLogi 0.8.14 with macOS packaging: https://github.com/NixOS/nixpkgs/pull/573733
+    nixpkgs-openlogi.url = "github:NixOS/nixpkgs/d32c25738e5646a472523a108b55cdea3fe179e7";
+
     # Darwin support
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
