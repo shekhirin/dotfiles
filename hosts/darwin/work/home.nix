@@ -23,7 +23,6 @@ in
 {
   home.packages = [
     mercator
-    pkgs.minio-client
   ];
 
   programs.git.settings.user.email = lib.mkForce "alexey@tempo.xyz";
