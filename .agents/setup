@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+echo "Preparing Nix"
+SECONDS=0
+if ! command -v nix >/dev/null 2>&1; then
+  if [[ ! -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
+    installer="$(mktemp)"
+    trap 'rm -f "$installer"' EXIT
+    curl --fail --silent --show-error --location \
+      https://releases.nixos.org/nix/nix-2.35.3/install -o "$installer"
+    bash "$installer" --no-daemon --yes
+  fi
+  # shellcheck disable=SC1091
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+echo "Nix ready (${SECONDS}s)"
+
+echo "Caching the lockfile-pinned repository tools"
+SECONDS=0
+profile="$HOME/.local/state/amp-dotfiles/dev-shell"
+mkdir -p "$(dirname "$profile")"
+nix --extra-experimental-features 'nix-command flakes' print-dev-env \
+  --no-write-lock-file --profile "$profile" "path:$repo_root" >/dev/null
+echo "Repository tools cached (${SECONDS}s)"
+
+# Activate the complete environment in future agent and service login shells.
+# Keep this scoped to this checkout and guard against nested activation.
+marker="# Amp dotfiles development shell"
+if ! grep -Fqx "$marker" "$HOME/.bash_profile" 2>/dev/null; then
+  nix_bin="$(command -v nix)"
+  cat >> "$HOME/.bash_profile" <<EOF
+
+$marker
+if [[ "\$PWD" == "$repo_root" || "\$PWD" == "$repo_root/"* ]] &&
+   { [[ -z "\${IN_NIX_SHELL:-}" ]] || ! command -v jj >/dev/null 2>&1; }; then
+  eval "\$("$nix_bin" --extra-experimental-features 'nix-command flakes' print-dev-env --no-write-lock-file "path:$repo_root")"
+fi
+EOF
+fi

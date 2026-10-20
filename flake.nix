@@ -238,6 +238,22 @@
         ];
       };
 
+      # Repository tools, without host overlays or private machine dependencies.
+      devShells.x86_64-linux.default =
+        let
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+        in
+        pkgs.mkShellNoCC {
+          packages = with pkgs; [
+            nix
+            jujutsu
+            just
+            nixfmt-tree
+            statix
+            shellcheck
+          ];
+        };
+
       # Formatters for each system
       formatter = {
         aarch64-darwin = darwinPkgs.nixfmt-tree;

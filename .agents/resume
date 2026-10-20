@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+# Fresh orb checkouts are Git repositories; preserve existing jj work on wake.
+if [[ ! -d .jj ]]; then
+  jj git init --colocate
+fi
