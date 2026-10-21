@@ -299,22 +299,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-openlogi": {
-      "locked": {
-        "lastModified": 1792173370,
-        "narHash": "sha256-ZTQJFbnC+ABBAj9VnDQsOK+CvlypakOOIbplU0u8NHk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d32c25738e5646a472523a108b55cdea3fe179e7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d32c25738e5646a472523a108b55cdea3fe179e7",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1792488032,
@@ -345,7 +329,6 @@
         "mercator": "mercator",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-openlogi": "nixpkgs-openlogi",
         "sops-nix": "sops-nix",
         "systems": "systems_2",
         "zed-editor-flake": "zed-editor-flake"
