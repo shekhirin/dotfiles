@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # Reload aerospace config on activation
@@ -67,8 +72,7 @@
           run = "layout floating";
         }) floaters;
 
-        enable-tabs-for-apps = [
-          "com.mitchellh.ghostty"
+        enable-tabs-for-apps = lib.optional config.programs.ghostty.enable "com.mitchellh.ghostty" ++ [
           "dev.zed.Zed-Preview"
           "dev.zed.Zed"
         ];
@@ -118,7 +122,11 @@
             alt-equal = "resize smart +50";
             alt-shift-e = "balance-sizes";
 
-            alt-t = "exec-and-forget open -a ${pkgs.ghostty-bin}/Applications/Ghostty.app";
+            alt-t =
+              if config.programs.ghostty.enable then
+                "exec-and-forget open -a ${pkgs.ghostty-bin}/Applications/Ghostty.app"
+              else
+                "exec-and-forget open -a \"/Applications/Rex Beta.app\"";
             alt-z = "exec-and-forget open -a \"${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app\"";
 
             alt-shift-semicolon = "mode service";

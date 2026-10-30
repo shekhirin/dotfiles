@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, ... }:
 
 {
   home.file.".hushlogin".text = "";
 
   programs.ghostty = {
-    enable = true;
+    enable = osConfig.networking.hostName == "shekhirin";
     package = pkgs.ghostty-bin;
 
     installBatSyntax = true;
