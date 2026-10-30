@@ -73,7 +73,6 @@ in
       { path = "/Applications/Telegram.app"; }
       { path = "/Applications/Spotify.app"; }
       { path = "/Applications/Linear.app"; }
-      { path = "/Applications/Amp.app"; }
       { path = "/Applications/Rex Beta.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
       { path = "/Applications/Anki.app"; }
