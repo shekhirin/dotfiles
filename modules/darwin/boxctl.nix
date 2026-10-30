@@ -9,7 +9,7 @@ buildGo126Module {
   version = "0-unstable-${builtins.substring 0 7 src.rev}";
 
   inherit src;
-  vendorHash = "sha256-yJmGEAwDSAUeHJw7tmlESKeUJA8wGvTRRFPboRYQ9+c=";
+  vendorHash = "sha256-DNGFgTNl8ZSj3fGbm1jyDhtFsBg8Wa+hkf2me67UY34=";
   subPackages = [ "cmd/boxctl" ];
   ldflags = [
     "-s"
