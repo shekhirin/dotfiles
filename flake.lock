@@ -315,6 +315,23 @@
         "type": "github"
       }
     },
+    "rex": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793420730,
+        "narHash": "sha256-FeZ29POvbzzKRmiMbqRVqfi/9QUtcs2jgSi/GNixkg0=",
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/snapshot/0.0.1793420730-g6d0d9a.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz"
+      }
+    },
     "root": {
       "inputs": {
         "aerospace-flake": "aerospace-flake",
@@ -329,6 +346,7 @@
         "mercator": "mercator",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
+        "rex": "rex",
         "sops-nix": "sops-nix",
         "systems": "systems_2",
         "zed-editor-flake": "zed-editor-flake"

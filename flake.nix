@@ -64,6 +64,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Official prebuilt Rex package (no stable release yet)
+    rex = {
+      url = "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Mercator CLI
     mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
 
