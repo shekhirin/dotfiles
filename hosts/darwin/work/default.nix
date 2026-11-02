@@ -85,9 +85,10 @@ in
     entries = [
       { path = "/Applications/Helium.app"; }
       { path = "/Applications/Notion Calendar.app"; }
-      { path = "/Applications/Discord.app"; }
+      { path = "/Applications/Signal.app"; }
       { path = "/Applications/Slack.app"; }
       { path = "/Applications/Telegram.app"; }
+      { path = "/Applications/Spotify.app"; }
       { path = "/Applications/Linear.app"; }
       { path = "/Applications/Rex Beta.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
