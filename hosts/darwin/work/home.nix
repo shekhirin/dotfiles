@@ -19,10 +19,16 @@ let
       exec ${mercatorPackage}/bin/mercator "$@"
     '';
   };
+  # Antithesis CLI, built from the release tag pinned in flake.nix with its own package.nix.
+  snouty = (pkgs.callPackage "${inputs.snouty-src}/package.nix" { }).overrideAttrs {
+    version = "0.9.1";
+    doCheck = false;
+  };
 in
 {
   home.packages = [
     mercator
+    snouty
   ];
 
   programs.git.settings.user.email = lib.mkForce "alexey@tempo.xyz";

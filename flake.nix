@@ -82,6 +82,12 @@
       flake = false;
     };
 
+    # Antithesis CLI
+    snouty-src = {
+      url = "github:antithesishq/snouty/v0.9.1";
+      flake = false;
+    };
+
     # IDÅSEN standing desk controller
     idasen-control-src = {
       url = "github:mitsuhiko/idasen-control";
