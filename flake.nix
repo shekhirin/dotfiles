@@ -70,6 +70,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Rust Nix client; its classic mode stands in for nix, nix-build, ...
+    # Not following nixpkgs, so its builds come from cache.numtide.com.
+    iets.url = "github:numtide/iets";
+
     # Mercator CLI
     mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
 
@@ -249,6 +253,7 @@
         pkgs.mkShellNoCC {
           packages = with pkgs; [
             nix
+            inputs.iets.packages.x86_64-linux.default
             jujutsu
             just
             nixfmt-tree

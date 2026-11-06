@@ -12,12 +12,17 @@ in
     ./hardware-configuration.nix
     ../../modules/shared
     inputs.home-manager.nixosModules.home-manager
+    inputs.iets.nixosModules.default
     # NixOS system-level modules (services, packages, sops, etc.)
     ../../modules/nixos/services
     ../../modules/nixos/packages.nix
     ../../modules/nixos/sops.nix
     ../../modules/nixos/virtualisation.nix
   ];
+
+  # iets in front of Nix: nix, nix-build, nix-shell, ... go through iets and
+  # fall back to Nix for what it does not implement.
+  iets.classic.enable = true;
 
   # Bootloader
   boot.loader = {

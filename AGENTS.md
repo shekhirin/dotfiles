@@ -37,6 +37,13 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 - Append `!` after the type/scope for breaking changes (e.g., `feat!: remove deprecated API`).
 - A `BREAKING CHANGE:` footer may also be used to describe breaking changes.
 
+## Nix
+
+Nix commands go through [iets](https://github.com/numtide/iets): `iets build`, `iets eval`, `iets print-dev-env`, or `nix`, `nix-build` and `nix-shell` in its classic mode, which falls back to the real Nix for what iets does not implement. iets has no lock command, so lock and update inputs with `nix flake lock` and `nix flake update`.
+
+- `just build` builds this machine, `just switch` switches to it.
+- `just check` (`iets build .#checks`) runs the flake checks for this system.
+
 ## Formatting
 
 Run `nix fmt` after making changes.

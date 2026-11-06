@@ -19,14 +19,15 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v14
+        with:
+          extra-conf: |
+            extra-substituters = https://cache.numtide.com
+            extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=
 
       - name: Setup Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
-      - name: Run flake checks (macOS)
-        if: matrix.os == 'macos-latest'
-        run: nix flake check --accept-flake-config --system aarch64-darwin
-
-      - name: Run flake checks (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: nix flake check --accept-flake-config --system x86_64-linux
+      # iets builds the checks of the runner's system (aarch64-darwin on
+      # macos-latest, x86_64-linux on ubuntu-latest).
+      - name: Run flake checks
+        run: nix run --inputs-from . iets -- build .#checks
