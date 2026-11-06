@@ -1,3 +1,6 @@
+# iets, or the flake-pinned one before the first switch installs it
+iets := if `command -v iets || true` != "" { "iets" } else { "nix run --inputs-from . iets --" }
+
 # Display available commands
 default:
     @just --list
@@ -29,17 +32,15 @@ switch *ARGS:
     set -e
     info=$(just detect)
     type="${info%%:*}"
-    target="${info##*:}"
+    system_config=$(just build {{ARGS}})
+    sudo nix-env -p /nix/var/nix/profiles/system --set "$system_config"
     if [ "$type" = "darwin" ]; then
-        darwin-rebuild build --flake ".#$target" {{ARGS}}
-        system_config=$(readlink -f result)
-        sudo nix-env -p /nix/var/nix/profiles/system --set "$system_config"
         sudo "$system_config/sw/bin/darwin-rebuild" activate
     else
-        sudo nixos-rebuild switch --flake ".#$target" {{ARGS}}
+        sudo "$system_config/bin/switch-to-configuration" switch
     fi
 
-# Build current machine
+# Build current machine and print its system path
 build *ARGS:
     #!/usr/bin/env bash
     set -e
@@ -47,10 +48,16 @@ build *ARGS:
     type="${info%%:*}"
     target="${info##*:}"
     if [ "$type" = "darwin" ]; then
-        darwin-rebuild build --flake ".#$target" {{ARGS}}
+        attr="darwinConfigurations.$target.system"
     else
-        sudo nixos-rebuild build --flake ".#$target" {{ARGS}}
+        attr="nixosConfigurations.$target.config.system.build.toplevel"
     fi
+    {{iets}} build -o result ".#$attr" {{ARGS}} >/dev/null
+    readlink -f result
+
+# Run the flake checks for this system
+check *ARGS:
+    {{iets}} build .#checks {{ARGS}}
 
 # Update flake and switch current machine
 update *ARGS:
