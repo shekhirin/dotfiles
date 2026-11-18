@@ -77,6 +77,12 @@
     # Mercator CLI
     mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
 
+    # pyr, the vim-style terminal client for Pyramid
+    pyrvim = {
+      url = "git+ssh://git@github.com/tempoxyz/pyrvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     boxctl-src = {
       url = "git+ssh://git@github.com/tempoxyz/boxctl";
       flake = false;

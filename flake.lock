@@ -365,6 +365,27 @@
         "type": "github"
       }
     },
+    "pyrvim": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1794983879,
+        "narHash": "sha256-U5vu+T1t5Oh/hZXctYgU6+zbCuajvXmeh9R/okF3vSc=",
+        "ref": "refs/heads/main",
+        "rev": "44e54faf7fc4cbb6dc6726bbe5e3233d6f170919",
+        "revCount": 90,
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/pyrvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/pyrvim"
+      }
+    },
     "rex": {
       "inputs": {
         "nixpkgs": [
@@ -397,11 +418,33 @@
         "mercator": "mercator",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
+        "pyrvim": "pyrvim",
         "rex": "rex",
         "snouty-src": "snouty-src",
         "sops-nix": "sops-nix",
         "systems": "systems_2",
         "zed-editor-flake": "zed-editor-flake"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "pyrvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794303164,
+        "narHash": "sha256-UZMtOt43/HRVssXPSuPv8t11Toq9+CjyWUfYQ3tqGVE=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "89750a2ef1c6a44db9f4251b16c23deffdcfddff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "snouty-src": {
