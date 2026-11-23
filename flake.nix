@@ -46,7 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # LLM coding agents (daily updated)
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
