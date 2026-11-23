@@ -17,11 +17,6 @@
     };
 
     # Shared utilities
-    systems.url = "github:nix-systems/default";
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Secret management
@@ -51,12 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # jj-starship
-    jj-starship = {
-      url = "github:dmmulroy/jj-starship";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
 
     # LLM coding agents (daily updated)
     llm-agents = {
@@ -74,23 +63,8 @@
     # Not following nixpkgs, so its builds come from cache.numtide.com.
     iets.url = "github:numtide/iets";
 
-    # Mercator CLI
-    mercator.url = "git+ssh://git@github.com/tempoxyz/mercator";
-
     boxctl-src = {
       url = "git+ssh://git@github.com/tempoxyz/boxctl";
-      flake = false;
-    };
-
-    # Antithesis CLI
-    snouty-src = {
-      url = "github:antithesishq/snouty/v0.9.1";
-      flake = false;
-    };
-
-    # IDÅSEN standing desk controller
-    idasen-control-src = {
-      url = "github:mitsuhiko/idasen-control";
       flake = false;
     };
 
@@ -106,76 +80,14 @@
       dock-module,
       zed-editor-flake,
       aerospace-flake,
-      jj-starship,
       llm-agents,
-      idasen-control-src,
       ...
     }:
     let
       # System-specific package sets
-      idasenControlOverlay = final: prev: {
-        idasen-control = prev.rustPlatform.buildRustPackage {
-          pname = "idasen-control";
-          version = "0-unstable";
-
-          src = idasen-control-src;
-          cargoHash = "sha256-vla47ObpzFq/wqf1xy4CllOrgHWn3AG5Hy6RG1tr3ZU=";
-        };
-      };
-
-      # https://github.com/NixOS/nixpkgs/issues/510488
-      nushellDarwinOverlay =
-        final: prev:
-        prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
-          nushell = prev.nushell.overrideAttrs (old: {
-            checkPhase =
-              let
-                skippedTests = [
-                  "eval::eval_rendered_matches::case_3_literal_range"
-                  "eval::eval_rendered_matches::case_4_literal_list"
-                  "eval::eval_rendered_matches::case_5_literal_record"
-                  "eval::eval_rendered_matches::case_6_literal_table"
-                  "eval::eval_rendered_matches::case_8_call_spread"
-                  "repl::test_config_path::test_default_config_path"
-                  "repl::test_config_path::test_xdg_config_bad"
-                  "repl::test_config_path::test_xdg_config_empty"
-                  "plugins::config::some"
-                  "plugins::stress_internals::test_exit_early_local_socket"
-                  "plugins::stress_internals::test_failing_local_socket_fallback"
-                  "plugins::stress_internals::test_local_socket"
-                  "shell::environment::env::path_is_a_list_in_repl"
-                  "shell::environment::env::env_shlvl_in_repl"
-                  "shell::environment::env::env_shlvl_in_exec_repl"
-                  "eval::eval_rendered_matches::case_3_literal_range"
-                  "eval::eval_rendered_matches::case_4_literal_list"
-                  "eval::eval_rendered_matches::case_5_literal_record"
-                  "eval::eval_rendered_matches::case_6_literal_table"
-                  "eval::eval_rendered_matches::case_8_call_spread"
-                ];
-                skippedTestsStr = prev.lib.concatStringsSep " " (
-                  prev.lib.map (testId: "--skip=${testId}") skippedTests
-                );
-              in
-              ''
-                runHook preCheck
-
-                cargo test -j $NIX_BUILD_CORES --offline -- \
-                  --test-threads=$NIX_BUILD_CORES ${skippedTestsStr}
-
-                runHook postCheck
-              '';
-          });
-        };
-
-      overlays = [
-        idasenControlOverlay
-        nushellDarwinOverlay
-        jj-starship.overlays.default
-      ];
-
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
-        overlays = overlays ++ [
+        overlays = [
           (final: prev: {
             inherit (zed-editor-flake.packages.aarch64-darwin) zed-editor-preview-bin;
             inherit (aerospace-flake.packages.aarch64-darwin) aerospace;
@@ -186,7 +98,6 @@
 
       boxPkgs = import nixpkgs {
         system = "x86_64-linux";
-        inherit overlays;
         config.allowUnfree = true;
       };
     in

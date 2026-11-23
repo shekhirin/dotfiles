@@ -13,7 +13,6 @@
       "zig"
       "nix"
       "justfile"
-      "nu"
       "solidity"
       "helm"
     ];
