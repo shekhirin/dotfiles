@@ -272,6 +272,26 @@
         "type": "github"
       }
     },
+    "pyrex": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795515864,
+        "narHash": "sha256-fg6AHbAqijpuaxNrmu0v40KRWgZKdI0jQ3Gx3ZeMV2s=",
+        "ref": "refs/heads/main",
+        "rev": "c326650a81f6c627863d40ae155959001975ad6d",
+        "revCount": 124,
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/pyrex"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tempoxyz/pyrex"
+      }
+    },
     "rex": {
       "inputs": {
         "nixpkgs": [
@@ -300,6 +320,7 @@
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
+        "pyrex": "pyrex",
         "rex": "rex",
         "sops-nix": "sops-nix",
         "zed-editor-flake": "zed-editor-flake"

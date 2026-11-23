@@ -67,6 +67,12 @@
       flake = false;
     };
 
+    # pyrex, Pyramid threads as Rex tabs
+    pyrex = {
+      url = "git+ssh://git@github.com/tempoxyz/pyrex";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
