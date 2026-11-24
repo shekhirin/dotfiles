@@ -17,10 +17,13 @@
       -data "$(${pkgs.xxd}/bin/xxd -p -c 0 ${./rex-themes.json})"
   '';
 
-  programs.fish.interactiveShellInit = lib.mkAfter ''
+  # In every fish, not only interactive ones: pyrex's Rex tabs take their PATH from a login fish.
+  programs.fish.shellInit = lib.mkAfter ''
     # Nix resets PATH during shell startup; retain Rex's bundled CLI.
-    if set -q REX_BIN_DIR
-      fish_add_path --path --prepend --move $REX_BIN_DIR
+    set -l rex_bin_dir "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+    set -q REX_BIN_DIR; and set rex_bin_dir $REX_BIN_DIR
+    if test -d "$rex_bin_dir"
+      fish_add_path --path --prepend --move "$rex_bin_dir"
     end
   '';
 }
