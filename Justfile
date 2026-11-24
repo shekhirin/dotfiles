@@ -59,7 +59,33 @@ build *ARGS:
 check *ARGS:
     {{iets}} build .#checks {{ARGS}}
 
-# Update flake and switch current machine
+# A name is a flake input, or the <name>-src or <name>-flake one (`just update boxctl`).
+# Flags are passed to switch.
+# Update all flake inputs, or the named ones, and switch current machine
 update *ARGS:
-    nix flake update
-    just switch {{ARGS}}
+    #!/usr/bin/env bash
+    set -euo pipefail
+    inputs=" $(nix eval --impure --raw --expr \
+        'builtins.concatStringsSep " " (builtins.attrNames (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.root.inputs)') "
+    update=()
+    switch=()
+    for arg in {{ARGS}}; do
+        if [[ "$arg" == -* ]]; then
+            switch+=("$arg")
+            continue
+        fi
+        found=
+        for input in "$arg" "$arg-src" "$arg-flake"; do
+            if [[ "$inputs" == *" $input "* ]]; then
+                found=$input
+                break
+            fi
+        done
+        if [ -z "$found" ]; then
+            echo "No flake input for '$arg'. Inputs:$inputs" >&2
+            exit 1
+        fi
+        update+=("$found")
+    done
+    nix flake update ${update[@]+"${update[@]}"}
+    just switch ${switch[@]+"${switch[@]}"}
