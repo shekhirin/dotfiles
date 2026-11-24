@@ -93,6 +93,7 @@ in
       { path = "/Applications/Telegram.app"; }
       { path = "/Applications/Spotify.app"; }
       { path = "/Applications/Linear.app"; }
+      { path = "/Applications/Pyramid.app"; }
       { path = "/Applications/Rex Beta.app"; }
       { path = "${pkgs.zed-editor-preview-bin}/Applications/Zed Preview.app"; }
       { path = "/System/Applications/System Settings.app"; }
