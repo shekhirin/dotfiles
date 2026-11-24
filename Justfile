@@ -65,7 +65,10 @@ check *ARGS:
 update *ARGS:
     #!/usr/bin/env bash
     set -euo pipefail
-    inputs=" $(nix eval --impure --raw --expr \
+    # The real Nix: iets warns about Determinate-only settings in nix.conf,
+    # and only falls back to it for flake commands anyway.
+    nix="${IETS_NIX_BIN_DIR:+$IETS_NIX_BIN_DIR/}nix"
+    inputs=" $("$nix" eval --impure --raw --expr \
         'builtins.concatStringsSep " " (builtins.attrNames (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.root.inputs)') "
     update=()
     switch=()
@@ -87,5 +90,5 @@ update *ARGS:
         fi
         update+=("$found")
     done
-    nix flake update ${update[@]+"${update[@]}"}
+    "$nix" flake update ${update[@]+"${update[@]}"}
     just switch ${switch[@]+"${switch[@]}"}
