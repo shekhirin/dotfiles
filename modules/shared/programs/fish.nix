@@ -1,6 +1,15 @@
-{ pkgs, ... }:
+{ osConfig, ... }:
 
 let
+  flake = "github:shekhirin/dotfiles";
+  # Flake configuration of each machine, by hostname
+  target =
+    {
+      box = "box";
+      shekhirin = "personal";
+      shekhirin-tempo = "work";
+    }
+    .${osConfig.networking.hostName};
   kubectlAliasesFish = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases.fish";
     sha256 = "1xdgmyz0ykcq4gxpwzsfclcsdbs64kzf2ql7q6rwx8klmcxi871j";
@@ -112,7 +121,25 @@ in
         description = "git pull";
         body = "git pull $argv";
       };
-
+      u = {
+        description = "Update this machine from dotfiles";
+        body =
+          if osConfig.nixpkgs.hostPlatform.isDarwin then
+            ''
+              # Build as the user, whose SSH keys fetch the private inputs, then activate as root.
+              set -l nix nix
+              set -q IETS_NIX_BIN_DIR; and set nix $IETS_NIX_BIN_DIR/nix
+              set -l system ($nix build --no-link --print-out-paths --refresh \
+                ${flake}#darwinConfigurations.${target}.system); or return
+              sudo nix-env -p /nix/var/nix/profiles/system --set $system; or return
+              sudo $system/sw/bin/darwin-rebuild activate
+            ''
+          else
+            ''
+              sudo nix flake prefetch ${flake} --refresh
+              sudo nixos-rebuild switch --flake ${flake}#${target}
+            '';
+      };
     };
   };
 }
