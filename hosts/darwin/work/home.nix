@@ -7,6 +7,7 @@
 
 let
   pyrex = inputs.pyrex.packages.${pkgs.stdenv.hostPlatform.system}.pyrex;
+  terminal-browser = import ../../../modules/darwin/terminal-browser.nix { inherit pkgs; };
   # Rex's CLI ships with its server rather than on the PATH.
   rexBinDir = "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS";
 in
@@ -20,7 +21,10 @@ in
       set clipboard+=unnamed
     '';
 
-    packages = [ pyrex ];
+    packages = [
+      pyrex
+      terminal-browser
+    ];
 
     # `pyrex setup` writes the binary's store path into ~/.config/rex/init.lua: point Rex's palette at this build.
     activation.pyrexSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
