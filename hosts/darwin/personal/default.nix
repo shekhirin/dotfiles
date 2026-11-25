@@ -92,7 +92,10 @@ in
     useUserPackages = true;
     backupFileExtension = "backup";
     users.shekhirin = {
-      home.packages = [ inputs.asc.packages.${pkgs.system}.default ];
+      home.packages = [
+        inputs.asc.packages.${pkgs.system}.default
+        (import ../../../modules/darwin/tuist.nix { inherit pkgs; })
+      ];
       imports = [
         # Shared home-manager configuration (packages and programs)
         ../../../modules/shared/home.nix
