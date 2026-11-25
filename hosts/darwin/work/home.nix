@@ -7,7 +7,7 @@
 
 let
   pyrex = inputs.pyrex.packages.${pkgs.stdenv.hostPlatform.system}.pyrex;
-  terminal-browser = import ../../../modules/darwin/terminal-browser.nix { inherit pkgs; };
+  inherit (inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}) terminal-browser;
   # Rex's CLI ships with its server rather than on the PATH.
   rexBinDir = "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS";
 in
