@@ -40,6 +40,8 @@ in
     firewall.allowedTCPPorts = [ 22 ];
   };
 
+  services.tailscale.extraSetFlags = [ "--accept-dns=true" ];
+
   # Locale and timezone
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
