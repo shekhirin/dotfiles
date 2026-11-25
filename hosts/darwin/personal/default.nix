@@ -93,19 +93,20 @@ in
     useUserPackages = true;
     backupFileExtension = "backup";
     users.shekhirin = {
-      home.packages = [
-        inputs.asc.packages.${pkgs.system}.default
-        tuist
-      ];
-      home.file.".local/bin/tuist".source = "${tuist}/bin/tuist";
+      home = {
+        packages = [
+          inputs.asc.packages.${pkgs.system}.default
+          tuist
+        ];
+        file.".local/bin/tuist".source = "${tuist}/bin/tuist";
+        stateVersion = "25.05";
+      };
       imports = [
         # Shared home-manager configuration (packages and programs)
         ../../../modules/shared/home.nix
         # Darwin-specific configuration
         ../../../modules/darwin
       ];
-
-      home.stateVersion = "25.05";
     };
   };
 }
