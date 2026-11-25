@@ -21,6 +21,29 @@
         "type": "github"
       }
     },
+    "asc": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795589895,
+        "narHash": "sha256-BiRLj0XhcCnkZU4iTAlcol64KXoKX2wA4ILuRO5B6vg=",
+        "owner": "rorkai",
+        "repo": "App-Store-Connect-CLI",
+        "rev": "f0e2416fbfb0697254c719861577057aad280d77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rorkai",
+        "repo": "App-Store-Connect-CLI",
+        "type": "github"
+      }
+    },
     "boxctl-src": {
       "flake": false,
       "locked": {
@@ -312,6 +335,7 @@
     "root": {
       "inputs": {
         "aerospace-flake": "aerospace-flake",
+        "asc": "asc",
         "boxctl-src": "boxctl-src",
         "dock-module": "dock-module",
         "flake-parts": "flake-parts",

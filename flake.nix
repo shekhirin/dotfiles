@@ -62,6 +62,12 @@
     # Not following nixpkgs, so its builds come from cache.numtide.com.
     iets.url = "github:numtide/iets";
 
+    asc = {
+      url = "github:rorkai/App-Store-Connect-CLI";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
     boxctl-src = {
       url = "git+ssh://git@github.com/tempoxyz/boxctl";
       flake = false;

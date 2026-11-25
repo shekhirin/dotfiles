@@ -92,6 +92,7 @@ in
     useUserPackages = true;
     backupFileExtension = "backup";
     users.shekhirin = {
+      home.packages = [ inputs.asc.packages.${pkgs.system}.default ];
       imports = [
         # Shared home-manager configuration (packages and programs)
         ../../../modules/shared/home.nix
