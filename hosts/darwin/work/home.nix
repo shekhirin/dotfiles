@@ -14,18 +14,20 @@ in
   programs.git.settings.user.email = lib.mkForce "alexey@tempo.xyz";
   programs.jujutsu.settings.user.email = lib.mkForce "alexey@tempo.xyz";
 
-  home.file.".ideavimrc".text = ''
-    set scrolloff=5
-    set clipboard+=unnamed
-  '';
+  home = {
+    file.".ideavimrc".text = ''
+      set scrolloff=5
+      set clipboard+=unnamed
+    '';
 
-  home.packages = [ pyrex ];
+    packages = [ pyrex ];
 
-  # `pyrex setup` writes the binary's store path into ~/.config/rex/init.lua: point Rex's palette at this build.
-  home.activation.pyrexSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ -x "${rexBinDir}/rex" ]; then
-      PATH="${rexBinDir}:$PATH" run ${lib.getExe pyrex} setup \
-        || warnEcho "pyrex setup failed: run it in a Rex shell"
-    fi
-  '';
+    # `pyrex setup` writes the binary's store path into ~/.config/rex/init.lua: point Rex's palette at this build.
+    activation.pyrexSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      if [ -x "${rexBinDir}/rex" ]; then
+        PATH="${rexBinDir}:$PATH" run ${lib.getExe pyrex} setup \
+          || warnEcho "pyrex setup failed: run it in a Rex shell"
+      fi
+    '';
+  };
 }
