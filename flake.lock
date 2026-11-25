@@ -302,11 +302,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795607337,
-        "narHash": "sha256-jfX+0OXXbRNwIgDuBmHaPBQvLA0Q+XDP0PZNRelRDPc=",
+        "lastModified": 1795628733,
+        "narHash": "sha256-ukfg9sJYxg3RFFKs4hTIuX/kGyNLoXm7xlQJ6PfMfQw=",
         "ref": "refs/heads/main",
-        "rev": "3427f39ab38cf753689095ee9ebe4c2bbcf72bf1",
-        "revCount": 128,
+        "rev": "9ec20e88f82cb329976935f91acd149f5594e10b",
+        "revCount": 132,
         "type": "git",
         "url": "ssh://git@github.com/tempoxyz/pyrex"
       },
