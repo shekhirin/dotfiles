@@ -7,6 +7,7 @@
 
 let
   user = "shekhirin";
+  tuist = import ../../../modules/darwin/tuist.nix { inherit pkgs; };
 in
 {
   imports = [
@@ -94,8 +95,9 @@ in
     users.shekhirin = {
       home.packages = [
         inputs.asc.packages.${pkgs.system}.default
-        (import ../../../modules/darwin/tuist.nix { inherit pkgs; })
+        tuist
       ];
+      home.file.".local/bin/tuist".source = "${tuist}/bin/tuist";
       imports = [
         # Shared home-manager configuration (packages and programs)
         ../../../modules/shared/home.nix
