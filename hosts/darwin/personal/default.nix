@@ -96,6 +96,7 @@ in
       home = {
         packages = [
           inputs.asc.packages.${pkgs.system}.default
+          llm-agents.packages.${pkgs.system}.antigravity-cli
           tuist
         ];
         file.".local/bin/tuist".source = "${tuist}/bin/tuist";
