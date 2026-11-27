@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   llm-agents,
   ...
 }:
@@ -34,6 +35,7 @@ in
       llm-agents-pkgs.amp
       llm-agents-pkgs.claude-code
       llm-agents-pkgs.codex
+      inputs.nanocode.packages.${pkgs.stdenv.hostPlatform.system}.nanocode
     ];
 
   };

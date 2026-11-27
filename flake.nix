@@ -52,6 +52,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nanocode CLI
+    nanocode = {
+      url = "github:nanocodexyz/nanocode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Official prebuilt Rex package (no stable release yet)
     rex = {
       url = "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz";

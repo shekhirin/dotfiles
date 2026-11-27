@@ -227,6 +227,26 @@
         "type": "github"
       }
     },
+    "nanocode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795757278,
+        "narHash": "sha256-a4aZh+/Xxj3Q77kf4EoBoBRM5gd1DeMqzVXmy1OTU3U=",
+        "owner": "nanocodexyz",
+        "repo": "nanocode",
+        "rev": "f683f83927b1f4e69dd50769130d913433147b91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanocodexyz",
+        "repo": "nanocode",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -342,6 +362,7 @@
         "home-manager": "home-manager",
         "iets": "iets",
         "llm-agents": "llm-agents",
+        "nanocode": "nanocode",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "pyrex": "pyrex",
