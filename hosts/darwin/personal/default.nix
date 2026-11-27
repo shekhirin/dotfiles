@@ -60,8 +60,16 @@ in
     shell = pkgs.fish;
   };
 
-  ## Touch‑ID sudo
-  security.pam.services.sudo_local.touchIdAuth = true;
+  ## Touch-ID & remote Face ID sudo
+  services.sudo-faceid.enable = true;
+  security.pam.services.sudo_local.touchIdAuth = false;
+  environment.etc."pam.d/sudo_local".text = ''
+    # sudo_local: managed by nix-darwin (Face ID when AFK via Rex, Touch ID locally)
+    auth       sufficient     ${
+      inputs.sudo-faceid.packages.${pkgs.stdenv.hostPlatform.system}.default
+    }/lib/pam/pam_faceid.so min_idle=5
+    auth       sufficient     pam_tid.so
+  '';
 
   ## Dock configuration
   local.dock = {

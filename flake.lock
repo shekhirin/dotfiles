@@ -368,6 +368,7 @@
         "pyrex": "pyrex",
         "rex": "rex",
         "sops-nix": "sops-nix",
+        "sudo-faceid": "sudo-faceid",
         "zed-editor-flake": "zed-editor-flake"
       }
     },
@@ -389,6 +390,26 @@
         "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
+      }
+    },
+    "sudo-faceid": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795771822,
+        "narHash": "sha256-UjN1/q2g9mDyublcT0dU0P1Qj78+fweY/ATjPN6lvvc=",
+        "ref": "refs/heads/main",
+        "rev": "cd00c52a38a96ec141bcba3ac69088f29137560f",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/shekhirin/sudo-faceid"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/shekhirin/sudo-faceid"
       }
     },
     "systems": {

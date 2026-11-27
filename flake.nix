@@ -85,6 +85,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Remote macOS sudo approval via iPhone Face ID
+    sudo-faceid = {
+      url = "git+ssh://git@github.com/shekhirin/sudo-faceid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -133,6 +139,9 @@
 
           # Home-Manager
           home-manager.darwinModules.home-manager
+
+          # Remote Face ID sudo daemon
+          inputs.sudo-faceid.darwinModules.default
 
           # Set system revision
           {
